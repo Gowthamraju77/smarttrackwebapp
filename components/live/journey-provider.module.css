@@ -1,0 +1,22 @@
+.notice { position: fixed; right: max(22px, env(safe-area-inset-right)); bottom: max(22px, env(safe-area-inset-bottom)); z-index: 90; display: flex; align-items: flex-start; gap: 13px; width: min(430px, calc(100vw - 32px)); padding: 18px; color: var(--ink); background: color-mix(in srgb, var(--panel) 94%, transparent); border: 1px solid var(--line); border-radius: 19px; box-shadow: 0 12px 32px #0e352624, 0 1px 0 #ffffff80 inset; backdrop-filter: blur(20px); animation: arrive var(--motion-standard) var(--motion-ease) both; transition: border-color var(--motion-fast) var(--motion-ease); }
+.notice:focus-within { border-color: #86b39b; }
+.notice > div { flex: 1; min-width: 0; }
+.notice strong { font-size: 14px; }
+.notice p { margin: 5px 0 9px; font-size: 12px; color: var(--ink-soft); line-height: 1.6; }
+.notice a { font-size: 12px; font-weight: 700; color: var(--teal-deep); text-decoration: underline; text-underline-offset: 4px; transition: color var(--motion-fast) var(--motion-ease); }
+.notice a:hover { color: var(--ink); text-decoration-thickness: 2px; }
+.icon { display: grid; width: 38px; height: 38px; flex: 0 0 38px; place-items: center; color: var(--teal-deep); background: var(--teal-wash); border-radius: 12px; }
+.notice[data-kind="off-route"] .icon { color: #805c22; background: #fff0cb; }
+.notice button { display: grid; place-items: center; min-width: 32px; min-height: 32px; padding: 0; border: 0; color: var(--ink-soft); background: transparent; border-radius: 7px; transition: color var(--motion-fast) var(--motion-ease), background-color var(--motion-fast) var(--motion-ease), transform var(--motion-fast) var(--motion-ease); }
+.notice button:hover { background: var(--teal-wash); }
+.notice button:active { color: var(--teal-deep); background: #d5eade; }
+.notice :is(button, a):focus-visible { outline: 2px solid var(--teal-deep); outline-offset: 3px; box-shadow: none; }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .notice button:active { transform: translateY(1px); }
+}
+@keyframes arrive { from { opacity: 0; transform: translateY(8px) scale(.99); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .notice { animation: none; }.notice, .notice button, .notice a { transition: none; } }
+@media (forced-colors: active) {
+  .notice, .notice:focus-within { border-color: CanvasText; box-shadow: none; backdrop-filter: none; }
+  .notice :is(button, a):focus-visible { outline-color: Highlight; }
+}

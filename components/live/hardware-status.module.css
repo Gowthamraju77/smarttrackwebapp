@@ -1,0 +1,23 @@
+.hardware { display: grid; min-width: 0; gap: 15px; }
+.heading { display: flex; align-items: end; justify-content: space-between; gap: 15px; padding: 8px 2px 2px; }
+.heading p { margin: 0 0 7px; font-size: 9px; letter-spacing: .13em; color: var(--ink-soft); }
+.heading h2 { margin: 0; font-size: 23px; font-weight: 550; letter-spacing: -.035em; }
+.heading > span { font-size: 10px; color: var(--ink-soft); }
+.grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 17px; }
+.card { min-width: 0; padding: 20px; border: 1px solid var(--line); border-radius: 18px; background: var(--panel); box-shadow: var(--shadow); }
+.card header { display: flex; align-items: center; gap: 9px; }
+.icon { display: grid; place-items: center; flex: 0 0 32px; height: 32px; border: 1px solid #d5e5ce; border-radius: 10px; color: #557e5e; background: #edf5e6; }
+.card h3 { margin: 0; font-size: 13px; font-weight: 600; }
+.badge { margin-left: auto; flex: 0 0 auto; padding: 4px 7px; border: 1px solid #dce5d8; border-radius: 20px; background: #f3f6ef; color: #64745d; font-size: 8px; }
+.badge[data-current="true"] { color: #286c48; background: #e8f5e7; border-color: #cde3c7; }
+.card dl { display: grid; gap: 12px; margin: 22px 0 0; }
+.card dl > div { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.card dt { color: var(--ink-soft); font-size: 10px; }
+.card dd { margin: 0; min-width: 0; text-align: right; color: var(--ink); font-size: 11px; font-weight: 550; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.note { margin: 18px 0 0; font-size: 10px; line-height: 1.7; color: var(--ink-soft); }
+.receipt { margin: 13px 0 0; padding-top: 11px; border-top: 1px solid #e1e9dc; color: #6a7f67; font-size: 9px; }
+.card[data-report-state="historical"] .badge { color: #806835; background: #faf4e3; border-color: #e5d9b6; }
+.firmware { margin: 0 2px; font-size: 10px; color: var(--ink-soft); overflow-wrap: anywhere; }
+.firmware code { font-size: 10px; }
+@media (max-width: 1250px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 700px) { .heading { align-items: start; flex-direction: column; gap: 7px; } .grid { grid-template-columns: 1fr; } .card { padding: 18px; } }

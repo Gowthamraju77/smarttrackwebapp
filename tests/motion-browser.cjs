@@ -1,0 +1,47 @@
+const assert = require('node:assert/strict');
+const path = require('node:path');
+const os = require('node:os');
+const { chromium } = require(process.env.SMARTTRACK_PLAYWRIGHT_PATH || path.join(os.tmpdir(), 'smarttrack-browser-tools/node_modules/playwright'));
+const origin = new URL(process.env.BASE_URL || 'http://127.0.0.1:3104').origin;
+(async () => {
+  const browser = await chromium.launch({ channel: 'msedge', headless: true });
+  try {
+    const context = await browser.newContext({ viewport: { width: 1440, height: 700 } });
+    await context.addInitScript(require("./contact-fixture.cjs").seedContact);
+    const page = await context.newPage(); page.setDefaultTimeout(15000);
+    const errors = []; page.on('pageerror', error => errors.push(error.message));
+    await page.goto(origin + '/');
+    const connection = page.getByRole('region', { name: 'ESP32 connection', exact: true });
+    await connection.getByText('Connect a device', { exact: true }).waitFor();
+    await page.getByRole('heading', { name: 'Your device, in focus.', exact: true }).waitFor();
+    const scanner = page.locator('[data-map-view] [data-motion-active]').first();
+    await scanner.evaluate(element => element.scrollIntoView({ block: 'center', behavior: 'instant' }));
+    await page.waitForFunction(() => document.querySelector('[data-map-view] [data-motion-active="true"]'));
+    await page.evaluate(() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'instant' }));
+    await page.waitForFunction(() => document.querySelector('[data-map-view] [data-motion-active]')?.getAttribute('data-motion-active') === 'false');
+    assert.ok(await scanner.evaluate(element => element.getAnimations({ subtree: true }).every(animation => animation.playState !== 'running')), 'Offscreen decorative scanning must pause');
+    const trigger = connection.getByRole('button', { name: 'Connection options', exact: true });
+    const panel = page.locator(`[id="${await trigger.getAttribute('aria-controls')}"]`);
+    await trigger.evaluate(button => { button.click(); button.click(); });
+    assert.equal(await trigger.getAttribute('aria-expanded'), 'false', 'Two immediate toggles must return to the closed state');
+    assert.equal(await panel.getAttribute('inert'), '');
+    await trigger.click();
+    await connection.getByRole('button', { name: 'Connect ESP32', exact: true }).waitFor();
+    assert.equal(await panel.getAttribute('aria-hidden'), 'false');
+    await trigger.click();
+    assert.equal(await panel.getAttribute('aria-hidden'), 'true');
+    await trigger.focus(); await page.keyboard.press('Tab');
+    assert.equal(await panel.evaluate(element => element.contains(document.activeElement)), false, 'Closing details must immediately remove their controls from keyboard navigation');
+    await page.emulateMedia({ reducedMotion: 'reduce' });
+    await page.waitForFunction(() => document.getAnimations().every(animation => animation.playState !== 'running' || Number(animation.effect?.getComputedTiming().duration) <= 16));
+    await trigger.click();
+    await connection.getByRole('button', { name: 'Connect ESP32', exact: true }).waitFor();
+    assert.ok(await panel.evaluate(element => getComputedStyle(element).transitionDuration.split(',').every(duration => parseFloat(duration) <= .016)), 'Reduced motion must suppress the disclosure animation');
+    await trigger.click();
+    await page.setViewportSize({ width: 390, height: 844 });
+    assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
+    assert.deepEqual(errors, []);
+    console.log(JSON.stringify({ status: 'passed', origin, checks: ['Offscreen decorative scanning pauses', 'Rapid disclosure toggles preserve the intended state', 'Hidden details leave keyboard order immediately', 'Reduced motion stops decoration and reveal effects', 'Mobile layout and browser runtime remain clean'] }, null, 2));
+    await context.close();
+  } finally { await browser.close(); }
+})().catch(error => { console.error(error.stack); process.exitCode = 1; });

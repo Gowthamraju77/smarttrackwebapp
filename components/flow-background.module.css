@@ -1,0 +1,53 @@
+.background {
+  position: fixed;
+  z-index: -1;
+  inset: 0;
+  overflow: hidden;
+  contain: strict;
+  pointer-events: none;
+  user-select: none;
+  background: linear-gradient(135deg, #f0f5e9, #f4f7ef 48%, #ecf3e9);
+  view-transition-name: ambient-field;
+}
+
+.light, .shade { position: absolute; inset: -15%; transform-origin: 50% 50%; will-change: transform; }
+.light {
+  background: radial-gradient(ellipse at 75% 18%, #fcffeec9, transparent 40%), radial-gradient(ellipse at 14% 70%, #cee2bd8c, transparent 48%);
+  animation: lightDrift 32s ease-in-out -11s infinite alternate;
+}
+.shade {
+  background: radial-gradient(ellipse at 93% 65%, #93b7a12b, transparent 42%), radial-gradient(ellipse at 28% 12%, #c3d9ab59, transparent 42%);
+  animation: shadeDrift 38s ease-in-out -19s infinite alternate;
+}
+.landscape { position: absolute; inset: -7%; width: 114%; height: 114%; opacity: .8; }
+.farFold, .nearFold, .sideFold { transform-box: fill-box; transform-origin: center; will-change: transform; }
+.farFold { opacity: .72; animation: farDrift 30s ease-in-out -9s infinite alternate; }
+.nearFold { opacity: .85; animation: nearDrift 24s ease-in-out -14s infinite alternate; }
+.sideFold { opacity: .48; animation: sideDrift 36s ease-in-out -5s infinite alternate; }
+.grain {
+  position: absolute;
+  inset: 0;
+  opacity: .035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.76' numOctaves='3' stitchTiles='stitch' seed='12'/%3E%3C/filter%3E%3Cpath fill='%23677c62' filter='url(%23grain)' opacity='.7' d='M0 0h160v160H0z'/%3E%3C/svg%3E");
+}
+
+.background[data-paused="true"] :is(.light, .shade, .farFold, .nearFold, .sideFold) { animation-play-state: paused; }
+
+@keyframes lightDrift { from { transform: translate3d(-2%, 1%, 0) scale(1); } to { transform: translate3d(3%, -3%, 0) scale(1.05); } }
+@keyframes shadeDrift { from { transform: translate3d(2%, -2%, 0); } to { transform: translate3d(-3%, 3%, 0); } }
+@keyframes farDrift { from { transform: translate3d(-1.5%, -2%, 0) rotate(-2deg); } to { transform: translate3d(2%, 2.5%, 0) rotate(1deg); } }
+@keyframes nearDrift { from { transform: translate3d(1%, 2.5%, 0) rotate(1.5deg); } to { transform: translate3d(-2%, -2%, 0) rotate(-1deg); } }
+@keyframes sideDrift { from { transform: translate3d(2%, -1.5%, 0) rotate(1deg); } to { transform: translate3d(-3%, 2%, 0) rotate(-2deg); } }
+
+@media (max-width: 700px) {
+  .landscape { inset: -4% -24%; width: 148%; height: 108%; opacity: .65; }
+  .sideFold { display: none; }
+  .light, .shade { animation-duration: 42s; }
+  .grain { opacity: .025; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .light, .shade, .farFold, .nearFold, .sideFold { animation: none; will-change: auto; }
+}
+
+@media print { .background { display: none; } }

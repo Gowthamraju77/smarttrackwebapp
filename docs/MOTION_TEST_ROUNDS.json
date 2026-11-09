@@ -1,0 +1,152 @@
+﻿[
+    {
+        "round":  1,
+        "exitCode":  0,
+        "seconds":  1.68,
+        "summary":  [
+                        "ℹ tests 101",
+                        "ℹ suites 0",
+                        "ℹ pass 101",
+                        "ℹ fail 0",
+                        "ℹ cancelled 0",
+                        "ℹ skipped 0",
+                        "ℹ todo 0",
+                        "ℹ duration_ms 1617.2859"
+                    ]
+    },
+    {
+        "round":  2,
+        "exitCode":  0,
+        "seconds":  1.57,
+        "summary":  [
+                        "ℹ tests 101",
+                        "ℹ suites 0",
+                        "ℹ pass 101",
+                        "ℹ fail 0",
+                        "ℹ cancelled 0",
+                        "ℹ skipped 0",
+                        "ℹ todo 0",
+                        "ℹ duration_ms 1512.3157"
+                    ]
+    },
+    {
+        "round":  3,
+        "exitCode":  0,
+        "seconds":  1.7,
+        "summary":  [
+                        "ℹ tests 101",
+                        "ℹ suites 0",
+                        "ℹ pass 101",
+                        "ℹ fail 0",
+                        "ℹ cancelled 0",
+                        "ℹ skipped 0",
+                        "ℹ todo 0",
+                        "ℹ duration_ms 1631.4731"
+                    ]
+    },
+    {
+        "round":  4,
+        "exitCode":  0,
+        "seconds":  1.76,
+        "summary":  [
+                        "ℹ tests 101",
+                        "ℹ suites 0",
+                        "ℹ pass 101",
+                        "ℹ fail 0",
+                        "ℹ cancelled 0",
+                        "ℹ skipped 0",
+                        "ℹ todo 0",
+                        "ℹ duration_ms 1709.104"
+                    ]
+    },
+    {
+        "round":  5,
+        "exitCode":  0,
+        "seconds":  1.7,
+        "summary":  [
+                        "ℹ tests 101",
+                        "ℹ suites 0",
+                        "ℹ pass 101",
+                        "ℹ fail 0",
+                        "ℹ cancelled 0",
+                        "ℹ skipped 0",
+                        "ℹ todo 0",
+                        "ℹ duration_ms 1650.4174"
+                    ]
+    },
+    {
+        "round":  6,
+        "exitCode":  0,
+        "seconds":  1.75,
+        "summary":  [
+                        "ℹ tests 101",
+                        "ℹ suites 0",
+                        "ℹ pass 101",
+                        "ℹ fail 0",
+                        "ℹ cancelled 0",
+                        "ℹ skipped 0",
+                        "ℹ todo 0",
+                        "ℹ duration_ms 1691.3841"
+                    ]
+    },
+    {
+        "round":  7,
+        "exitCode":  0,
+        "seconds":  1.87,
+        "summary":  [
+                        "ℹ tests 101",
+                        "ℹ suites 0",
+                        "ℹ pass 101",
+                        "ℹ fail 0",
+                        "ℹ cancelled 0",
+                        "ℹ skipped 0",
+                        "ℹ todo 0",
+                        "ℹ duration_ms 1805.7218"
+                    ]
+    },
+    {
+        "round":  8,
+        "exitCode":  0,
+        "seconds":  1.71,
+        "summary":  [
+                        "ℹ tests 101",
+                        "ℹ suites 0",
+                        "ℹ pass 101",
+                        "ℹ fail 0",
+                        "ℹ cancelled 0",
+                        "ℹ skipped 0",
+                        "ℹ todo 0",
+                        "ℹ duration_ms 1651.11"
+                    ]
+    },
+    {
+        "round":  9,
+        "exitCode":  0,
+        "seconds":  1.75,
+        "summary":  [
+                        "ℹ tests 101",
+                        "ℹ suites 0",
+                        "ℹ pass 101",
+                        "ℹ fail 0",
+                        "ℹ cancelled 0",
+                        "ℹ skipped 0",
+                        "ℹ todo 0",
+                        "ℹ duration_ms 1696.9907"
+                    ]
+    },
+    {
+        "round":  10,
+        "exitCode":  0,
+        "seconds":  1.76,
+        "summary":  [
+                        "ℹ tests 101",
+                        "ℹ suites 0",
+                        "ℹ pass 101",
+                        "ℹ fail 0",
+                        "ℹ cancelled 0",
+                        "ℹ skipped 0",
+                        "ℹ todo 0",
+                        "ℹ duration_ms 1706.9606"
+                    ]
+    }
+]

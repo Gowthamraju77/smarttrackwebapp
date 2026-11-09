@@ -1,0 +1,38 @@
+.scene { position: relative; flex: 0 0 auto; width: 310px; height: 186px; perspective: 760px; isolation: isolate; animation: sceneEnter var(--motion-slow, 420ms) var(--motion-ease, cubic-bezier(.22,1,.36,1)) backwards; }
+.scene::before { content: ""; position: absolute; inset: 22px 15px 0; border-radius: 50%; background: radial-gradient(ellipse, #cfe9d88f, transparent 70%); pointer-events: none; }
+.assembly { position: absolute; width: 200px; height: 200px; left: 57px; top: -20px; transform-style: preserve-3d; transform: rotateX(53deg) rotateZ(-29deg) scale(var(--scene-scale, 1)); transition: transform var(--motion-slow, 420ms) var(--motion-ease, cubic-bezier(.22,1,.36,1)); }
+.basePlate, .signalPlate { position: absolute; inset: 0; border-radius: 23px; border: 1px solid #a5c3ae; }
+.basePlate { background: linear-gradient(135deg, #c7d9cb, #9cbca5); transform: translateZ(-13px); box-shadow: 0 1px 0 #a5bfad, 0 3px 0 #aec7b3, 0 5px 0 #b8cdbc, 0 7px 0 #c3d5c6, 0 25px 26px #234b3c26; }
+.signalPlate { background: linear-gradient(135deg, #f0f9eee8, #d8ecdfe8); box-shadow: inset 0 1px 0 #ffffffed, 0 2px 0 #b8d1c0; transform: translateZ(0); overflow: hidden; }
+.circuit { width: 100%; height: 100%; fill: none; stroke: #93baa270; stroke-width: 1; }
+.circuit > circle { stroke: #7ca98f80; }
+.pinA, .pinB { position: absolute; width: 8px; height: 8px; border-radius: 3px; border: 1px solid #8cab95; background: #c3d5c5; box-shadow: 0 2px 0 #8fad99; transition: background-color var(--motion-standard, 280ms) ease-out, border-color var(--motion-standard, 280ms) ease-out, box-shadow var(--motion-standard, 280ms) ease-out; }
+.pinA { left: 23px; top: 44px; }.pinB { right: 24px; bottom: 44px; }
+.pinA[data-state="live"], .pinB[data-state="live"] { background: #77b692; border-color: #598f72; box-shadow: 0 2px 0 #598f72, 0 0 0 4px #74af8e16; }
+.pinA[data-state="captured"], .pinB[data-state="captured"] { background: #c6c7a3; }
+.plateMark { position: absolute; bottom: 13px; left: 20px; color: #63836c; font: 7px ui-monospace, Consolas, monospace; letter-spacing: .14em; }
+.receiverBase { position: absolute; width: 76px; height: 76px; top: 62px; left: 62px; border-radius: 20px; background: linear-gradient(135deg, #8baa91, #b4cbb5); border: 1px solid #91ad98; transform: translateZ(9px); box-shadow: 0 6px 0 #87a58c, 0 10px 0 -1px #9bb89e, 0 13px 14px #426e473d; }
+.receiver { position: absolute; width: 68px; height: 68px; top: 66px; left: 66px; border-radius: 17px; border: 1px solid #537e5e; background: linear-gradient(140deg, #3a6450, #173c30); box-shadow: inset 0 1px 0 #bce2c340, 0 3px 0 #254b39, 0 6px 0 #284f3c, 0 9px 0 #2e5641, 0 12px 0 #385f49, 0 20px 15px #193d3140; transform: translateZ(29px); transition: transform var(--motion-slow, 420ms) var(--motion-ease, cubic-bezier(.22,1,.36,1)); }
+.receiverTop { display: grid; place-items: center; position: absolute; inset: 0 0 8px; color: #b9e8c8; }
+.receiverTop > i { position: absolute; width: 4px; height: 4px; border-radius: 50%; background: #90b09c; right: 10px; top: 9px; transition: background-color var(--motion-standard, 280ms) ease-out, box-shadow var(--motion-standard, 280ms) ease-out; }
+.scene[data-connected="true"] .receiverTop > i { background: #b5f3cb; box-shadow: 0 0 5px #b5f3cb63; }
+.receiverLabel { position: absolute; bottom: 9px; left: 0; right: 0; text-align: center; font: 6px ui-monospace, Consolas, monospace; letter-spacing: .12em; color: #c2d8c5; }
+.topRing { position: absolute; inset: 42px; border-radius: 50%; border: 1px solid #769a8154; border-top-color: transparent; transform: translateZ(44px); pointer-events: none; transition: transform var(--motion-slow, 420ms) var(--motion-ease, cubic-bezier(.22,1,.36,1)); }
+.signalPill { position: absolute; z-index: 2; display: inline-flex; align-items: center; gap: 7px; padding: 8px 10px; border: 1px solid #ccddcf; border-radius: 10px; color: #436952; background: linear-gradient(135deg, #fffffff5, #edf5ecf5); box-shadow: inset 0 1px 0 #ffffff, 0 3px 0 -1px #d0ded1, 0 10px 18px #325e3d10; font-size: 9px; transform: translateZ(0); transition: transform var(--motion-slow, 420ms) var(--motion-ease, cubic-bezier(.22,1,.36,1)); }
+.signalPill > span { font: 8px ui-monospace, Consolas, monospace; letter-spacing: .04em; }.signalPill b { font-weight: 500; color: #687f6d; padding-left: 7px; border-left: 1px solid #d7e4d8; transition: color var(--motion-fast, 180ms) ease-out; }
+.signalPill[data-state="live"] b { color: #37734e; }.signalPill[data-state="captured"] b { color: #7c7048; }
+.gpsPill { top: 24px; left: 0; }.motionPill { bottom: 25px; right: -2px; }
+.linkPill { position: absolute; display: flex; align-items: center; gap: 6px; bottom: 3px; left: 78px; color: #5d7b66; font: 7px ui-monospace, Consolas, monospace; letter-spacing: .12em; }
+@keyframes sceneEnter { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
+  .scene:hover .assembly { transform: rotateX(51deg) rotateZ(-27deg) translateZ(1px) scale(var(--scene-scale, 1)); }
+  .scene:hover .receiver { transform: translateZ(31px); }
+  .scene:hover .topRing { transform: translateZ(46px); }
+  .scene:hover .gpsPill { transform: translate(-1px,-1px); }
+  .scene:hover .motionPill { transform: translate(1px,1px); }
+}
+@media (max-width: 700px) { .scene { --scene-scale: .59; width: 114px; height: 148px; }.assembly { left: -43px; top: -27px; }.gpsPill, .motionPill { display: none; }.linkPill { bottom: 17px; left: -4px; font-size: 6px; white-space: nowrap; } }
+@media (prefers-reduced-motion: reduce) {
+  .scene { animation: none; }
+  .assembly, .receiver, .receiverTop > i, .topRing, .signalPill, .signalPill b, .pinA, .pinB { transition: none; }
+}

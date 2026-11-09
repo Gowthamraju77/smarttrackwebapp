@@ -1,0 +1,9 @@
+{
+  "deployment": "dpl_AhXH9txNmpFow3TDFeMkGXEac4CB",
+  "url": "https://smarttrackwebapp.vercel.app",
+  "verifiedAt": "2026-11-05T18:09:24.886Z",
+  "command": "BASE_URL=https://smarttrackwebapp.vercel.app SMARTTRACK_ALL_SECTIONS=1 node tests/infoesp-browser.cjs",
+  "exitCode": 0,
+  "durationMs": 24996,
+  "output": "{\n  \"status\": \"passed\",\n  \"origin\": \"https://smarttrackwebapp.vercel.app\",\n  \"verifiedAt\": \"2026-11-05T18:09:24.566Z\",\n  \"source\": \"esp32-infoesp\",\n  \"responses\": 16,\n  \"distinctSensorReceipts\": 11,\n  \"sensorTimestampsAdvance\": true,\n  \"renderedHardwareTimestampsAdvance\": true,\n  \"positionMarker\": true,\n  \"gpsFixAtCheck\": true,\n  \"imuAvailableAtCheck\": true,\n  \"hardwareReports\": [\n    \"display\",\n    \"modem\",\n    \"imu\",\n    \"wifi\",\n    \"system\",\n    \"firmware\",\n    \"gpsReceiver\"\n  ],\n  \"browserErrors\": 0,\n  \"access\": \"plain website URL, no viewer token or private link\",\n  \"credentialedRequests\": 0,\n  \"routesChecked\": [\n    \"/\",\n    \"/map (fresh browser)\",\n    \"/journeys\",\n    \"/navigation\",\n    \"/insights\",\n    \"/analytics\",\n    \"/alerts\",\n    \"/devices\",\n    \"/display\",\n    \"/activity\",\n    \"/settings\"\n  ],\n  \"note\": \"Actual infoesp readings via the website API. Physical display, modem registration and MPU operation are not independently certified.\"\n}\n"
+}

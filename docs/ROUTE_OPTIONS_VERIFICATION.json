@@ -1,0 +1,336 @@
+{
+  "date": "2026-11-05",
+  "scope": "Maximum public OSRM route alternatives, fourth-route persistence, optional via search/map picking, and refresh for saved plans.",
+  "build": {
+    "command": "npm run build",
+    "exitCode": 0,
+    "output": " ✓ Compiled successfully in 10.3s\n   Linting and checking validity of types ...\n   Collecting page data ...\n   Generating static pages (0/10) ...\n   Generating static pages (2/10) \r\n   Generating static pages (4/10) \r\n   Generating static pages (7/10) \r\n ✓ Generating static pages (10/10)\n   Finalizing page optimization ...\n   Collecting build traces ...\n\nRoute (app)                                 Size  First Load JS\n┌ ○ /                                      138 B         174 kB\n├ ○ /_not-found                            153 B         103 kB\n├ ƒ /[section]                             138 B         174 kB\n├ ƒ /api/alerts                            153 B         103 kB\n├ ƒ /api/devices                           153 B         103 kB\n├ ƒ /api/ingest                            153 B         103 kB\n├ ƒ /api/journey/places                    153 B         103 kB\n├ ƒ /api/journey/routes                    153 B         103 kB\n├ ƒ /api/journeys                          153 B         103 kB\n├ ƒ /api/live                              153 B         103 kB\n├ ƒ /api/notifications/contact             153 B         103 kB\n├ ƒ /api/notifications/dispatch            153 B         103 kB\n├ ƒ /api/sos                               153 B         103 kB\n├ ƒ /api/sos/[id]                          153 B         103 kB\n└ ○ /login                               6.28 kB         113 kB\n+ First Load JS shared by all             103 kB\n  ├ chunks/255-ce8c7c75002f810b.js       46.5 kB\n  ├ chunks/4bd1b696-c023c6e3521b1417.js  54.2 kB\n  └ other shared chunks (total)          2.07 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n\n"
+  },
+  "providerLimit": {
+    "source": "https://raw.githubusercontent.com/Project-OSRM/osrm-backend/master/include/engine/api/route_parameters.hpp",
+    "finding": "Boolean alternatives=true maps to one alternative. The public OSRM server rejects numeric alternatives=5 and =10 with HTTP 400 TooBig: Requested number of alternatives is higher than current maximum (3). Numeric alternatives=3 succeeds. Up to four total routes can be requested; actual results depend on the road network."
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "results": [
+        {
+          "command": "npm run typecheck",
+          "startedAt": "2026-11-05T15:32:15.243Z",
+          "durationMs": 12146,
+          "exitCode": 0,
+          "output": "npm notice run smarttrack-web@0.1.0 typecheck\nnpm notice run tsc --noEmit\n"
+        },
+        {
+          "command": "node --test tests/journey.test.mjs",
+          "startedAt": "2026-11-05T15:32:15.243Z",
+          "durationMs": 1300,
+          "exitCode": 0,
+          "output": "✔ journey coordinate and route validators reject malformed numeric data and oversized shapes (33.4939ms)\n✔ route distance is clamped to segment ends and uses the nearest segment (0.8264ms)\n✔ spherical route geometry takes the short path across the date line (0.3993ms)\n✔ a curved great-circle segment remains accurate at high latitudes (0.2778ms)\n✔ arming waits for the origin area and records the actual qualifying GPS receipt (1.5709ms)\n✔ GPS loss clears an armed journey's last distance instead of preserving a current-looking value (0.3054ms)\n✔ duplicate, out-of-order and invalid observations cannot advance counters or timestamps (0.504ms)\n✔ deviation requires distinct samples over three seconds and recovery uses a narrower corridor (0.5855ms)\n✔ a corridor interruption and a long GPS gap reset sustained-deviation evidence (0.3751ms)\n✔ arrival requires two distinct destination observations and produces one terminal receipt (0.396ms)\n✔ leaving the destination area, losing GPS, or a long receipt gap breaks arrival confirmation (0.367ms)\n✔ journey advancement leaves input state, route and coordinates unchanged (1.4454ms)\n✔ public planning needs neither viewer configuration nor a private device link (65.6296ms)\n✔ old viewer credentials do not affect planning or reach public providers (9.5299ms)\n✔ foreign browser origins are rejected before planning providers are contacted (9.6558ms)\n✔ same-origin browser planning remains usable without any device credentials (5.3675ms)\n✔ planning checks the browser's incoming Host when Next normalizes the internal hostname (6.2267ms)\n✔ place queries are trimmed and bounded before the provider is called (2.0541ms)\n✔ place results require Point geometry and valid coordinates without fabricating replacement places (23.8157ms)\n✔ route request coordinates, content type and byte limits are checked without trusting content-length (62.3914ms)\n✔ routing sends bounded numeric coordinates only to the fixed provider and preserves its one real route (1.5221ms)\n✔ routing keeps four distinct usable routes, including alternatives beyond the old cap (3.0425ms)\n✔ via routing sends start, via, and destination in order and preserves the real road geometry (1.6287ms)\n✔ invalid or redundant via points are rejected before contacting the provider (2.6234ms)\n✔ a route that misses the requested via place is never offered as a valid option (2.5177ms)\n✔ malformed provider routes never become straight-line or synthetic alternatives (3.7835ms)\n✔ route endpoints must remain near the requested points and provider snapping is disclosed (1.4719ms)\n✔ a stationary provider geometry cannot claim a positive-distance road journey (1.1256ms)\n✔ provider failures and oversized or invalid JSON fail closed at both planning endpoints (11.5021ms)\n✔ dateline endpoints are accepted as a short provider-supplied road route (0.8782ms)\nℹ tests 30\nℹ suites 0\nℹ pass 30\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 908.7477\n"
+        },
+        {
+          "command": "$env:BASE_URL='http://127.0.0.1:3110'; node tests/route-options-browser.cjs",
+          "startedAt": "2026-11-05T15:32:15.243Z",
+          "durationMs": 14633,
+          "exitCode": 0,
+          "output": "{\n  \"status\": \"passed\",\n  \"origin\": \"http://127.0.0.1:3110\",\n  \"checks\": [\n    \"Legacy plans can refresh to four choices\",\n    \"Fourth route selection and all alternatives persist\",\n    \"Unused via field preserves selection\",\n    \"Via search, marker and coordinate-only requests\",\n    \"Via selection persists and removal restores alternatives\",\n    \"Via map picking and navigation lock\",\n    \"Desktop/mobile layouts and clean browser runtime\"\n  ],\n  \"screenshots\": \"C:\\\\Users\\\\muppa\\\\AppData\\\\Local\\\\Temp\\\\smarttrack-route-options-4qnz5F\"\n}\n"
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "results": [
+        {
+          "command": "npm run typecheck",
+          "startedAt": "2026-11-05T15:32:29.877Z",
+          "durationMs": 5047,
+          "exitCode": 0,
+          "output": "npm notice run smarttrack-web@0.1.0 typecheck\nnpm notice run tsc --noEmit\n"
+        },
+        {
+          "command": "node --test tests/journey.test.mjs",
+          "startedAt": "2026-11-05T15:32:29.877Z",
+          "durationMs": 1052,
+          "exitCode": 0,
+          "output": "✔ journey coordinate and route validators reject malformed numeric data and oversized shapes (7.8068ms)\n✔ route distance is clamped to segment ends and uses the nearest segment (2.2703ms)\n✔ spherical route geometry takes the short path across the date line (0.3192ms)\n✔ a curved great-circle segment remains accurate at high latitudes (0.2384ms)\n✔ arming waits for the origin area and records the actual qualifying GPS receipt (0.403ms)\n✔ GPS loss clears an armed journey's last distance instead of preserving a current-looking value (0.158ms)\n✔ duplicate, out-of-order and invalid observations cannot advance counters or timestamps (0.1964ms)\n✔ deviation requires distinct samples over three seconds and recovery uses a narrower corridor (0.419ms)\n✔ a corridor interruption and a long GPS gap reset sustained-deviation evidence (0.3846ms)\n✔ arrival requires two distinct destination observations and produces one terminal receipt (0.457ms)\n✔ leaving the destination area, losing GPS, or a long receipt gap breaks arrival confirmation (0.3417ms)\n✔ journey advancement leaves input state, route and coordinates unchanged (1.4437ms)\n✔ public planning needs neither viewer configuration nor a private device link (43.1057ms)\n✔ old viewer credentials do not affect planning or reach public providers (7.7369ms)\n✔ foreign browser origins are rejected before planning providers are contacted (3.5155ms)\n✔ same-origin browser planning remains usable without any device credentials (1.8781ms)\n✔ planning checks the browser's incoming Host when Next normalizes the internal hostname (1.1951ms)\n✔ place queries are trimmed and bounded before the provider is called (1.8141ms)\n✔ place results require Point geometry and valid coordinates without fabricating replacement places (1.9684ms)\n✔ route request coordinates, content type and byte limits are checked without trusting content-length (4.1208ms)\n✔ routing sends bounded numeric coordinates only to the fixed provider and preserves its one real route (0.9621ms)\n✔ routing keeps four distinct usable routes, including alternatives beyond the old cap (1.3072ms)\n✔ via routing sends start, via, and destination in order and preserves the real road geometry (0.9015ms)\n✔ invalid or redundant via points are rejected before contacting the provider (1.8881ms)\n✔ a route that misses the requested via place is never offered as a valid option (1.7896ms)\n✔ malformed provider routes never become straight-line or synthetic alternatives (3.0322ms)\n✔ route endpoints must remain near the requested points and provider snapping is disclosed (1.0521ms)\n✔ a stationary provider geometry cannot claim a positive-distance road journey (0.6235ms)\n✔ provider failures and oversized or invalid JSON fail closed at both planning endpoints (22.7857ms)\n✔ dateline endpoints are accepted as a short provider-supplied road route (1.1435ms)\nℹ tests 30\nℹ suites 0\nℹ pass 30\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 651.8336\n"
+        },
+        {
+          "command": "$env:BASE_URL='http://127.0.0.1:3110'; node tests/route-options-browser.cjs",
+          "startedAt": "2026-11-05T15:32:29.877Z",
+          "durationMs": 11864,
+          "exitCode": 0,
+          "output": "{\n  \"status\": \"passed\",\n  \"origin\": \"http://127.0.0.1:3110\",\n  \"checks\": [\n    \"Legacy plans can refresh to four choices\",\n    \"Fourth route selection and all alternatives persist\",\n    \"Unused via field preserves selection\",\n    \"Via search, marker and coordinate-only requests\",\n    \"Via selection persists and removal restores alternatives\",\n    \"Via map picking and navigation lock\",\n    \"Desktop/mobile layouts and clean browser runtime\"\n  ],\n  \"screenshots\": \"C:\\\\Users\\\\muppa\\\\AppData\\\\Local\\\\Temp\\\\smarttrack-route-options-aoNFM5\"\n}\n"
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "results": [
+        {
+          "command": "npm run typecheck",
+          "startedAt": "2026-11-05T15:32:41.743Z",
+          "durationMs": 5479,
+          "exitCode": 0,
+          "output": "npm notice run smarttrack-web@0.1.0 typecheck\nnpm notice run tsc --noEmit\n"
+        },
+        {
+          "command": "node --test tests/journey.test.mjs",
+          "startedAt": "2026-11-05T15:32:41.743Z",
+          "durationMs": 1297,
+          "exitCode": 0,
+          "output": "✔ journey coordinate and route validators reject malformed numeric data and oversized shapes (12.2655ms)\n✔ route distance is clamped to segment ends and uses the nearest segment (3.7419ms)\n✔ spherical route geometry takes the short path across the date line (0.3908ms)\n✔ a curved great-circle segment remains accurate at high latitudes (0.3759ms)\n✔ arming waits for the origin area and records the actual qualifying GPS receipt (0.7229ms)\n✔ GPS loss clears an armed journey's last distance instead of preserving a current-looking value (0.3031ms)\n✔ duplicate, out-of-order and invalid observations cannot advance counters or timestamps (0.3373ms)\n✔ deviation requires distinct samples over three seconds and recovery uses a narrower corridor (0.5606ms)\n✔ a corridor interruption and a long GPS gap reset sustained-deviation evidence (0.4212ms)\n✔ arrival requires two distinct destination observations and produces one terminal receipt (0.441ms)\n✔ leaving the destination area, losing GPS, or a long receipt gap breaks arrival confirmation (0.3694ms)\n✔ journey advancement leaves input state, route and coordinates unchanged (1.6061ms)\n✔ public planning needs neither viewer configuration nor a private device link (57.4671ms)\n✔ old viewer credentials do not affect planning or reach public providers (7.5087ms)\n✔ foreign browser origins are rejected before planning providers are contacted (2.6794ms)\n✔ same-origin browser planning remains usable without any device credentials (1.5597ms)\n✔ planning checks the browser's incoming Host when Next normalizes the internal hostname (1.0272ms)\n✔ place queries are trimmed and bounded before the provider is called (1.787ms)\n✔ place results require Point geometry and valid coordinates without fabricating replacement places (1.8439ms)\n✔ route request coordinates, content type and byte limits are checked without trusting content-length (23.9796ms)\n✔ routing sends bounded numeric coordinates only to the fixed provider and preserves its one real route (1.305ms)\n✔ routing keeps four distinct usable routes, including alternatives beyond the old cap (2.0436ms)\n✔ via routing sends start, via, and destination in order and preserves the real road geometry (1.2745ms)\n✔ invalid or redundant via points are rejected before contacting the provider (3.0586ms)\n✔ a route that misses the requested via place is never offered as a valid option (1.8708ms)\n✔ malformed provider routes never become straight-line or synthetic alternatives (7.2211ms)\n✔ route endpoints must remain near the requested points and provider snapping is disclosed (1.4852ms)\n✔ a stationary provider geometry cannot claim a positive-distance road journey (2.1981ms)\n✔ provider failures and oversized or invalid JSON fail closed at both planning endpoints (25.8917ms)\n✔ dateline endpoints are accepted as a short provider-supplied road route (1.2412ms)\nℹ tests 30\nℹ suites 0\nℹ pass 30\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 789.5556\n"
+        },
+        {
+          "command": "$env:BASE_URL='http://127.0.0.1:3110'; node tests/route-options-browser.cjs",
+          "startedAt": "2026-11-05T15:32:41.743Z",
+          "durationMs": 13333,
+          "exitCode": 0,
+          "output": "{\n  \"status\": \"passed\",\n  \"origin\": \"http://127.0.0.1:3110\",\n  \"checks\": [\n    \"Legacy plans can refresh to four choices\",\n    \"Fourth route selection and all alternatives persist\",\n    \"Unused via field preserves selection\",\n    \"Via search, marker and coordinate-only requests\",\n    \"Via selection persists and removal restores alternatives\",\n    \"Via map picking and navigation lock\",\n    \"Desktop/mobile layouts and clean browser runtime\"\n  ],\n  \"screenshots\": \"C:\\\\Users\\\\muppa\\\\AppData\\\\Local\\\\Temp\\\\smarttrack-route-options-Z2Czb5\"\n}\n"
+        }
+      ]
+    },
+    {
+      "round": 4,
+      "results": [
+        {
+          "command": "npm run typecheck",
+          "startedAt": "2026-11-05T15:32:55.077Z",
+          "durationMs": 5719,
+          "exitCode": 0,
+          "output": "npm notice run smarttrack-web@0.1.0 typecheck\nnpm notice run tsc --noEmit\n"
+        },
+        {
+          "command": "node --test tests/journey.test.mjs",
+          "startedAt": "2026-11-05T15:32:55.077Z",
+          "durationMs": 1287,
+          "exitCode": 0,
+          "output": "✔ journey coordinate and route validators reject malformed numeric data and oversized shapes (10.5747ms)\n✔ route distance is clamped to segment ends and uses the nearest segment (2.2205ms)\n✔ spherical route geometry takes the short path across the date line (0.2957ms)\n✔ a curved great-circle segment remains accurate at high latitudes (0.4066ms)\n✔ arming waits for the origin area and records the actual qualifying GPS receipt (0.5734ms)\n✔ GPS loss clears an armed journey's last distance instead of preserving a current-looking value (0.2549ms)\n✔ duplicate, out-of-order and invalid observations cannot advance counters or timestamps (0.494ms)\n✔ deviation requires distinct samples over three seconds and recovery uses a narrower corridor (0.514ms)\n✔ a corridor interruption and a long GPS gap reset sustained-deviation evidence (0.3672ms)\n✔ arrival requires two distinct destination observations and produces one terminal receipt (0.3801ms)\n✔ leaving the destination area, losing GPS, or a long receipt gap breaks arrival confirmation (0.2399ms)\n✔ journey advancement leaves input state, route and coordinates unchanged (1.1274ms)\n✔ public planning needs neither viewer configuration nor a private device link (42.7018ms)\n✔ old viewer credentials do not affect planning or reach public providers (6.754ms)\n✔ foreign browser origins are rejected before planning providers are contacted (3.3228ms)\n✔ same-origin browser planning remains usable without any device credentials (2.2886ms)\n✔ planning checks the browser's incoming Host when Next normalizes the internal hostname (1.4312ms)\n✔ place queries are trimmed and bounded before the provider is called (2.2069ms)\n✔ place results require Point geometry and valid coordinates without fabricating replacement places (2.2937ms)\n✔ route request coordinates, content type and byte limits are checked without trusting content-length (5.0692ms)\n✔ routing sends bounded numeric coordinates only to the fixed provider and preserves its one real route (1.4226ms)\n✔ routing keeps four distinct usable routes, including alternatives beyond the old cap (2.2791ms)\n✔ via routing sends start, via, and destination in order and preserves the real road geometry (1.2291ms)\n✔ invalid or redundant via points are rejected before contacting the provider (3.0306ms)\n✔ a route that misses the requested via place is never offered as a valid option (31.4383ms)\n✔ malformed provider routes never become straight-line or synthetic alternatives (7.2691ms)\n✔ route endpoints must remain near the requested points and provider snapping is disclosed (2.208ms)\n✔ a stationary provider geometry cannot claim a positive-distance road journey (1.0342ms)\n✔ provider failures and oversized or invalid JSON fail closed at both planning endpoints (12.1026ms)\n✔ dateline endpoints are accepted as a short provider-supplied road route (0.9416ms)\nℹ tests 30\nℹ suites 0\nℹ pass 30\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 822.0631\n"
+        },
+        {
+          "command": "$env:BASE_URL='http://127.0.0.1:3110'; node tests/route-options-browser.cjs",
+          "startedAt": "2026-11-05T15:32:55.077Z",
+          "durationMs": 15448,
+          "exitCode": 0,
+          "output": "{\n  \"status\": \"passed\",\n  \"origin\": \"http://127.0.0.1:3110\",\n  \"checks\": [\n    \"Legacy plans can refresh to four choices\",\n    \"Fourth route selection and all alternatives persist\",\n    \"Unused via field preserves selection\",\n    \"Via search, marker and coordinate-only requests\",\n    \"Via selection persists and removal restores alternatives\",\n    \"Via map picking and navigation lock\",\n    \"Desktop/mobile layouts and clean browser runtime\"\n  ],\n  \"screenshots\": \"C:\\\\Users\\\\muppa\\\\AppData\\\\Local\\\\Temp\\\\smarttrack-route-options-vutjD5\"\n}\n"
+        }
+      ]
+    },
+    {
+      "round": 5,
+      "results": [
+        {
+          "command": "npm run typecheck",
+          "startedAt": "2026-11-05T15:33:10.526Z",
+          "durationMs": 5557,
+          "exitCode": 0,
+          "output": "npm notice run smarttrack-web@0.1.0 typecheck\nnpm notice run tsc --noEmit\n"
+        },
+        {
+          "command": "node --test tests/journey.test.mjs",
+          "startedAt": "2026-11-05T15:33:10.526Z",
+          "durationMs": 1319,
+          "exitCode": 0,
+          "output": "✔ journey coordinate and route validators reject malformed numeric data and oversized shapes (16.1949ms)\n✔ route distance is clamped to segment ends and uses the nearest segment (1.3173ms)\n✔ spherical route geometry takes the short path across the date line (0.4394ms)\n✔ a curved great-circle segment remains accurate at high latitudes (0.3916ms)\n✔ arming waits for the origin area and records the actual qualifying GPS receipt (0.7071ms)\n✔ GPS loss clears an armed journey's last distance instead of preserving a current-looking value (0.2779ms)\n✔ duplicate, out-of-order and invalid observations cannot advance counters or timestamps (0.315ms)\n✔ deviation requires distinct samples over three seconds and recovery uses a narrower corridor (0.5494ms)\n✔ a corridor interruption and a long GPS gap reset sustained-deviation evidence (0.4355ms)\n✔ arrival requires two distinct destination observations and produces one terminal receipt (0.488ms)\n✔ leaving the destination area, losing GPS, or a long receipt gap breaks arrival confirmation (0.3932ms)\n✔ journey advancement leaves input state, route and coordinates unchanged (1.8073ms)\n✔ public planning needs neither viewer configuration nor a private device link (91.1072ms)\n✔ old viewer credentials do not affect planning or reach public providers (55.2647ms)\n✔ foreign browser origins are rejected before planning providers are contacted (21.7153ms)\n✔ same-origin browser planning remains usable without any device credentials (2.0809ms)\n✔ planning checks the browser's incoming Host when Next normalizes the internal hostname (25.3027ms)\n✔ place queries are trimmed and bounded before the provider is called (3.4055ms)\n✔ place results require Point geometry and valid coordinates without fabricating replacement places (34.7135ms)\n✔ route request coordinates, content type and byte limits are checked without trusting content-length (29.9873ms)\n✔ routing sends bounded numeric coordinates only to the fixed provider and preserves its one real route (3.0922ms)\n✔ routing keeps four distinct usable routes, including alternatives beyond the old cap (2.8404ms)\n✔ via routing sends start, via, and destination in order and preserves the real road geometry (1.6802ms)\n✔ invalid or redundant via points are rejected before contacting the provider (4.4738ms)\n✔ a route that misses the requested via place is never offered as a valid option (3.939ms)\n✔ malformed provider routes never become straight-line or synthetic alternatives (4.6478ms)\n✔ route endpoints must remain near the requested points and provider snapping is disclosed (2.2798ms)\n✔ a stationary provider geometry cannot claim a positive-distance road journey (1.2232ms)\n✔ provider failures and oversized or invalid JSON fail closed at both planning endpoints (14.8945ms)\n✔ dateline endpoints are accepted as a short provider-supplied road route (1.3147ms)\nℹ tests 30\nℹ suites 0\nℹ pass 30\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 909.575\n"
+        },
+        {
+          "command": "$env:BASE_URL='http://127.0.0.1:3110'; node tests/route-options-browser.cjs",
+          "startedAt": "2026-11-05T15:33:10.526Z",
+          "durationMs": 14667,
+          "exitCode": 0,
+          "output": "{\n  \"status\": \"passed\",\n  \"origin\": \"http://127.0.0.1:3110\",\n  \"checks\": [\n    \"Legacy plans can refresh to four choices\",\n    \"Fourth route selection and all alternatives persist\",\n    \"Unused via field preserves selection\",\n    \"Via search, marker and coordinate-only requests\",\n    \"Via selection persists and removal restores alternatives\",\n    \"Via map picking and navigation lock\",\n    \"Desktop/mobile layouts and clean browser runtime\"\n  ],\n  \"screenshots\": \"C:\\\\Users\\\\muppa\\\\AppData\\\\Local\\\\Temp\\\\smarttrack-route-options-pEiOz7\"\n}\n"
+        }
+      ]
+    },
+    {
+      "round": 6,
+      "results": [
+        {
+          "command": "npm run typecheck",
+          "startedAt": "2026-11-05T15:33:25.193Z",
+          "durationMs": 5554,
+          "exitCode": 0,
+          "output": "npm notice run smarttrack-web@0.1.0 typecheck\nnpm notice run tsc --noEmit\n"
+        },
+        {
+          "command": "node --test tests/journey.test.mjs",
+          "startedAt": "2026-11-05T15:33:25.193Z",
+          "durationMs": 1143,
+          "exitCode": 0,
+          "output": "✔ journey coordinate and route validators reject malformed numeric data and oversized shapes (7.6133ms)\n✔ route distance is clamped to segment ends and uses the nearest segment (0.5929ms)\n✔ spherical route geometry takes the short path across the date line (0.2426ms)\n✔ a curved great-circle segment remains accurate at high latitudes (0.3297ms)\n✔ arming waits for the origin area and records the actual qualifying GPS receipt (0.4796ms)\n✔ GPS loss clears an armed journey's last distance instead of preserving a current-looking value (0.1678ms)\n✔ duplicate, out-of-order and invalid observations cannot advance counters or timestamps (0.2699ms)\n✔ deviation requires distinct samples over three seconds and recovery uses a narrower corridor (0.3766ms)\n✔ a corridor interruption and a long GPS gap reset sustained-deviation evidence (0.2842ms)\n✔ arrival requires two distinct destination observations and produces one terminal receipt (0.2784ms)\n✔ leaving the destination area, losing GPS, or a long receipt gap breaks arrival confirmation (0.4008ms)\n✔ journey advancement leaves input state, route and coordinates unchanged (1.1173ms)\n✔ public planning needs neither viewer configuration nor a private device link (39.3585ms)\n✔ old viewer credentials do not affect planning or reach public providers (9.0113ms)\n✔ foreign browser origins are rejected before planning providers are contacted (3.6519ms)\n✔ same-origin browser planning remains usable without any device credentials (1.4947ms)\n✔ planning checks the browser's incoming Host when Next normalizes the internal hostname (1.5711ms)\n✔ place queries are trimmed and bounded before the provider is called (1.9444ms)\n✔ place results require Point geometry and valid coordinates without fabricating replacement places (1.8186ms)\n✔ route request coordinates, content type and byte limits are checked without trusting content-length (4.4175ms)\n✔ routing sends bounded numeric coordinates only to the fixed provider and preserves its one real route (1.0075ms)\n✔ routing keeps four distinct usable routes, including alternatives beyond the old cap (1.122ms)\n✔ via routing sends start, via, and destination in order and preserves the real road geometry (0.9815ms)\n✔ invalid or redundant via points are rejected before contacting the provider (2.875ms)\n✔ a route that misses the requested via place is never offered as a valid option (1.6054ms)\n✔ malformed provider routes never become straight-line or synthetic alternatives (4.4082ms)\n✔ route endpoints must remain near the requested points and provider snapping is disclosed (1.2775ms)\n✔ a stationary provider geometry cannot claim a positive-distance road journey (0.7195ms)\n✔ provider failures and oversized or invalid JSON fail closed at both planning endpoints (10.4601ms)\n✔ dateline endpoints are accepted as a short provider-supplied road route (0.6204ms)\nℹ tests 30\nℹ suites 0\nℹ pass 30\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 694.0124\n"
+        },
+        {
+          "command": "$env:BASE_URL='http://127.0.0.1:3110'; node tests/route-options-browser.cjs",
+          "startedAt": "2026-11-05T15:33:25.193Z",
+          "durationMs": 14771,
+          "exitCode": 0,
+          "output": "{\n  \"status\": \"passed\",\n  \"origin\": \"http://127.0.0.1:3110\",\n  \"checks\": [\n    \"Legacy plans can refresh to four choices\",\n    \"Fourth route selection and all alternatives persist\",\n    \"Unused via field preserves selection\",\n    \"Via search, marker and coordinate-only requests\",\n    \"Via selection persists and removal restores alternatives\",\n    \"Via map picking and navigation lock\",\n    \"Desktop/mobile layouts and clean browser runtime\"\n  ],\n  \"screenshots\": \"C:\\\\Users\\\\muppa\\\\AppData\\\\Local\\\\Temp\\\\smarttrack-route-options-5DQQRN\"\n}\n"
+        }
+      ]
+    },
+    {
+      "round": 7,
+      "results": [
+        {
+          "command": "npm run typecheck",
+          "startedAt": "2026-11-05T15:33:39.964Z",
+          "durationMs": 5690,
+          "exitCode": 0,
+          "output": "npm notice run smarttrack-web@0.1.0 typecheck\nnpm notice run tsc --noEmit\n"
+        },
+        {
+          "command": "node --test tests/journey.test.mjs",
+          "startedAt": "2026-11-05T15:33:39.964Z",
+          "durationMs": 1333,
+          "exitCode": 0,
+          "output": "✔ journey coordinate and route validators reject malformed numeric data and oversized shapes (10.218ms)\n✔ route distance is clamped to segment ends and uses the nearest segment (0.9252ms)\n✔ spherical route geometry takes the short path across the date line (2.66ms)\n✔ a curved great-circle segment remains accurate at high latitudes (0.402ms)\n✔ arming waits for the origin area and records the actual qualifying GPS receipt (0.7398ms)\n✔ GPS loss clears an armed journey's last distance instead of preserving a current-looking value (0.3127ms)\n✔ duplicate, out-of-order and invalid observations cannot advance counters or timestamps (0.3752ms)\n✔ deviation requires distinct samples over three seconds and recovery uses a narrower corridor (0.6418ms)\n✔ a corridor interruption and a long GPS gap reset sustained-deviation evidence (0.467ms)\n✔ arrival requires two distinct destination observations and produces one terminal receipt (0.4973ms)\n✔ leaving the destination area, losing GPS, or a long receipt gap breaks arrival confirmation (0.383ms)\n✔ journey advancement leaves input state, route and coordinates unchanged (1.803ms)\n✔ public planning needs neither viewer configuration nor a private device link (42.6553ms)\n✔ old viewer credentials do not affect planning or reach public providers (5.9886ms)\n✔ foreign browser origins are rejected before planning providers are contacted (10.8402ms)\n✔ same-origin browser planning remains usable without any device credentials (7.2814ms)\n✔ planning checks the browser's incoming Host when Next normalizes the internal hostname (3.1754ms)\n✔ place queries are trimmed and bounded before the provider is called (2.5283ms)\n✔ place results require Point geometry and valid coordinates without fabricating replacement places (3.4054ms)\n✔ route request coordinates, content type and byte limits are checked without trusting content-length (41.7799ms)\n✔ routing sends bounded numeric coordinates only to the fixed provider and preserves its one real route (2.8583ms)\n✔ routing keeps four distinct usable routes, including alternatives beyond the old cap (1.9779ms)\n✔ via routing sends start, via, and destination in order and preserves the real road geometry (1.1731ms)\n✔ invalid or redundant via points are rejected before contacting the provider (5.001ms)\n✔ a route that misses the requested via place is never offered as a valid option (4.0839ms)\n✔ malformed provider routes never become straight-line or synthetic alternatives (24.3964ms)\n✔ route endpoints must remain near the requested points and provider snapping is disclosed (2.0611ms)\n✔ a stationary provider geometry cannot claim a positive-distance road journey (0.9632ms)\n✔ provider failures and oversized or invalid JSON fail closed at both planning endpoints (45.4857ms)\n✔ dateline endpoints are accepted as a short provider-supplied road route (1.0751ms)\nℹ tests 30\nℹ suites 0\nℹ pass 30\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 923.6921\n"
+        },
+        {
+          "command": "$env:BASE_URL='http://127.0.0.1:3110'; node tests/route-options-browser.cjs",
+          "startedAt": "2026-11-05T15:33:39.964Z",
+          "durationMs": 15327,
+          "exitCode": 0,
+          "output": "{\n  \"status\": \"passed\",\n  \"origin\": \"http://127.0.0.1:3110\",\n  \"checks\": [\n    \"Legacy plans can refresh to four choices\",\n    \"Fourth route selection and all alternatives persist\",\n    \"Unused via field preserves selection\",\n    \"Via search, marker and coordinate-only requests\",\n    \"Via selection persists and removal restores alternatives\",\n    \"Via map picking and navigation lock\",\n    \"Desktop/mobile layouts and clean browser runtime\"\n  ],\n  \"screenshots\": \"C:\\\\Users\\\\muppa\\\\AppData\\\\Local\\\\Temp\\\\smarttrack-route-options-Ct70pA\"\n}\n"
+        }
+      ]
+    },
+    {
+      "round": 8,
+      "results": [
+        {
+          "command": "npm run typecheck",
+          "startedAt": "2026-11-05T15:33:55.292Z",
+          "durationMs": 5902,
+          "exitCode": 0,
+          "output": "npm notice run smarttrack-web@0.1.0 typecheck\nnpm notice run tsc --noEmit\n"
+        },
+        {
+          "command": "node --test tests/journey.test.mjs",
+          "startedAt": "2026-11-05T15:33:55.292Z",
+          "durationMs": 1487,
+          "exitCode": 0,
+          "output": "✔ journey coordinate and route validators reject malformed numeric data and oversized shapes (10.7076ms)\n✔ route distance is clamped to segment ends and uses the nearest segment (0.7553ms)\n✔ spherical route geometry takes the short path across the date line (0.296ms)\n✔ a curved great-circle segment remains accurate at high latitudes (0.1943ms)\n✔ arming waits for the origin area and records the actual qualifying GPS receipt (0.6622ms)\n✔ GPS loss clears an armed journey's last distance instead of preserving a current-looking value (0.2233ms)\n✔ duplicate, out-of-order and invalid observations cannot advance counters or timestamps (0.2402ms)\n✔ deviation requires distinct samples over three seconds and recovery uses a narrower corridor (0.4173ms)\n✔ a corridor interruption and a long GPS gap reset sustained-deviation evidence (0.6214ms)\n✔ arrival requires two distinct destination observations and produces one terminal receipt (0.6277ms)\n✔ leaving the destination area, losing GPS, or a long receipt gap breaks arrival confirmation (0.3646ms)\n✔ journey advancement leaves input state, route and coordinates unchanged (1.8334ms)\n✔ public planning needs neither viewer configuration nor a private device link (60.7126ms)\n✔ old viewer credentials do not affect planning or reach public providers (7.4396ms)\n✔ foreign browser origins are rejected before planning providers are contacted (4.0265ms)\n✔ same-origin browser planning remains usable without any device credentials (3.74ms)\n✔ planning checks the browser's incoming Host when Next normalizes the internal hostname (1.8745ms)\n✔ place queries are trimmed and bounded before the provider is called (10.8175ms)\n✔ place results require Point geometry and valid coordinates without fabricating replacement places (8.8237ms)\n✔ route request coordinates, content type and byte limits are checked without trusting content-length (5.8418ms)\n✔ routing sends bounded numeric coordinates only to the fixed provider and preserves its one real route (13.731ms)\n✔ routing keeps four distinct usable routes, including alternatives beyond the old cap (3.5198ms)\n✔ via routing sends start, via, and destination in order and preserves the real road geometry (2.7896ms)\n✔ invalid or redundant via points are rejected before contacting the provider (4.3808ms)\n✔ a route that misses the requested via place is never offered as a valid option (2.518ms)\n✔ malformed provider routes never become straight-line or synthetic alternatives (25.3919ms)\n✔ route endpoints must remain near the requested points and provider snapping is disclosed (1.9633ms)\n✔ a stationary provider geometry cannot claim a positive-distance road journey (0.7707ms)\n✔ provider failures and oversized or invalid JSON fail closed at both planning endpoints (39.3221ms)\n✔ dateline endpoints are accepted as a short provider-supplied road route (1.6168ms)\nℹ tests 30\nℹ suites 0\nℹ pass 30\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 979.9078\n"
+        },
+        {
+          "command": "$env:BASE_URL='http://127.0.0.1:3110'; node tests/route-options-browser.cjs",
+          "startedAt": "2026-11-05T15:33:55.292Z",
+          "durationMs": 15995,
+          "exitCode": 0,
+          "output": "{\n  \"status\": \"passed\",\n  \"origin\": \"http://127.0.0.1:3110\",\n  \"checks\": [\n    \"Legacy plans can refresh to four choices\",\n    \"Fourth route selection and all alternatives persist\",\n    \"Unused via field preserves selection\",\n    \"Via search, marker and coordinate-only requests\",\n    \"Via selection persists and removal restores alternatives\",\n    \"Via map picking and navigation lock\",\n    \"Desktop/mobile layouts and clean browser runtime\"\n  ],\n  \"screenshots\": \"C:\\\\Users\\\\muppa\\\\AppData\\\\Local\\\\Temp\\\\smarttrack-route-options-XdBU16\"\n}\n"
+        }
+      ]
+    },
+    {
+      "round": 9,
+      "results": [
+        {
+          "command": "npm run typecheck",
+          "startedAt": "2026-11-05T15:34:11.287Z",
+          "durationMs": 5571,
+          "exitCode": 0,
+          "output": "npm notice run smarttrack-web@0.1.0 typecheck\nnpm notice run tsc --noEmit\n"
+        },
+        {
+          "command": "node --test tests/journey.test.mjs",
+          "startedAt": "2026-11-05T15:34:11.287Z",
+          "durationMs": 1480,
+          "exitCode": 0,
+          "output": "✔ journey coordinate and route validators reject malformed numeric data and oversized shapes (10.1417ms)\n✔ route distance is clamped to segment ends and uses the nearest segment (0.5741ms)\n✔ spherical route geometry takes the short path across the date line (0.2752ms)\n✔ a curved great-circle segment remains accurate at high latitudes (0.2371ms)\n✔ arming waits for the origin area and records the actual qualifying GPS receipt (0.6345ms)\n✔ GPS loss clears an armed journey's last distance instead of preserving a current-looking value (0.2193ms)\n✔ duplicate, out-of-order and invalid observations cannot advance counters or timestamps (0.2337ms)\n✔ deviation requires distinct samples over three seconds and recovery uses a narrower corridor (0.4114ms)\n✔ a corridor interruption and a long GPS gap reset sustained-deviation evidence (0.3915ms)\n✔ arrival requires two distinct destination observations and produces one terminal receipt (0.5095ms)\n✔ leaving the destination area, losing GPS, or a long receipt gap breaks arrival confirmation (0.3382ms)\n✔ journey advancement leaves input state, route and coordinates unchanged (1.2569ms)\n✔ public planning needs neither viewer configuration nor a private device link (44.2061ms)\n✔ old viewer credentials do not affect planning or reach public providers (6.3551ms)\n✔ foreign browser origins are rejected before planning providers are contacted (3.6517ms)\n✔ same-origin browser planning remains usable without any device credentials (1.627ms)\n✔ planning checks the browser's incoming Host when Next normalizes the internal hostname (1.2028ms)\n✔ place queries are trimmed and bounded before the provider is called (2.0928ms)\n✔ place results require Point geometry and valid coordinates without fabricating replacement places (1.7677ms)\n✔ route request coordinates, content type and byte limits are checked without trusting content-length (5.7854ms)\n✔ routing sends bounded numeric coordinates only to the fixed provider and preserves its one real route (1.3414ms)\n✔ routing keeps four distinct usable routes, including alternatives beyond the old cap (2.3684ms)\n✔ via routing sends start, via, and destination in order and preserves the real road geometry (1.7412ms)\n✔ invalid or redundant via points are rejected before contacting the provider (11.0308ms)\n✔ a route that misses the requested via place is never offered as a valid option (2.0994ms)\n✔ malformed provider routes never become straight-line or synthetic alternatives (6.2959ms)\n✔ route endpoints must remain near the requested points and provider snapping is disclosed (1.624ms)\n✔ a stationary provider geometry cannot claim a positive-distance road journey (1.0047ms)\n✔ provider failures and oversized or invalid JSON fail closed at both planning endpoints (55.1443ms)\n✔ dateline endpoints are accepted as a short provider-supplied road route (1.131ms)\nℹ tests 30\nℹ suites 0\nℹ pass 30\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 990.6331\n"
+        },
+        {
+          "command": "$env:BASE_URL='http://127.0.0.1:3110'; node tests/route-options-browser.cjs",
+          "startedAt": "2026-11-05T15:34:11.287Z",
+          "durationMs": 16447,
+          "exitCode": 0,
+          "output": "{\n  \"status\": \"passed\",\n  \"origin\": \"http://127.0.0.1:3110\",\n  \"checks\": [\n    \"Legacy plans can refresh to four choices\",\n    \"Fourth route selection and all alternatives persist\",\n    \"Unused via field preserves selection\",\n    \"Via search, marker and coordinate-only requests\",\n    \"Via selection persists and removal restores alternatives\",\n    \"Via map picking and navigation lock\",\n    \"Desktop/mobile layouts and clean browser runtime\"\n  ],\n  \"screenshots\": \"C:\\\\Users\\\\muppa\\\\AppData\\\\Local\\\\Temp\\\\smarttrack-route-options-jKbvcw\"\n}\n"
+        }
+      ]
+    },
+    {
+      "round": 10,
+      "results": [
+        {
+          "command": "npm run typecheck",
+          "startedAt": "2026-11-05T15:34:27.735Z",
+          "durationMs": 10478,
+          "exitCode": 0,
+          "output": "npm notice run smarttrack-web@0.1.0 typecheck\nnpm notice run tsc --noEmit\n"
+        },
+        {
+          "command": "node --test tests/journey.test.mjs",
+          "startedAt": "2026-11-05T15:34:27.735Z",
+          "durationMs": 2708,
+          "exitCode": 0,
+          "output": "✔ journey coordinate and route validators reject malformed numeric data and oversized shapes (21.9173ms)\n✔ route distance is clamped to segment ends and uses the nearest segment (1.7372ms)\n✔ spherical route geometry takes the short path across the date line (0.6592ms)\n✔ a curved great-circle segment remains accurate at high latitudes (0.6538ms)\n✔ arming waits for the origin area and records the actual qualifying GPS receipt (1.1562ms)\n✔ GPS loss clears an armed journey's last distance instead of preserving a current-looking value (0.4828ms)\n✔ duplicate, out-of-order and invalid observations cannot advance counters or timestamps (3.5908ms)\n✔ deviation requires distinct samples over three seconds and recovery uses a narrower corridor (1.464ms)\n✔ a corridor interruption and a long GPS gap reset sustained-deviation evidence (1ms)\n✔ arrival requires two distinct destination observations and produces one terminal receipt (2.407ms)\n✔ leaving the destination area, losing GPS, or a long receipt gap breaks arrival confirmation (0.7518ms)\n✔ journey advancement leaves input state, route and coordinates unchanged (2.2268ms)\n✔ public planning needs neither viewer configuration nor a private device link (108.6737ms)\n✔ old viewer credentials do not affect planning or reach public providers (77.4985ms)\n✔ foreign browser origins are rejected before planning providers are contacted (10.8137ms)\n✔ same-origin browser planning remains usable without any device credentials (2.0528ms)\n✔ planning checks the browser's incoming Host when Next normalizes the internal hostname (35.9531ms)\n✔ place queries are trimmed and bounded before the provider is called (11.0654ms)\n✔ place results require Point geometry and valid coordinates without fabricating replacement places (7.1957ms)\n✔ route request coordinates, content type and byte limits are checked without trusting content-length (75.7482ms)\n✔ routing sends bounded numeric coordinates only to the fixed provider and preserves its one real route (6.4077ms)\n✔ routing keeps four distinct usable routes, including alternatives beyond the old cap (3.1672ms)\n✔ via routing sends start, via, and destination in order and preserves the real road geometry (2.4969ms)\n✔ invalid or redundant via points are rejected before contacting the provider (3.8706ms)\n✔ a route that misses the requested via place is never offered as a valid option (2.3682ms)\n✔ malformed provider routes never become straight-line or synthetic alternatives (10.287ms)\n✔ route endpoints must remain near the requested points and provider snapping is disclosed (4.1738ms)\n✔ a stationary provider geometry cannot claim a positive-distance road journey (1.8374ms)\n✔ provider failures and oversized or invalid JSON fail closed at both planning endpoints (45.5631ms)\n✔ dateline endpoints are accepted as a short provider-supplied road route (9.0536ms)\nℹ tests 30\nℹ suites 0\nℹ pass 30\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 1845.4242\n"
+        },
+        {
+          "command": "$env:BASE_URL='http://127.0.0.1:3110'; node tests/route-options-browser.cjs",
+          "startedAt": "2026-11-05T15:34:27.735Z",
+          "durationMs": 18861,
+          "exitCode": 0,
+          "output": "{\n  \"status\": \"passed\",\n  \"origin\": \"http://127.0.0.1:3110\",\n  \"checks\": [\n    \"Legacy plans can refresh to four choices\",\n    \"Fourth route selection and all alternatives persist\",\n    \"Unused via field preserves selection\",\n    \"Via search, marker and coordinate-only requests\",\n    \"Via selection persists and removal restores alternatives\",\n    \"Via map picking and navigation lock\",\n    \"Desktop/mobile layouts and clean browser runtime\"\n  ],\n  \"screenshots\": \"C:\\\\Users\\\\muppa\\\\AppData\\\\Local\\\\Temp\\\\smarttrack-route-options-HxFsPh\"\n}\n"
+        }
+      ]
+    }
+  ],
+  "additionalChecks": [
+    {
+      "command": "$env:BASE_URL='http://127.0.0.1:3110'; node tests/journey-browser-smoke.cjs",
+      "exitCode": 0,
+      "output": "{\n  \"status\": \"passed\",\n  \"origin\": \"http://127.0.0.1:3110\",\n  \"checks\": [\n    \"Map picking works before any GPS, keyboard selection and Escape work, and no device position is invented\",\n    \"Planning works without a private device link; provider failure retries the same points, routes show km/ETA, and arming waits for GPS\",\n    \"Fresh GPS starts timing; selected plan and active timer survive reload without requesting routes again\",\n    \"Sustained raw GPS deviation raises an in-page alert; moving GPS refreshes climate; failed weather stays historical and GPS loss keeps timing without new alerts\",\n    \"Two destination GPS observations finish the journey and freeze elapsed time; reload does not replay arrival notifications\",\n    \"Optional terrain failure preserves the street map; retry loads DEM tiles and rotation/tilt remain usable\",\n    \"Journey/climate layouts fit mobile, tablet and desktop without JavaScript errors\"\n  ],\n  \"screenshots\": \"C:\\\\Users\\\\muppa\\\\AppData\\\\Local\\\\Temp\\\\smarttrack-journey-ui-g9SW75\"\n}\n"
+    },
+    {
+      "command": "$env:BASE_URL='http://127.0.0.1:3110'; node tests/notifications-browser.cjs",
+      "exitCode": 0,
+      "output": "{\n  \"status\": \"passed\",\n  \"checks\": [\n    \"Empty-browser gate, contact validation, no verification, and responsive entry\",\n    \"All intervals, both toggles, contact editing, reload persistence and authenticated sync\",\n    \"Journey start and cancellation switch schedules; a new tab retains the active mode and contact\",\n    \"Shared connection names, honest sync failures, responsive settings and reduced motion; no runtime errors\"\n  ],\n  \"screenshots\": \"C:\\\\Users\\\\muppa\\\\AppData\\\\Local\\\\Temp\\\\smarttrack-notifications-ui-DmdEoO\"\n}\n"
+    },
+    {
+      "command": "$env:BASE_URL='http://127.0.0.1:3110'; node tests/section-transitions-browser.cjs",
+      "exitCode": 0,
+      "output": "{\n  \"status\": \"passed\",\n  \"origin\": \"http://127.0.0.1:3110\",\n  \"checks\": [\n    \"Distinct tracking, planning and navigation views\",\n    \"Animated menu and keyboard section switches\",\n    \"Browser Back entrance animation\",\n    \"Rapid switches settle on the last destination\",\n    \"Reduced-motion navigation and clean browser runtime\"\n  ]\n}\n"
+    },
+    {
+      "command": "$env:BASE_URL='http://127.0.0.1:3110'; node tests/public-planning-smoke.cjs",
+      "exitCode": 0,
+      "output": "{\n  \"status\": \"passed\",\n  \"origin\": \"http://127.0.0.1:3110\",\n  \"checks\": [\n    \"Anonymous real place search\",\n    \"Anonymous real road routes with distance and ETA\",\n    \"Private device feed still protected\",\n    \"Foreign browser origin rejected\"\n  ],\n  \"places\": 5,\n  \"routes\": 1,\n  \"privateFeedStatus\": 503\n}\n"
+    },
+    {
+      "command": "POST http://127.0.0.1:3110/api/journey/routes with public Berlin start/via/end coordinates",
+      "exitCode": 0,
+      "output": "{\"status\":\"passed\",\"origin\":\"http://127.0.0.1:3110\",\"routes\":1,\"distancesM\":[4733.2],\"viaSnapDistancesM\":[2.9033712149399244],\"provider\":\"OSRM / OpenStreetMap\"}\n"
+    }
+  ],
+  "resolvedFailures": [
+    {
+      "command": "npm run typecheck",
+      "exitCode": 1,
+      "error": "TS2339: normalized legacy plan inferred only its via property after spreading Record<string, unknown>.",
+      "resolution": "Explicitly annotated the normalized raw plan as Record<string, unknown>; the final build and all ten type checks passed."
+    }
+  ],
+  "production": {
+    "state": "READY",
+    "url": "https://smarttrackwebapp.vercel.app",
+    "deployment": "dpl_m9U9ALea4kHzVpgKmovpUzJkigXu",
+    "immutableUrl": "https://smarttrackwebapp-eqhd6x0b7-muppallagowtham123-3987.vercel.app",
+    "command": "npx --yes vercel@latest deploy --prod --yes --scope muppallagowtham123-3987",
+    "exitCode": 0,
+    "checks": [
+      {
+        "command": "BASE_URL=https://smarttrackwebapp.vercel.app node tests/route-options-browser.cjs",
+        "exitCode": 0,
+        "output": "{\n  \"status\": \"passed\",\n  \"origin\": \"https://smarttrackwebapp.vercel.app\",\n  \"checks\": [\n    \"Legacy plans can refresh to four choices\",\n    \"Fourth route selection and all alternatives persist\",\n    \"Unused via field preserves selection\",\n    \"Via search, marker and coordinate-only requests\",\n    \"Via selection persists and removal restores alternatives\",\n    \"Via map picking and navigation lock\",\n    \"Desktop/mobile layouts and clean browser runtime\"\n  ],\n  \"screenshots\": \"C:\\\\Users\\\\muppa\\\\AppData\\\\Local\\\\Temp\\\\smarttrack-route-options-BM6Adv\"\n}\n"
+      },
+      {
+        "command": "BASE_URL=https://smarttrackwebapp.vercel.app node tests/public-planning-smoke.cjs",
+        "exitCode": 0,
+        "output": "{\n  \"status\": \"passed\",\n  \"origin\": \"https://smarttrackwebapp.vercel.app\",\n  \"checks\": [\n    \"Anonymous real place search\",\n    \"Anonymous real road routes with distance and ETA\",\n    \"Private device feed still protected\",\n    \"Foreign browser origin rejected\"\n  ],\n  \"places\": 5,\n  \"routes\": 1,\n  \"privateFeedStatus\": 503\n}\n"
+      },
+      {
+        "command": "POST https://smarttrackwebapp.vercel.app/api/journey/routes with public Berlin start/via/end coordinates",
+        "exitCode": 0,
+        "output": "{\"status\":\"passed\",\"origin\":\"https://smarttrackwebapp.vercel.app\",\"routes\":1,\"distancesM\":[4733.2],\"viaSnapDistancesM\":[2.9033712149399244],\"provider\":\"OSRM / OpenStreetMap\"}\n"
+      }
+    ]
+  },
+  "limits": "Four options are a service maximum, not a guarantee or an exhaustive enumeration of every road path. Via routing uses the provider's actual geometry and verifies it passes within 500 m of the chosen place. Browser route choices use synthetic fixtures; separate public-provider probes verify real routing. No hardware, database or message delivery claims."
+}

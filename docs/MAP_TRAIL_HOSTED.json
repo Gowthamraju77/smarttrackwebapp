@@ -1,0 +1,9 @@
+{
+  "deployment": "dpl_2yfjB6evtfBuwTvsGGYcK1DoMtfd",
+  "url": "https://smarttrackwebapp.vercel.app",
+  "command": "BASE_URL=https://smarttrackwebapp.vercel.app node .local/trail-mode-check.cjs",
+  "exitCode": 0,
+  "durationMs": 36475,
+  "verifiedAt": "2026-11-05T19:08:22.518Z",
+  "output": "{\"status\":\"passed\",\"origin\":\"https://smarttrackwebapp.vercel.app\",\"routes\":[\"/\",\"/map\",\"/journeys\",\"/navigation\",\"/devices\"],\"renderedTrailToggles\":true,\"trailPixels\":{\"shown\":900,\"hidden\":0,\"restored\":900},\"rawCapturesPreserved\":true,\"reloadPersists\":true,\"tabsSynchronized\":true,\"storageFailureHandled\":true,\"historicalPositionSupported\":true,\"mobileWidths\":[320,360,390,768],\"keyboardWorks\":true,\"browserErrors\":0,\"feedResponses\":30}\n"
+}

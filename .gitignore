@@ -1,0 +1,26 @@
+# Dependencies and generated web output
+node_modules/
+.next/
+out/
+coverage/
+*.tsbuildinfo
+*.log
+
+# Local settings, credentials, and device captures
+.env*
+!.env.example
+.vercel/
+.local/
+
+# Python and firmware build caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+.pio/
+
+# Operating-system files
+.DS_Store
+Thumbs.db

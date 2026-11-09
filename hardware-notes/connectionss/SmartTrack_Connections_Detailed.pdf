@@ -1,0 +1,1444 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [7 0 R 9 0 R 11 0 R 13 0 R 15 0 R 17 0 R 19 0 R] /Count 7 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>
+endobj
+6 0 obj
+<< /Length 6147 >>
+stream
+BT
+0.08 0.16 0.25 rg
+/F2 18 Tf
+1 0 0 1 42.0 742.0 Tm
+(SmartTrack - Detailed Hardware Connections and Verification Manual) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 705.0 Tm
+(**Project:** SmartTrack GPS-based smart tracking and emergency response system) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 692.0 Tm
+(**Target MCU:** ESP32-S3 N16R8 \(16 MB flash / 8 MB OPI PSRAM\)) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 679.0 Tm
+(**Firmware framework:** Arduino core 3.x / PlatformIO target) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 666.0 Tm
+(**Document status:** Engineering connection reference; bench verification is still required) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 653.0 Tm
+(**Authoritative source:** supplied CONNECTIONS_PER_COMPONENT.pdf and the project pin contract) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 640.0 Tm
+(**Reference PDF SHA-256:** dd20b8c0fef6298299574673f23cc62609d07a380c66f4268f2f78ec37f64538) Tj
+0.42 0.20 0.08 rg
+/F2 12 Tf
+1 0 0 1 42.0 620.0 Tm
+(1. How to use this document) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 591.0 Tm
+(This manual describes the wiring contract supplied for the SmartTrack build. It is intended to) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 578.0 Tm
+(be used during schematic review, harness construction, firmware configuration, continuity) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 565.0 Tm
+(testing, and staged bring-up.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 545.0 Tm
+(The GPIO numbers below are authoritative for this build. Do not substitute a different GPIO) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 532.0 Tm
+(because it is convenient in a sketch. Any change must update the schematic, firmware) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 519.0 Tm
+(configuration, test plan, and this manual together.) Tj
+0.12 0.35 0.38 rg
+/F2 10 Tf
+1 0 0 1 42.0 499.0 Tm
+(Evidence labels) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 474.0 Tm
+(- **Reference-defined:** stated in the supplied connection document.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 461.0 Tm
+(- **Firmware-defined:** represented in my projectt/firmware/.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 448.0 Tm
+(- **Bench-required:** cannot be proven from source files; requires the assembled board and a) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 435.0 Tm
+(meter, oscilloscope, or module test.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 422.0 Tm
+(- **Reserved/unwired:** intentionally not connected in the current build.) Tj
+0.12 0.35 0.38 rg
+/F2 10 Tf
+1 0 0 1 42.0 402.0 Tm
+(Golden electrical rule) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 377.0 Tm
+(All module logic is **3.3 V only**. Never feed 5 V into an ESP32-S3 GPIO, SPI line, I2C line,) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 364.0 Tm
+(UART line, button input, or sensor strap. The ordinary 5 V in the reference is USB VBUS before) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 351.0 Tm
+(the board's onboard 3V3 regulator; it is not an ESP32 logic rail.) Tj
+0.42 0.20 0.08 rg
+/F2 12 Tf
+1 0 0 1 42.0 331.0 Tm
+(2. Complete net and rail summary) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 302.0 Tm
+(Net / function ESP32-S3 GPIO Direction from MCU Rail Connected component\(s\) State / note) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 291.0 Tm
+(SPI SCK 12 OUT 3V3 switched ILI9341 + XPT2046 Shared master clock) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 280.0 Tm
+(SPI MOSI 11 OUT 3V3 switched ILI9341 + XPT2046 MCU drives data to slaves) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 269.0 Tm
+(SPI MISO 13 IN 3V3 switched ILI9341 + XPT2046 Only selected CS-low slave drives) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 258.0 Tm
+(TFT chip select 10 OUT 3V3 switched ILI9341 Active LOW) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 247.0 Tm
+(TFT data/command 9 OUT 3V3 switched ILI9341 DC/RS) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 236.0 Tm
+(TFT reset 8 OUT 3V3 switched ILI9341 Active LOW) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 225.0 Tm
+(TFT backlight control 5 OUT 3V3 switched NPN driver PWM; never drive LED current directly) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 214.0 Tm
+(Touch chip select 14 OUT 3V3 switched XPT2046 Active LOW) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 203.0 Tm
+(Touch IRQ 15 IN 3V3 switched XPT2046 Wired; firmware may poll) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 192.0 Tm
+(I2C SDA 17 I/O 3V3 switched MPU-9250 4.7 kohm pull-up to 3V3) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 181.0 Tm
+(I2C SCL 18 OUT 3V3 switched MPU-9250 4.7 kohm pull-up to 3V3) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 170.0 Tm
+(MPU data-ready INT 16 IN 3V3 switched MPU-9250 Reference-defined; current firmware gap) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 159.0 Tm
+(GPS UART RX 6 IN 3V3 switched GPS TX UART1 crossover; 9600 baud) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 148.0 Tm
+(GPS UART TX 7 OUT 3V3 switched GPS RX UART1 crossover; 9600 baud) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 137.0 Tm
+(Power button 4 IN 3V3 always-on Button to GND External 10 kohm pull-up; RTC-capable) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 126.0 Tm
+(SOS button 1 IN 3V3 always-on Button to GND Internal pull-up; hold >=1200 ms) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 115.0 Tm
+(User button 2 IN 3V3 always-on Button to GND Internal pull-up; long press >=2000 ms) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 104.0 Tm
+(Peripheral enable 21 OUT / hi-Z always-on gate P-FET high-side switch LOW = switched rail ON) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 93.0 Tm
+(Modem RX reservation 48 reserved separate modem A7670C future UART Leave unconnected now) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 82.0 Tm
+(Modem TX reservation 47 reserved separate modem A7670C future UART Leave unconnected now) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 71.0 Tm
+(microSD CS -1 disabled not assigned microSD future Do not guess a GPIO) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 60.0 Tm
+(Modem PWRKEY -1 disabled separate modem A7670C future No current ESP32 assignment) Tj
+ET
+BT
+/F1 7 Tf
+0.38 0.43 0.48 rg
+1 0 0 1 42 24 Tm
+(SmartTrack connection manual  |  Page 1 of 7) Tj
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 5302 >>
+stream
+BT
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 742.0 Tm
+(Common ground GND power return GND Every module/button/MCU One common ground is mandatory) Tj
+0.42 0.20 0.08 rg
+/F2 12 Tf
+1 0 0 1 42.0 724.0 Tm
+(3. Shared-bus wiring) Tj
+0.12 0.35 0.38 rg
+/F2 10 Tf
+1 0 0 1 42.0 695.0 Tm
+(3.1 Shared SPI bus) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 670.0 Tm
+(Wire the SPI bus once, then fan it out to the TFT and touch controller:) Tj
+0.12 0.18 0.23 rg
+/F3 7.3 Tf
+1 0 0 1 52.0 650.0 Tm
+(ESP32 GPIO12 \(SCK\) --------- ILI9341 SCK / XPT2046 T_CLK) Tj
+0.12 0.18 0.23 rg
+/F3 7.3 Tf
+1 0 0 1 52.0 639.0 Tm
+(ESP32 GPIO11 \(MOSI\) --------- ILI9341 SDI / XPT2046 T_DIN) Tj
+0.12 0.18 0.23 rg
+/F3 7.3 Tf
+1 0 0 1 52.0 628.0 Tm
+(ESP32 GPIO13 \(MISO\) --------- ILI9341 SDO / XPT2046 T_DO) Tj
+0.12 0.18 0.23 rg
+/F3 7.3 Tf
+1 0 0 1 52.0 617.0 Tm
+(ESP32 GPIO10 \(CS\) --------- ILI9341 CS) Tj
+0.12 0.18 0.23 rg
+/F3 7.3 Tf
+1 0 0 1 52.0 606.0 Tm
+(ESP32 GPIO14 \(CS\) --------- XPT2046 T_CS) Tj
+0.12 0.18 0.23 rg
+/F3 7.3 Tf
+1 0 0 1 52.0 595.0 Tm
+(ESP32 GPIO15 --------- XPT2046 T_IRQ) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 577.0 Tm
+(The ESP32 is the only SPI master. SCK and MOSI are always MCU-driven. MISO is shared and depends) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 564.0 Tm
+(on the unselected device releasing the line to high impedance.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 544.0 Tm
+(**Mandatory CS rule:** GPIO10 and GPIO14 must never be LOW at the same instant. Before selecting) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 531.0 Tm
+(one device, drive the other device's CS HIGH. If a future microSD device is added, its qualified) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 518.0 Tm
+(CS must also be mutually exclusive with both GPIO10 and GPIO14.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 498.0 Tm
+(At boot, de-select all SPI slaves before enabling the switched rail or starting a transaction.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 485.0 Tm
+(Use explicit SPI transactions when device modes or clock speeds differ. The current firmware) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 472.0 Tm
+(declares the pins, but the TFT/touch runtime driver and complete CS arbitration still require) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 459.0 Tm
+(integration and bench testing.) Tj
+0.12 0.35 0.38 rg
+/F2 10 Tf
+1 0 0 1 42.0 439.0 Tm
+(3.2 I2C bus) Tj
+0.12 0.18 0.23 rg
+/F3 7.3 Tf
+1 0 0 1 52.0 414.0 Tm
+(ESP32 GPIO17 \(SDA\) ----- MPU-9250 SDA) Tj
+0.12 0.18 0.23 rg
+/F3 7.3 Tf
+1 0 0 1 52.0 403.0 Tm
+(ESP32 GPIO18 \(SCL\) ----- MPU-9250 SCL) Tj
+0.12 0.18 0.23 rg
+/F3 7.3 Tf
+1 0 0 1 52.0 392.0 Tm
+(ESP32 GPIO16 \(INT\) ----- MPU-9250 INT \(reference-defined\)) Tj
+0.12 0.18 0.23 rg
+/F3 7.3 Tf
+1 0 0 1 52.0 381.0 Tm
+(ESP32 GND ----- MPU-9250 GND) Tj
+0.12 0.18 0.23 rg
+/F3 7.3 Tf
+1 0 0 1 52.0 370.0 Tm
+(3V3 switched ----- MPU-9250 VCC/VDD) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 352.0 Tm
+(Use 4.7 kohm pull-ups from SDA and SCL to 3.3 V. Verify whether the breakout already contains) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 339.0 Tm
+(pull-ups; do not blindly install duplicate pull-ups. SDA/SCL must not be connected to 5 V.) Tj
+0.42 0.20 0.08 rg
+/F2 12 Tf
+1 0 0 1 42.0 319.0 Tm
+(4. ILI9341 TFT display) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 290.0 Tm
+(ILI9341 module pin Connect to Rail / direction Detailed note) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 279.0 Tm
+(VCC switched 3V3 power Turns off with GPIO21 rail) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 268.0 Tm
+(GND common GND return Required shared ground) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 257.0 Tm
+(SCK/CLK GPIO12 OUT Shared SPI clock) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 246.0 Tm
+(SDI/MOSI GPIO11 OUT Shared SPI data-in) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 235.0 Tm
+(SDO/MISO GPIO13 IN Must release when CS HIGH) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 224.0 Tm
+(CS GPIO10 OUT Active LOW; TFT-only) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 213.0 Tm
+(DC/RS GPIO9 OUT Data/command select) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 202.0 Tm
+(RESET GPIO8 OUT Active LOW) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 191.0 Tm
+(LED/BLK GPIO5 through NPN + base resistor OUT/PWM Do not source panel current from GPIO) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 173.0 Tm
+(Typical reference load is about 20 mA for logic plus about 80 mA for the backlight at full) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 160.0 Tm
+(brightness. The backlight may be PWM-dimmed. The exact display breakout's regulator, LED) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 147.0 Tm
+(topology, and transistor values remain **bench/BOM verification items**.) Tj
+0.12 0.35 0.38 rg
+/F2 10 Tf
+1 0 0 1 42.0 127.0 Tm
+(TFT bring-up) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 102.0 Tm
+(1. Confirm VCC is 3.3 V switched and GND is common.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 89.0 Tm
+(2. Confirm RESET, DC, CS, and shared SPI lines with continuity testing.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 76.0 Tm
+(3. Keep touch CS HIGH during TFT initialization.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 63.0 Tm
+(4. Reset the panel LOW then HIGH according to the selected library.) Tj
+ET
+BT
+/F1 7 Tf
+0.38 0.43 0.48 rg
+1 0 0 1 42 24 Tm
+(SmartTrack connection manual  |  Page 2 of 7) Tj
+ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 8 0 R >>
+endobj
+10 0 obj
+<< /Length 5443 >>
+stream
+BT
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 742.0 Tm
+(5. Enable the NPN backlight driver only after the rail and logic are confirmed.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 729.0 Tm
+(6. Run a fill-color and text test before adding touch transactions.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 709.0 Tm
+(White or blank TFT symptoms commonly indicate RESET GPIO8, DC GPIO9, CS GPIO10, backlight GPIO5,) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 696.0 Tm
+(or power-rail wiring faults.) Tj
+0.42 0.20 0.08 rg
+/F2 12 Tf
+1 0 0 1 42.0 676.0 Tm
+(5. XPT2046 touch controller) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 647.0 Tm
+(XPT2046 module pin Connect to Note) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 636.0 Tm
+(VCC switched 3V3 Less than 1 mA typical reference load) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 625.0 Tm
+(GND common GND Shared return) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 614.0 Tm
+(T_CLK GPIO12 Shared SPI SCK) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 603.0 Tm
+(T_DIN GPIO11 Shared SPI MOSI) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 592.0 Tm
+(T_DO GPIO13 Shared SPI MISO; high-Z when CS HIGH) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 581.0 Tm
+(T_CS GPIO14 Active LOW; touch-only) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 570.0 Tm
+(T_IRQ GPIO15 Wired input; current reference says firmware polls it) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 552.0 Tm
+(The touch controller must not share a LOW CS interval with the TFT. Restore each device's SPI) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 539.0 Tm
+(mode and speed if the selected libraries require different settings. The current firmware has) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 526.0 Tm
+(the pin contract but does not yet prove an integrated XPT2046 driver, calibration flow, or) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 513.0 Tm
+(runtime CS lock.) Tj
+0.42 0.20 0.08 rg
+/F2 12 Tf
+1 0 0 1 42.0 493.0 Tm
+(6. u-blox NEO-M8N GPS) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 464.0 Tm
+(GPS pin ESP32-S3 connection Detail) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 453.0 Tm
+(VCC switched 3V3 Approximately 29 mA typical, 67 mA maximum reference) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 442.0 Tm
+(GND common GND Required) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 431.0 Tm
+(GPS TX \(output\) GPIO6 / ESP RX UART1 crossover) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 420.0 Tm
+(GPS RX \(input\) GPIO7 / ESP TX UART1 crossover) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 409.0 Tm
+(ANT active antenna Clear sky view; away from switching noise) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 391.0 Tm
+(Use UART1 at 9600 baud. The wiring must be crossed: **GPS TX -> ESP GPIO6 RX**, and **ESP GPIO7) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 378.0 Tm
+(TX -> GPS RX**. Never wire TX-to-TX or RX-to-RX.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 358.0 Tm
+(Place approximately 100 uF bulk capacitance close to GPS VCC and another bulk capacitor on the) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 345.0 Tm
+(switched rail near the GPS. The reference gives roughly 50 mA cold-acquisition current and) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 332.0 Tm
+(another 10-20 mA for an active antenna. Cold fix time can be approximately 30 seconds to several) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 319.0 Tm
+(minutes depending on antenna and sky view.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 299.0 Tm
+(Keep the antenna away from the ESP32, TFT, switching supply, high-current modem wiring, motors,) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 286.0 Tm
+(speakers, and metal enclosure parts. GPS bytes without a fix usually indicate antenna/sky-view) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 273.0 Tm
+(or acquisition conditions; no bytes usually indicate crossover, baud, VCC, or switched-rail) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 260.0 Tm
+(faults.) Tj
+0.42 0.20 0.08 rg
+/F2 12 Tf
+1 0 0 1 42.0 240.0 Tm
+(7. MPU-9250 IMU) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 211.0 Tm
+(MPU-9250 pin Connect to Detail) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 200.0 Tm
+(VCC/VDD switched 3V3 3.3 V only) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 189.0 Tm
+(GND common GND Required) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 178.0 Tm
+(SDA GPIO17 I2C bidirectional) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 167.0 Tm
+(SCL GPIO18 I2C clock) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 156.0 Tm
+(INT GPIO16 Data-ready input; firmware integration gap) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 145.0 Tm
+(AD0 GND Selects address 0x68) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 134.0 Tm
+(NCS/CS 3V3 switched Forces I2C mode; do not float) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 123.0 Tm
+(FSYNC GND Disables frame sync) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 112.0 Tm
+(EDA/ECL unconnected Auxiliary external-magnetometer bus unused) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 94.0 Tm
+(The expected address is 0x68. Verify WHO_AM_I on the actual breakout. The reference mentions) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 81.0 Tm
+(approximately 3.9 mA active and very low sleep current. Keep the IMU away from magnets, motors,) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 68.0 Tm
+(speakers, steel hardware, and high-current modem paths. Verify breakout pull-ups and board) Tj
+ET
+BT
+/F1 7 Tf
+0.38 0.43 0.48 rg
+1 0 0 1 42 24 Tm
+(SmartTrack connection manual  |  Page 3 of 7) Tj
+ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 10 0 R >>
+endobj
+12 0 obj
+<< /Length 5082 >>
+stream
+BT
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 742.0 Tm
+(orientation before calibration.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 722.0 Tm
+(**Current project gap:** the firmware initializes Wire but leaves MPU acquisition/calibration) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 709.0 Tm
+(unavailable, and the current configuration does not yet represent GPIO16 or the static strap) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 696.0 Tm
+(wiring in code. The connection is documented, not fully software-verified.) Tj
+0.42 0.20 0.08 rg
+/F2 12 Tf
+1 0 0 1 42.0 676.0 Tm
+(8. Buttons and always-on controls) Tj
+0.12 0.35 0.38 rg
+/F2 10 Tf
+1 0 0 1 42.0 647.0 Tm
+(Power button - GPIO4) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 622.0 Tm
+(Connect one side of the button to GPIO4 and the other side to common GND. Use an **external 10) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 609.0 Tm
+(kohm pull-up to always-on 3.3 V** and a 100 nF debounce capacitor from GPIO4 to GND. It is) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 596.0 Tm
+(active LOW, RTC-capable, and intended for long-press shutdown and deep-sleep wake.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 576.0 Tm
+(Do not put this pull-up on the switched rail. The power button must remain usable while GPIO21) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 563.0 Tm
+(has disabled peripherals.) Tj
+0.12 0.35 0.38 rg
+/F2 10 Tf
+1 0 0 1 42.0 543.0 Tm
+(SOS button - GPIO1) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 518.0 Tm
+(Connect the button between GPIO1 and GND. It is active LOW and uses the internal approximately) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 505.0 Tm
+(45 kohm pull-up for normal operation. The reference firmware behavior is a hold of at least 1200) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 492.0 Tm
+(ms to latch SOS. SOS must not depend on GPS, ML, or a working modem to latch locally.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 472.0 Tm
+(If SOS wake-from-deep-sleep is later enabled, add a qualified external always-on pull-up because) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 459.0 Tm
+(internal pull-ups may not hold during deep sleep.) Tj
+0.12 0.35 0.38 rg
+/F2 10 Tf
+1 0 0 1 42.0 439.0 Tm
+(User button - GPIO2) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 414.0 Tm
+(Connect the button between GPIO2 and GND. It is active LOW and uses the internal pull-up for) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 401.0 Tm
+(normal operation. The reference behavior is a short tap for markCount and a long press of at) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 388.0 Tm
+(least 2000 ms to clear a locally latched SOS. Clearing a local latch must not erase the) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 375.0 Tm
+(server-side event or falsely imply assistance.) Tj
+0.42 0.20 0.08 rg
+/F2 12 Tf
+1 0 0 1 42.0 355.0 Tm
+(9. GPIO21 peripheral rail switch) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 326.0 Tm
+(The switched 3.3 V rail is created by a high-side P-FET or a specifically qualified load-switch) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 313.0 Tm
+(implementation:) Tj
+0.12 0.18 0.23 rg
+/F3 7.3 Tf
+1 0 0 1 52.0 293.0 Tm
+(Always-on 3V3 -- P-FET source) Tj
+0.12 0.18 0.23 rg
+/F3 7.3 Tf
+1 0 0 1 52.0 282.0 Tm
+(P-FET drain -- switched 3V3 -- TFT/touch/MPU/GPS VCC) Tj
+0.12 0.18 0.23 rg
+/F3 7.3 Tf
+1 0 0 1 52.0 271.0 Tm
+(GPIO21 -- gate drive) Tj
+0.12 0.18 0.23 rg
+/F3 7.3 Tf
+1 0 0 1 52.0 260.0 Tm
+(Always-on 3V3 -- 100 kohm gate pull-up) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 242.0 Tm
+(Reference truth table:) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 222.0 Tm
+(GPIO21 state P-FET / switched rail Meaning) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 211.0 Tm
+(LOW ON / 3V3 switched live Peripherals powered) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 200.0 Tm
+(hi-Z with external pull-up OFF / rail disabled Reset/shutdown/deep-sleep-safe default) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 182.0 Tm
+(The supplied reference distinguishes this active-low P-FET circuit from a TPS22918. They are not) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 169.0 Tm
+(pin/control-equivalent and must not be interchanged without a new schematic and polarity review.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 149.0 Tm
+(The current firmware uses a driven HIGH for initial software-off and LOW for on; this is) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 136.0 Tm
+(electrically consistent with active-low polarity but does not fully implement the reference's) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 123.0 Tm
+(hi-Z sleep convention. The external pull-up must still establish the hardware reset default.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 110.0 Tm
+(Rail-off and deep-sleep sequences require bench validation.) Tj
+0.42 0.20 0.08 rg
+/F2 12 Tf
+1 0 0 1 42.0 90.0 Tm
+(10. A7670C cellular modem - reserved in this build) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 61.0 Tm
+(The A7670C is **not wired or enabled in the current build**. Keep the reserved pins unconnected) Tj
+ET
+BT
+/F1 7 Tf
+0.38 0.43 0.48 rg
+1 0 0 1 42 24 Tm
+(SmartTrack connection manual  |  Page 4 of 7) Tj
+ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 12 0 R >>
+endobj
+14 0 obj
+<< /Length 5465 >>
+stream
+BT
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 742.0 Tm
+(until the board, regulator, level shifter, PWRKEY, SIM, antenna, and TLS transport are fully) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 729.0 Tm
+(qualified.) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 709.0 Tm
+(Modem function ESP32 reservation Current state) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 698.0 Tm
+(Modem TX -> ESP RX GPIO48 Reserved; leave unconnected) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 687.0 Tm
+(ESP TX -> modem RX GPIO47 Reserved; leave unconnected) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 676.0 Tm
+(Modem PWRKEY no assigned GPIO Reserved; no code now) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 665.0 Tm
+(Modem VBAT separate 3.4-4.2 V supply Never ESP32 3V3) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 654.0 Tm
+(Modem GND common GND Required return) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 636.0 Tm
+(Required future modem power characteristics from the reference:) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 616.0 Tm
+(- Dedicated 3.4-4.2 V regulator/supply rated for at least 2 A.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 603.0 Tm
+(- At least 300 uF bulk capacitance plus local ceramics.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 590.0 Tm
+(- Common ground with the ESP32.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 577.0 Tm
+(- UART interface level-shifted to 3.3 V after verifying the exact module breakout voltage.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 564.0 Tm
+(- Future PWRKEY operation is approximately a 50 ms LOW pulse, but the actual board must be) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 551.0 Tm
+(validated before assigning a GPIO.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 538.0 Tm
+(- LTE transmit bursts can approach 2 A; the ESP32 3V3 rail must never be used for modem VBAT.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 518.0 Tm
+(CRC32 can detect accidental transmission corruption, truncation, or mismatch. It is **not) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 505.0 Tm
+(authentication or encryption**. Production cellular traffic requires HTTPS/TLS with) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 492.0 Tm
+(certificate/hostname validation, device authentication, replay protection, and server) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 479.0 Tm
+(authorization.) Tj
+0.42 0.20 0.08 rg
+/F2 12 Tf
+1 0 0 1 42.0 459.0 Tm
+(11. microSD status) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 430.0 Tm
+(The supplied connection reference does not define a microSD chip-select GPIO for this build.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 417.0 Tm
+(Therefore:) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 397.0 Tm
+(- Keep SMARTTRACK_SD_CS_PIN=-1 / disabled until the physical display/SD board and CS net are) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 384.0 Tm
+(confirmed.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 371.0 Tm
+(- Do not reuse GPIO3 or any other sketch placeholder without an approved schematic.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 358.0 Tm
+(- If enabled later, the SD card must be checked for 3.3 V logic compatibility and added to the) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 345.0 Tm
+(SPI CS mutual-exclusion table.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 332.0 Tm
+(- SD write, power-loss recovery, and offline queue behavior require a real card and) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 319.0 Tm
+(fault-injection test.) Tj
+0.42 0.20 0.08 rg
+/F2 12 Tf
+1 0 0 1 42.0 299.0 Tm
+(12. Power budget and rail planning) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 270.0 Tm
+(The reference values are datasheet-typical or community-measured estimates, not measurements on) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 257.0 Tm
+(the assembled SmartTrack board.) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 237.0 Tm
+(Load Rail Typical reference Peak / note) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 226.0 Tm
+(ESP32-S3 core, Wi-Fi off always-on 3V3 ~120 mA Wi-Fi TX bursts ~283-340 mA) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 215.0 Tm
+(ILI9341 TFT + backlight switched 3V3 ~100 mA ~20 mA logic + ~80 mA backlight) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 204.0 Tm
+(NEO-M8N GPS switched 3V3 ~29 mA 67 mA max; cold acquire ~50 mA) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 193.0 Tm
+(Active GPS antenna GPS module path +10-20 mA Depends on antenna) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 182.0 Tm
+(MPU-9250 switched 3V3 ~3.9-4 mA ~8 uA sleep reference) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 171.0 Tm
+(XPT2046 switched 3V3 <1 mA Negligible reference) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 153.0 Tm
+(The normal switched cluster is approximately 133-134 mA before antenna allowance and design) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 140.0 Tm
+(headroom. The source document reports about 274 mA total with Wi-Fi off, which includes) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 127.0 Tm
+(headroom/antenna allowance. A genuine 800 mA-1 A 3.3 V regulator fed by a 5 V source rated at) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 114.0 Tm
+(least 1 A is the conditional reference recommendation. A bare 500 mA USB port is marginal when) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 101.0 Tm
+(Wi-Fi bursts overlap the peripheral load.) Tj
+0.12 0.35 0.38 rg
+/F2 10 Tf
+1 0 0 1 42.0 81.0 Tm
+(Required power checks before module connection) Tj
+ET
+BT
+/F1 7 Tf
+0.38 0.43 0.48 rg
+1 0 0 1 42 24 Tm
+(SmartTrack connection manual  |  Page 5 of 7) Tj
+ET
+endstream
+endobj
+15 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 14 0 R >>
+endobj
+16 0 obj
+<< /Length 4909 >>
+stream
+BT
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 742.0 Tm
+(1. Check for shorts between every rail and GND with power removed.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 729.0 Tm
+(2. Confirm always-on 3V3 and switched 3V3 polarity and voltage with a meter.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 716.0 Tm
+(3. Confirm GPIO21 gate pull-up and P-FET source/drain orientation.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 703.0 Tm
+(4. Power the ESP32 alone and confirm the switched rail default state.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 690.0 Tm
+(5. Add GPS/TFT/IMU/touch one at a time while monitoring rail voltage and current.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 677.0 Tm
+(6. Measure brownout behavior during GPS acquisition and TFT backlight enable.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 664.0 Tm
+(7. Do not connect the A7670C until its independent regulator and bulk capacitance are) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 651.0 Tm
+(load-tested.) Tj
+0.42 0.20 0.08 rg
+/F2 12 Tf
+1 0 0 1 42.0 631.0 Tm
+(13. Staged bring-up and acceptance tests) Tj
+0.12 0.35 0.38 rg
+/F2 10 Tf
+1 0 0 1 42.0 602.0 Tm
+(Stage A - unpowered inspection) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 577.0 Tm
+(- Verify every table row with continuity testing.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 564.0 Tm
+(- Verify all module grounds join the common ground.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 551.0 Tm
+(- Verify no ESP32 GPIO is connected to a 5 V signal.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 538.0 Tm
+(- Verify TFT and touch CS are separate and not shorted.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 525.0 Tm
+(- Verify GPS TX/RX crossover.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 512.0 Tm
+(- Verify MPU AD0/NCS/FSYNC straps.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 499.0 Tm
+(- Verify button pull-ups use the always-on domain.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 486.0 Tm
+(- Verify A7670C is physically separated from ESP32 3V3 and remains reserved.) Tj
+0.12 0.35 0.38 rg
+/F2 10 Tf
+1 0 0 1 42.0 466.0 Tm
+(Stage B - MCU and rail) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 441.0 Tm
+(- Boot ESP32 with all peripherals disconnected.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 428.0 Tm
+(- Confirm GPIO21 external pull-up holds the rail off during reset.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 415.0 Tm
+(- Confirm firmware enables the rail only after safe GPIO setup.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 402.0 Tm
+(- Measure always-on and switched 3V3 under no-load and incremental loads.) Tj
+0.12 0.35 0.38 rg
+/F2 10 Tf
+1 0 0 1 42.0 382.0 Tm
+(Stage C - sensors) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 357.0 Tm
+(- GPS: confirm 9600-baud NMEA bytes, checksum-valid sentences, then wait for a real fix.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 344.0 Tm
+(- IMU: scan I2C and verify address 0x68 / expected WHO_AM_I.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 331.0 Tm
+(- Confirm missing GPS/IMU values remain unavailable rather than being shown as zero.) Tj
+0.12 0.35 0.38 rg
+/F2 10 Tf
+1 0 0 1 42.0 311.0 Tm
+(Stage D - display and touch) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 286.0 Tm
+(- Run TFT reset/fill/text test.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 273.0 Tm
+(- Run touch test with TFT CS held HIGH.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 260.0 Tm
+(- Calibrate touch coordinates and document rotation.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 247.0 Tm
+(- Enable backlight through the NPN stage and measure current.) Tj
+0.12 0.35 0.38 rg
+/F2 10 Tf
+1 0 0 1 42.0 227.0 Tm
+(Stage E - storage and cellular) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 202.0 Tm
+(- microSD remains disabled until its CS is qualified.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 189.0 Tm
+(- For modem bring-up, use a dedicated supply, level shifters, antenna, SIM, certificate chain,) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 176.0 Tm
+(clock, and HTTPS endpoint.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 163.0 Tm
+(- Test retry/idempotency and confirm records are removed from the offline queue only after an) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 150.0 Tm
+(exact server receipt.) Tj
+0.12 0.35 0.38 rg
+/F2 10 Tf
+1 0 0 1 42.0 130.0 Tm
+(Stage F - emergency path) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 105.0 Tm
+(- Hold SOS for at least 1200 ms with GPS unavailable and confirm local latch.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 92.0 Tm
+(- Confirm the event is queued without ML inference.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 79.0 Tm
+(- Confirm server delivery, acknowledgment, and resolution are recorded as separate states.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 66.0 Tm
+(- Confirm the user-button clear action does not erase server audit history.) Tj
+ET
+BT
+/F1 7 Tf
+0.38 0.43 0.48 rg
+1 0 0 1 42 24 Tm
+(SmartTrack connection manual  |  Page 6 of 7) Tj
+ET
+endstream
+endobj
+17 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 16 0 R >>
+endobj
+18 0 obj
+<< /Length 5897 >>
+stream
+BT
+0.42 0.20 0.08 rg
+/F2 12 Tf
+1 0 0 1 42.0 742.0 Tm
+(14. Troubleshooting matrix) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 713.0 Tm
+(Symptom Likely cause Corrective action) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 702.0 Tm
+(White/blank TFT RESET8/DC9/CS10/backlight5 or rail Check wiring, CS, reset timing, NPN) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 691.0 Tm
+(driver, and switched 3V3) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 680.0 Tm
+(TFT works but touch is dead Touch CS14/MISO13 or SPI mode Check CS exclusivity, shared MISO,) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 669.0 Tm
+(IRQ15/polling, calibration) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 658.0 Tm
+(No GPS bytes Wrong crossover, baud, VCC off GPS TX->GPIO6, GPIO7->GPS RX, 9600, switched) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 647.0 Tm
+(rail on) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 636.0 Tm
+(GPS bytes but never a fix Antenna/sky view/acquisition time Clear sky view, active antenna,) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 625.0 Tm
+(wait, add GPS bulk cap) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 614.0 Tm
+(IMU not detected Address/straps/SDA/SCL/pullups AD0 GND, NCS 3V3, FSYNC GND, address 0x68,) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 603.0 Tm
+(verify 4.7 kohm) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 592.0 Tm
+(Reset during GPS acquire Rail or regulator sag Add/verify 100 uF caps, stronger source,) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 581.0 Tm
+(measure current) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 570.0 Tm
+(Buttons never register Pull-up on switched rail Move pull-up to always-on; verify active LOW) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 559.0 Tm
+(Everything dies after shutdown Expected switched-rail behavior Only always-on core/buttons) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 548.0 Tm
+(remain; verify wake plan) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 537.0 Tm
+(Wi-Fi causes resets Weak USB/source transient Stronger 5 V source and bulk capacitance;) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 526.0 Tm
+(duty-cycle Wi-Fi) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 515.0 Tm
+(Modem brownouts Wrong rail or inadequate supply Separate 3.4-4.2 V >=2 A supply and >=300 uF) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 504.0 Tm
+(bulk) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 493.0 Tm
+(Modem sends plaintext Unsafe transport fallback Disable modem; require qualified HTTPS/TLS) Tj
+0.12 0.18 0.23 rg
+/F3 6.5 Tf
+1 0 0 1 42.0 482.0 Tm
+(and certificate validation) Tj
+0.42 0.20 0.08 rg
+/F2 12 Tf
+1 0 0 1 42.0 464.0 Tm
+(15. Project-specific verification findings) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 435.0 Tm
+(The independent review set identified these important alignment items:) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 415.0 Tm
+(1. The hardware reference requires power button GPIO4, but the current firmware configuration) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 402.0 Tm
+(and main loop do not yet implement GPIO4 shutdown/wake behavior.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 389.0 Tm
+(2. The hardware reference assigns MPU INT GPIO16 and static straps; the current firmware only) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 376.0 Tm
+(initializes I2C and does not yet provide a qualified MPU driver.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 363.0 Tm
+(3. TFT/touch GPIO constants exist, but a complete runtime display/touch driver and CS) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 350.0 Tm
+(transaction arbitration are not yet proven by hardware tests.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 337.0 Tm
+(4. The current firmware defaults SD CS and modem PWRKEY to -1, which is the safe choice until) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 324.0 Tm
+(those connections are physically qualified.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 311.0 Tm
+(5. GPIO21 software polarity is active-low correct, but the reference's hi-Z rail-off behavior) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 298.0 Tm
+(and reset/deep-sleep sequence still require board-level validation.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 285.0 Tm
+(6. Current and capacitor values in this document are estimates from the supplied reference, not) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 272.0 Tm
+(certification for the actual ESP32 board revision or breakout modules.) Tj
+0.42 0.20 0.08 rg
+/F2 12 Tf
+1 0 0 1 42.0 252.0 Tm
+(16. Final do-not-connect summary) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 223.0 Tm
+(- Do not connect 5 V to an ESP32 GPIO or 3.3 V-only signal.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 210.0 Tm
+(- Do not drive TFT backlight current directly from GPIO5.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 197.0 Tm
+(- Do not pull GPIO10 and GPIO14 LOW together.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 184.0 Tm
+(- Do not put button pull-ups on switched 3V3.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 171.0 Tm
+(- Do not power A7670C from ESP32 3V3.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 158.0 Tm
+(- Do not connect reserved GPIO47/48 or invent a PWRKEY GPIO in this build.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 145.0 Tm
+(- Do not enable an unknown microSD CS pin.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 132.0 Tm
+(- Do not treat CRC32 as authentication.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 119.0 Tm
+(- Do not treat a stale/last-known GPS coordinate as current.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 106.0 Tm
+(- Do not present an ML Trust Score until a real, evaluated, promoted artifact exists.) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 93.0 Tm
+(- Do not consider this manual a replacement for continuity, voltage, thermal, RF, and end-to-end) Tj
+0.12 0.16 0.22 rg
+/F1 8.5 Tf
+1 0 0 1 42.0 80.0 Tm
+(bench testing.) Tj
+ET
+BT
+/F1 7 Tf
+0.38 0.43 0.48 rg
+1 0 0 1 42 24 Tm
+(SmartTrack connection manual  |  Page 7 of 7) Tj
+ET
+endstream
+endobj
+19 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 18 0 R >>
+endobj
+xref
+0 20
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000162 00000 n 
+0000000232 00000 n 
+0000000307 00000 n 
+0000000375 00000 n 
+0000006573 00000 n 
+0000006719 00000 n 
+0000012072 00000 n 
+0000012218 00000 n 
+0000017713 00000 n 
+0000017861 00000 n 
+0000022995 00000 n 
+0000023143 00000 n 
+0000028660 00000 n 
+0000028808 00000 n 
+0000033769 00000 n 
+0000033917 00000 n 
+0000039866 00000 n 
+trailer
+<< /Size 20 /Root 1 0 R >>
+startxref
+40014
+%%EOF

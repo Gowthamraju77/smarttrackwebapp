@@ -1,0 +1,39 @@
+﻿{
+  "status": "passed",
+  "origin": "https://smarttrackwebapp.vercel.app",
+  "verifiedAt": "2026-11-05T17:18:25.323Z",
+  "source": "esp32-infoesp",
+  "responses": 14,
+  "distinctSensorReceipts": 14,
+  "sensorTimestampsAdvance": true,
+  "renderedHardwareTimestampsAdvance": true,
+  "positionMarker": true,
+  "gpsFixAtCheck": true,
+  "imuAvailableAtCheck": true,
+  "hardwareReports": [
+    "display",
+    "modem",
+    "imu",
+    "wifi",
+    "system",
+    "firmware",
+    "gpsReceiver"
+  ],
+  "browserErrors": 0,
+  "access": "plain website URL, no viewer token or private link",
+  "credentialedRequests": 0,
+  "routesChecked": [
+    "/",
+    "/map (fresh browser)",
+    "/journeys",
+    "/navigation",
+    "/insights",
+    "/analytics",
+    "/alerts",
+    "/devices",
+    "/display",
+    "/activity",
+    "/settings"
+  ],
+  "note": "Actual infoesp readings via the website API. Physical display, modem registration and MPU operation are not independently certified."
+}

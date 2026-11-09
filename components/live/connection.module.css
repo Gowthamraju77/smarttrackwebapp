@@ -1,0 +1,42 @@
+.connectionPanel { margin-bottom: 22px; background: #fbfdf9c9; border: 1px solid #d6e4d9; border-radius: 16px; box-shadow: 0 2px 0 #fff inset, 0 4px 14px #173b3203; overflow: hidden; transition: border-color var(--motion-standard) var(--motion-ease), box-shadow var(--motion-standard) var(--motion-ease); }
+.connectionPanel:focus-within { border-color: #a9c8b2; }
+.connectionPanel > div:last-child > button { min-height: 36px; padding-block: 9px; }
+.overview { display: flex; align-items: center; gap: 13px; padding: 11px 20px; }
+.connectionIcon { display: grid; place-items: center; width: 38px; height: 38px; color: #247b62; border: 1px solid #d3e8d9; border-radius: 12px; background: linear-gradient(145deg,#edf8ec,#d9ecde); box-shadow: inset 0 2px 0 #fff9, 0 3px 0 -1px #cbded1; }
+.connectionCopy { display: grid; gap: 3px; }
+.overline { font: 8px ui-monospace, Consolas, monospace; letter-spacing: .16em; color: #60776b; }
+.connectionCopy > strong { font-size: 12px; font-weight: 650; letter-spacing: .01em; }
+.state { display: grid; justify-items: end; gap: 5px; margin-left: auto; }
+.connectionBadge { display: inline-flex; align-items: center; gap: 7px; color: #65766b; font-size: 10px; font-weight: 600; transition: color var(--motion-fast) var(--motion-ease); }
+.connectionBadge i { width: 6px; height: 6px; border-radius: 50%; background: #9ea99c; box-shadow: 0 0 0 3px #9ea99c15; flex-shrink: 0; transition: background-color var(--motion-fast) var(--motion-ease), box-shadow var(--motion-fast) var(--motion-ease); }
+.receiving { color: #177453; }.receiving i { background: #26986a; box-shadow: 0 0 0 3px #26986a13; }
+.connectionHint { color: #5d745f; font-size: 9px; font-variant-numeric: tabular-nums; }
+.connectionError { margin: 0; padding: 9px 20px 12px; color: #926138; font-size: 11px; line-height: 1.6; border-top: 1px solid #e8eadc; background: #faf8ef; }
+.connectionDetails { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 0 22px 17px; }
+.connectionDetails > div { max-width: 700px; }
+.connectionDetails p { margin: 0; font-size: 12px; line-height: 1.7; color: #3f6354; }
+.connectionDetails .hint { margin-top: 7px; font-size: 11px; color: #5d745f; }
+.primaryButton, .secondaryButton { display: inline-flex; flex-shrink: 0; align-items: center; justify-content: center; gap: 8px; min-height: 42px; padding: 10px 15px; border-radius: 10px; border: 1px solid #17654c; background: #1a654e; color: #fff; font-size: 11px; font-weight: 650; box-shadow: inset 0 1px 0 #ffffff1c, 0 3px 0 #0d4234; transition: transform var(--motion-fast) var(--motion-ease), background-color var(--motion-fast) var(--motion-ease), border-color var(--motion-fast) var(--motion-ease), box-shadow var(--motion-fast) var(--motion-ease); }
+.primaryButton:hover:enabled { background: #237c60; box-shadow: inset 0 1px 0 #ffffff1c, 0 4px 0 #0d4234; }
+.primaryButton:active:enabled, .secondaryButton:active:enabled { box-shadow: inset 0 1px 2px #0d42341a; }
+.primaryButton:disabled { opacity: .5; box-shadow: none; }.secondaryButton { color: #315d4d; background: #fff; border-color: #c5d9ca; box-shadow: 0 2px 0 #dce7df; }
+.secondaryButton:hover:enabled { border-color: #9fc5ac; background: #edf6ed; }
+.primaryButton:active:enabled { background: #17543f; }
+.secondaryButton:active:enabled { background: #dfecdf; }
+.connectionPanel button:focus-visible { outline: 2px solid #247b59; outline-offset: -4px; box-shadow: none; }
+.connectionPanel .primaryButton:focus-visible { outline-color: #c5edc9; }
+.spinner { animation: spin 1s linear infinite; }@keyframes spin { to { transform: rotate(360deg); } }
+@media (hover: hover) and (pointer: fine) {
+  .connectionPanel:hover { border-color: #bad1c1; box-shadow: 0 2px 0 #fff inset, 0 5px 14px #173b3208; }
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .primaryButton:hover:enabled, .secondaryButton:hover:enabled { transform: translateY(-1px); }
+  .primaryButton:active:enabled, .secondaryButton:active:enabled { transform: translateY(1px); }
+}
+@media (max-width: 600px) { .overview { padding: 14px; flex-wrap: wrap; gap: 10px; }.state { flex: 1; }.connectionBadge { font-size: 9px; }.connectionHint { max-width: 170px; text-align: right; }.connectionDetails { flex-direction: column; align-items: stretch; padding-inline: 18px; }.connectionIcon { width: 32px; height: 32px; }.connectionError { padding-inline: 14px; } }
+@media (prefers-reduced-motion: reduce) { .spinner { animation: none; }.connectionPanel, .connectionBadge, .connectionBadge i, .primaryButton, .secondaryButton { transition: none; } }
+@media (forced-colors: active) {
+  .connectionPanel, .connectionPanel:hover, .connectionPanel:focus-within { border-color: CanvasText; box-shadow: none; }
+  .primaryButton, .secondaryButton { border-color: ButtonText; box-shadow: none; }
+  .connectionPanel button:focus-visible, .connectionPanel .primaryButton:focus-visible { outline-color: Highlight; box-shadow: none; }
+}

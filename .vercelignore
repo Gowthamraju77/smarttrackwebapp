@@ -1,0 +1,12 @@
+firmware/
+.env*
+.vercel/
+node_modules/
+.next/
+ml/
+tests/
+docs/
+database/
+*.tsbuildinfo
+.local/
+scripts/

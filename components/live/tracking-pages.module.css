@@ -1,0 +1,73 @@
+.page { display: grid; min-width: 0; gap: 24px; color: var(--ink); }
+.heading { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 5px 0; }
+.heading p { margin: 0 0 8px; color: #58796c; font-size: 10px; letter-spacing: .15em; text-transform: uppercase; }
+.heading h1 { margin: 0; font-size: clamp(29px, 3.4vw, 42px); font-weight: 540; letter-spacing: -.055em; line-height: 1.2; }
+.heading div > span { display: block; margin-top: 10px; font-size: 12px; color: #597268; }
+.subtle, .sectionLink { display: inline-flex; align-items: center; gap: 9px; color: #4b7260; font-size: 11px; }
+.sectionLink { min-height: 40px; padding: 8px 13px; border: 1px solid #cfdfd6; border-radius: 12px; background: #f8fcf6; box-shadow: 0 2px 0 #dce8dd80, 0 5px 12px #214d3408; transition: transform var(--motion-fast, 160ms) var(--motion-ease, cubic-bezier(.22, 1, .36, 1)), background-color var(--motion-fast, 160ms) ease, border-color var(--motion-fast, 160ms) ease, box-shadow var(--motion-fast, 160ms) ease; }
+.sectionLink > svg { transition: transform var(--motion-fast, 160ms) var(--motion-ease, cubic-bezier(.22, 1, .36, 1)); }
+.liveStage { --device-map-height: clamp(480px, 73vh, 920px); }
+.flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 0; margin: 3px 0 4px; list-style: none; }
+.flow li { position: relative; isolation: isolate; display: flex; align-items: center; gap: 15px; min-width: 0; padding: 17px 20px; border: 1px solid #d3e2dc; border-radius: 17px; background: linear-gradient(145deg, #fbfdf9e8, #eaf3ece0); box-shadow: 0 3px 0 #d9e5dc65, 0 10px 24px #214d340a; transition: border-color var(--motion-standard, 240ms) ease, box-shadow var(--motion-standard, 240ms) ease, transform var(--motion-standard, 240ms) var(--motion-ease, cubic-bezier(.22, 1, .36, 1)); }
+.flow li::before { content: ""; position: absolute; z-index: -1; inset: 0; border-radius: inherit; background: linear-gradient(130deg, #e3f3e8, #f4faf3); opacity: 0; pointer-events: none; transition: opacity var(--motion-standard, 240ms) ease; }
+.flow li > span { display: grid; width: 39px; height: 39px; flex: 0 0 39px; place-items: center; color: #618574; border: 1px solid #c5dacc; border-radius: 12px; background: #eef7ed; box-shadow: 0 2px 0 #b8cfbd55; transform: perspective(350px) rotateY(-8deg) rotateX(5deg); transition: color var(--motion-fast, 160ms) ease, background-color var(--motion-standard, 240ms) ease, border-color var(--motion-standard, 240ms) ease, transform var(--motion-standard, 240ms) var(--motion-ease, cubic-bezier(.22, 1, .36, 1)); }
+.flow small { display: block; margin-bottom: 3px; color: #698172; font: 10px ui-monospace, monospace; }
+.flow strong { font-size: 12px; font-weight: 560; }
+.flow li[aria-current="step"] { border-color: #aacfbf; box-shadow: 0 3px 0 #bbd6c465, 0 10px 24px #214d3410; transform: translateY(-2px); }
+.flow li[aria-current="step"]::before { opacity: 1; }
+.flow li[aria-current="step"] > span { color: #346b50; border-color: #abcdb8; background-color: #e4f3e7; transform: perspective(350px) rotateY(0) rotateX(0); }
+.flow li[data-done="true"] > span { background: #d4eadd; color: #285c44; }
+.journeyLayout { display: grid; grid-template-columns: minmax(340px, .92fr) minmax(0, 1.6fr); align-items: start; gap: 24px; }
+.planningMap { position: sticky; top: 24px; min-width: 0; --device-map-height: clamp(460px, 66vh, 750px); }
+.guidance { position: relative; isolation: isolate; padding: 24px 27px; border: 1px solid #c5ddcf; border-radius: 23px; background: linear-gradient(115deg, #e3f1e8, #f7faf4 65%, #edf0fa); box-shadow: 0 4px 0 #cadcd160, 0 12px 28px #214d3408, inset 0 1px 0 #fff; transition: border-color var(--motion-standard, 240ms) ease, box-shadow var(--motion-standard, 240ms) ease; }
+.guidance::before { content: ""; position: absolute; z-index: -1; inset: 0; border-radius: inherit; background: linear-gradient(115deg, #fff0db, #fdf9ed); opacity: 0; pointer-events: none; transition: opacity var(--motion-standard, 240ms) ease; }
+.guidanceMain { display: flex; gap: 17px; align-items: center; }
+.directionTile { display: grid; place-items: center; width: 62px; height: 62px; flex: 0 0 62px; border: 1px solid #b9d6c8; border-radius: 18px; color: #32694c; background: linear-gradient(145deg, #fcfff8, #c7e4d5); box-shadow: 0 4px 0 #a6cbb545, 0 10px 22px #23472f10; transform: perspective(450px) rotateY(-10deg) rotateX(6deg); transition: color var(--motion-standard, 240ms) ease, border-color var(--motion-standard, 240ms) ease, transform var(--motion-standard, 240ms) var(--motion-ease, cubic-bezier(.22, 1, .36, 1)); }
+.guidance[data-phase="active"] .directionTile { transform: perspective(450px) rotateY(0) rotateX(0); }
+.guidanceMain p { margin: 0 0 5px; color: #577567; font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
+.guidanceMain h2 { margin: 0; font-size: clamp(19px, 2.3vw, 28px); font-weight: 550; letter-spacing: -.035em; }
+.guidanceMain div > span { display: block; margin-top: 8px; color: #536e61; font-size: 12px; overflow-wrap: anywhere; }
+.guidanceMain i { padding: 0 11px; font-style: normal; color: #779880; }
+.guidance[data-deviation="off-route"] { border-color: #e2cda8; }
+.guidance[data-deviation="off-route"]::before { opacity: 1; }
+.guidance[data-deviation="off-route"] .directionTile { color: #875c28; border-color: #d9c49f; }
+.navigationMetrics { display: grid; grid-template-columns: 1.25fr repeat(3, 1fr); margin-top: 24px; padding-top: 20px; border-top: 1px solid #cbded266; gap: 20px; }
+.navigationMetrics div > span { display: flex; gap: 6px; align-items: center; margin-bottom: 6px; color: #5b7566; font-size: 10px; }
+.navigationMetrics strong, .navigationMetrics output { font-size: clamp(20px, 2.7vw, 30px); font-weight: 540; letter-spacing: -.045em; font-variant-numeric: tabular-nums; }
+.navigationMetrics output { font-family: var(--font-mono, ui-monospace, monospace); }
+.navigationMetrics small { font-size: 11px; color: #628070; font-weight: 400; letter-spacing: 0; }
+.navigationStage { --device-map-height: clamp(460px, 61vh, 740px); }
+.navigationActions { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+.navigationActions p, .details { font-size: 12px; line-height: 1.8; color: #546e62; }
+.primary, .secondary { display: inline-flex; min-height: 44px; align-items: center; justify-content: center; gap: 9px; padding: 11px 19px; border: 1px solid #b6d2c2; border-radius: 12px; font-size: 12px; font-weight: 550; cursor: pointer; transition: transform var(--motion-fast, 160ms) var(--motion-ease, cubic-bezier(.22, 1, .36, 1)), background-color var(--motion-fast, 160ms) ease, border-color var(--motion-fast, 160ms) ease, box-shadow var(--motion-fast, 160ms) ease; }
+.primary { color: #f4fcf2; background: linear-gradient(130deg, #386d51, #244f40); box-shadow: 0 3px 0 #1e443020, 0 7px 16px #21452d14, inset 0 1px 0 #edffed15; }
+.secondary { color: #345e49; background: #edf6ed; }
+.primary:active:not(:disabled), .secondary:active:not(:disabled), .sectionLink:active { transform: translateY(0); box-shadow: 0 1px 3px #21452d14; transition-duration: 90ms; }
+.primary:focus-visible, .secondary:focus-visible, .sectionLink:focus-visible { outline: 2px solid var(--focus-ring, #438358); outline-offset: 4px; }
+.primary:disabled { opacity: .5; cursor: default; transform: none; }
+.details p { margin: 0 0 12px; }
+.empty { display: grid; justify-items: center; text-align: center; padding: 55px 24px 70px; min-height: 58vh; border: 1px solid #d7e4db; border-radius: 25px; background: radial-gradient(ellipse at 50% 12%, #dbede5, transparent 56%), linear-gradient(135deg, #f8fcf7, #eef4ef); box-shadow: 0 7px 0 #d9e5dd55, inset 0 1px 0 #fff; }
+.emptyCompass { display: grid; place-items: center; width: 140px; height: 126px; color: #5c8975; border: 1px solid #b7d4c3; border-radius: 30px; background: linear-gradient(140deg, #f9fff3, #cfe7dc); box-shadow: 0 8px 0 #aecfbd45, 0 22px 36px #35695114; transform: perspective(600px) rotateX(18deg) rotateZ(-8deg); }
+.emptyCompass svg:last-child { position: absolute; color: #346851; }
+.empty p { margin: 32px 0 8px; color: #658575; font-size: 11px; }
+.empty h2 { margin: 0; font-size: 30px; font-weight: 520; letter-spacing: -.045em; }
+.empty > span { max-width: 390px; margin: 13px 0 23px; color: #557263; font-size: 12px; line-height: 1.8; }
+@media (max-width: 1050px) { .journeyLayout { grid-template-columns: 1fr; } .planningMap { position: static; } .flow { gap: 10px; } .flow li { padding: 14px; gap: 10px; } }
+@media (max-width: 600px) { .heading { align-items: flex-start; flex-wrap: wrap; } .heading .subtle { font-size: 10px; } .page { gap: 18px; } .flow { gap: 7px; } .flow li { display: grid; gap: 8px; padding: 11px 9px; border-radius: 13px; } .flow strong { font-size: 10px; } .flow li > span { width: 30px; height: 30px; } .flow small { font-size: 8px; } .liveStage { --device-map-height: 68svh; } .planningMap { --device-map-height: 470px; } .guidance { padding: 20px 18px; } .directionTile { width: 44px; height: 48px; flex-basis: 44px; } .navigationMetrics { grid-template-columns: 1fr 1fr; gap: 20px; } .navigationActions { flex-wrap: wrap; } .navigationActions p { margin: 0; } .navigationStage { --device-map-height: 58svh; } }
+@media (hover: hover) and (pointer: fine) {
+  .sectionLink:hover { transform: translateY(-1px); background-color: #eaf5ed; border-color: #b6d1c2; box-shadow: 0 3px 0 #dce8dd70, 0 7px 16px #214d3410; }
+  .sectionLink:hover > svg { transform: translate(1px, -1px); }
+  .primary:hover:not(:disabled), .secondary:hover:not(:disabled) { transform: translateY(-1px); border-color: #8db7a1; }
+  .primary:hover:not(:disabled) { box-shadow: 0 4px 0 #1e443024, 0 10px 20px #21452d20, inset 0 1px 0 #edffed20; }
+  .secondary:hover:not(:disabled) { background-color: #e2f0e6; box-shadow: 0 5px 12px #21452d0d; }
+  .primary:active:not(:disabled), .secondary:active:not(:disabled), .sectionLink:active { transform: translateY(0); box-shadow: 0 1px 3px #21452d14; }
+  .sectionLink:active > svg { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .page, .page *, .page *::before, .page *::after { animation: none !important; transition: none !important; }
+  .flow li, .flow li[aria-current="step"], .flow li > span, .flow li[aria-current="step"] > span, .directionTile, .guidance[data-phase="active"] .directionTile, .emptyCompass, .primary, .secondary, .sectionLink, .sectionLink > svg { transform: none !important; }
+}
+@media (forced-colors: active) {
+  .flow li[aria-current="step"], .flow li[aria-current="step"] > span { border-color: Highlight; }
+  .primary:focus-visible, .secondary:focus-visible, .sectionLink:focus-visible { outline-color: Highlight; }
+}

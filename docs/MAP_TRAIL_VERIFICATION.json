@@ -1,0 +1,298 @@
+{
+  "status": "passed",
+  "verifiedAt": "2026-11-05T19:05:47.971Z",
+  "completedRounds": 10,
+  "initialAttempt": {
+    "status": "failed",
+    "initialAttempt": {
+      "status": "failed",
+      "rounds": [
+        {
+          "round": 1,
+          "checks": [
+            {
+              "command": "node node_modules/typescript/bin/tsc --noEmit",
+              "exitCode": 0,
+              "durationMs": 3097,
+              "output": ""
+            },
+            {
+              "command": "node --test tests/stationary-map.test.mjs tests/signal-stabilization.test.mjs",
+              "exitCode": 0,
+              "durationMs": 499,
+              "output": "✔ tiny GPS variations hold the original accepted sample without rewriting its timestamp (2.7275ms)\n✔ slow cumulative movement crosses the anchored threshold and is not held indefinitely (0.2327ms)\n✔ rolling and repeated input histories do not move the anchor or inflate suppression counts (0.2763ms)\n✔ identical reported coordinates can have a new genuine receipt without extra trail vertices (0.1528ms)\n✔ GPS gaps and source changes establish a fresh baseline (0.2024ms)\n✔ GPS distance uses the short arc across the international date line (0.2046ms)\n✔ invalid points and backwards receipts never move the displayed position (0.1768ms)\n✔ motion deadbands hold minor changes but pass a large gyro or acceleration change immediately (0.2746ms)\n✔ motion thresholds accumulate against accepted values instead of each noisy predecessor (0.1576ms)\n✔ a stale motion gap resets its baseline and duplicate receipts cannot invent motion (0.2051ms)\n✔ device restart resets both sensors while a persistent restart flag resets only once (0.229ms)\n✔ normal uint32 counter rollover is not mistaken for a reboot (0.1309ms)\n✔ BOOT with no receipt excludes old captures and GPS can return before fresh IMU (0.1487ms)\n✔ new relay epochs do not reuse pre-reconnect history as the active baseline (0.113ms)\n✔ initial waiting-to-capture hydration preserves GPS history older than the latest IMU (0.1368ms)\n✔ source inputs remain unchanged and output history stays bounded (2.1613ms)\n✔ consensus chooses an observed recurring position instead of the first outlier (2.1222ms)\n✔ physical units with gyro bias: still MPU holds regional drift and trims the display trail (1.6473ms)\n✔ unscaled raw: still MPU holds regional drift and trims the display trail (0.3925ms)\n✔ acceleration change immediately passes even sub-metre GPS movement (0.256ms)\n✔ rotation change immediately passes even sub-metre GPS movement (0.1954ms)\n✔ moving MPU passes repeated small changes without applying a GPS deadband (0.441ms)\n✔ absent, stale, saturated and zero MPU samples cannot hold GPS (2.311ms)\n✔ HTTP receipt changes with frozen device counters cannot sustain a hold (0.2717ms)\n✔ fast USB samples retain a four-second quiet window (5.9401ms)\n✔ two-second feed cadence can accumulate enough independent quiet samples (0.3838ms)\n✔ one distant GPS spike is held but sustained departure releases smooth travel (0.6234ms)\n✔ three consistent fixes in a new region cannot leave the marker stuck forever (0.2507ms)\n✔ GPS loss retains the displayed last-known point without adding trail or timestamps (0.217ms)\n✔ GPS return after a long gap and source changes establish new positions (0.2379ms)\n✔ counter restart clears the anchor; normal uint32 rollover retains it (0.2467ms)\n✔ invalid, repeated and out-of-order GPS fixes cannot inflate evidence (0.2738ms)\n✔ raw inputs and previous state stay immutable and output history stays bounded (1.0322ms)\n✔ physical evidence uses only complete fresh hardware vectors and never captured fallback (0.2355ms)\nℹ tests 34\nℹ suites 0\nℹ pass 34\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 427.3767\n"
+            },
+            {
+              "command": "node .local/trail-mode-check.cjs",
+              "exitCode": 1,
+              "durationMs": 13406,
+              "output": "AssertionError [ERR_ASSERTION]: Restoring the trail must restore the same rendered geometry\n\nfalse !== true\n\n    at C:\\Users\\muppa\\omnirush.ai\\smarttrackwebapp\\.local\\trail-mode-check.cjs:61:12\n"
+            }
+          ]
+        }
+      ]
+    },
+    "rounds": [
+      {
+        "round": 1,
+        "checks": [
+          {
+            "command": "node node_modules/typescript/bin/tsc --noEmit",
+            "exitCode": 0,
+            "durationMs": 1623,
+            "output": ""
+          },
+          {
+            "command": "node --test tests/stationary-map.test.mjs tests/signal-stabilization.test.mjs",
+            "exitCode": 0,
+            "durationMs": 472,
+            "output": "✔ tiny GPS variations hold the original accepted sample without rewriting its timestamp (3.0168ms)\n✔ slow cumulative movement crosses the anchored threshold and is not held indefinitely (0.3738ms)\n✔ rolling and repeated input histories do not move the anchor or inflate suppression counts (0.3549ms)\n✔ identical reported coordinates can have a new genuine receipt without extra trail vertices (0.2232ms)\n✔ GPS gaps and source changes establish a fresh baseline (0.3174ms)\n✔ GPS distance uses the short arc across the international date line (0.2212ms)\n✔ invalid points and backwards receipts never move the displayed position (0.2578ms)\n✔ motion deadbands hold minor changes but pass a large gyro or acceleration change immediately (0.4468ms)\n✔ motion thresholds accumulate against accepted values instead of each noisy predecessor (0.2539ms)\n✔ a stale motion gap resets its baseline and duplicate receipts cannot invent motion (0.3383ms)\n✔ device restart resets both sensors while a persistent restart flag resets only once (0.3365ms)\n✔ normal uint32 counter rollover is not mistaken for a reboot (0.1724ms)\n✔ BOOT with no receipt excludes old captures and GPS can return before fresh IMU (0.2914ms)\n✔ new relay epochs do not reuse pre-reconnect history as the active baseline (0.1865ms)\n✔ initial waiting-to-capture hydration preserves GPS history older than the latest IMU (0.1974ms)\n✔ source inputs remain unchanged and output history stays bounded (2.1446ms)\n✔ consensus chooses an observed recurring position instead of the first outlier (1.9572ms)\n✔ physical units with gyro bias: still MPU holds regional drift and trims the display trail (1.5516ms)\n✔ unscaled raw: still MPU holds regional drift and trims the display trail (0.3959ms)\n✔ acceleration change immediately passes even sub-metre GPS movement (0.297ms)\n✔ rotation change immediately passes even sub-metre GPS movement (0.1796ms)\n✔ moving MPU passes repeated small changes without applying a GPS deadband (0.4076ms)\n✔ absent, stale, saturated and zero MPU samples cannot hold GPS (2.2517ms)\n✔ HTTP receipt changes with frozen device counters cannot sustain a hold (0.3445ms)\n✔ fast USB samples retain a four-second quiet window (5.6201ms)\n✔ two-second feed cadence can accumulate enough independent quiet samples (0.3213ms)\n✔ one distant GPS spike is held but sustained departure releases smooth travel (0.4584ms)\n✔ three consistent fixes in a new region cannot leave the marker stuck forever (0.2158ms)\n✔ GPS loss retains the displayed last-known point without adding trail or timestamps (0.2028ms)\n✔ GPS return after a long gap and source changes establish new positions (0.2041ms)\n✔ counter restart clears the anchor; normal uint32 rollover retains it (0.1764ms)\n✔ invalid, repeated and out-of-order GPS fixes cannot inflate evidence (0.2169ms)\n✔ raw inputs and previous state stay immutable and output history stays bounded (0.979ms)\n✔ physical evidence uses only complete fresh hardware vectors and never captured fallback (0.2386ms)\nℹ tests 34\nℹ suites 0\nℹ pass 34\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 410.2348\n"
+          },
+          {
+            "command": "node .local/trail-mode-check.cjs",
+            "exitCode": 1,
+            "durationMs": 80507,
+            "output": "AssertionError [ERR_ASSERTION]: Expected trail hidden, found 16230 bright trail pixels\n    at trailPixels (C:\\Users\\muppa\\omnirush.ai\\smarttrackwebapp\\.local\\trail-mode-check.cjs:63:14)\n    at async C:\\Users\\muppa\\omnirush.ai\\smarttrackwebapp\\.local\\trail-mode-check.cjs:68:20\n"
+          }
+        ]
+      }
+    ]
+  },
+  "build": {
+    "command": "npm run build",
+    "exitCode": 0,
+    "warning": "Existing hardware-status.module.css autoprefixer warning about end value."
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "checks": [
+        {
+          "command": "node node_modules/typescript/bin/tsc --noEmit",
+          "exitCode": 0,
+          "durationMs": 1630,
+          "output": ""
+        },
+        {
+          "command": "node --test tests/stationary-map.test.mjs tests/signal-stabilization.test.mjs",
+          "exitCode": 0,
+          "durationMs": 533,
+          "output": "✔ tiny GPS variations hold the original accepted sample without rewriting its timestamp (3.0761ms)\n✔ slow cumulative movement crosses the anchored threshold and is not held indefinitely (0.2389ms)\n✔ rolling and repeated input histories do not move the anchor or inflate suppression counts (0.2839ms)\n✔ identical reported coordinates can have a new genuine receipt without extra trail vertices (0.1815ms)\n✔ GPS gaps and source changes establish a fresh baseline (0.2333ms)\n✔ GPS distance uses the short arc across the international date line (0.2235ms)\n✔ invalid points and backwards receipts never move the displayed position (0.1797ms)\n✔ motion deadbands hold minor changes but pass a large gyro or acceleration change immediately (0.3276ms)\n✔ motion thresholds accumulate against accepted values instead of each noisy predecessor (0.1831ms)\n✔ a stale motion gap resets its baseline and duplicate receipts cannot invent motion (0.2643ms)\n✔ device restart resets both sensors while a persistent restart flag resets only once (0.2822ms)\n✔ normal uint32 counter rollover is not mistaken for a reboot (0.1562ms)\n✔ BOOT with no receipt excludes old captures and GPS can return before fresh IMU (0.1813ms)\n✔ new relay epochs do not reuse pre-reconnect history as the active baseline (0.1148ms)\n✔ initial waiting-to-capture hydration preserves GPS history older than the latest IMU (0.1591ms)\n✔ source inputs remain unchanged and output history stays bounded (2.5633ms)\n✔ consensus chooses an observed recurring position instead of the first outlier (2.3677ms)\n✔ physical units with gyro bias: still MPU holds regional drift and trims the display trail (1.7193ms)\n✔ unscaled raw: still MPU holds regional drift and trims the display trail (0.4115ms)\n✔ acceleration change immediately passes even sub-metre GPS movement (0.3257ms)\n✔ rotation change immediately passes even sub-metre GPS movement (0.1865ms)\n✔ moving MPU passes repeated small changes without applying a GPS deadband (0.6294ms)\n✔ absent, stale, saturated and zero MPU samples cannot hold GPS (2.8321ms)\n✔ HTTP receipt changes with frozen device counters cannot sustain a hold (0.4649ms)\n✔ fast USB samples retain a four-second quiet window (8.5762ms)\n✔ two-second feed cadence can accumulate enough independent quiet samples (0.4282ms)\n✔ one distant GPS spike is held but sustained departure releases smooth travel (0.5778ms)\n✔ three consistent fixes in a new region cannot leave the marker stuck forever (0.2681ms)\n✔ GPS loss retains the displayed last-known point without adding trail or timestamps (0.2487ms)\n✔ GPS return after a long gap and source changes establish new positions (0.2508ms)\n✔ counter restart clears the anchor; normal uint32 rollover retains it (0.2505ms)\n✔ invalid, repeated and out-of-order GPS fixes cannot inflate evidence (0.2461ms)\n✔ raw inputs and previous state stay immutable and output history stays bounded (1.1269ms)\n✔ physical evidence uses only complete fresh hardware vectors and never captured fallback (0.2672ms)\nℹ tests 34\nℹ suites 0\nℹ pass 34\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 466.6641\n"
+        },
+        {
+          "command": "node .local/trail-mode-check.cjs",
+          "exitCode": 0,
+          "durationMs": 37452,
+          "output": "{\"status\":\"passed\",\"origin\":\"http://127.0.0.1:3111\",\"routes\":[\"/\",\"/map\",\"/journeys\",\"/navigation\",\"/devices\"],\"renderedTrailToggles\":true,\"trailPixels\":{\"shown\":900,\"hidden\":0,\"restored\":900},\"rawCapturesPreserved\":true,\"reloadPersists\":true,\"tabsSynchronized\":true,\"storageFailureHandled\":true,\"historicalPositionSupported\":true,\"mobileWidths\":[320,360,390,768],\"keyboardWorks\":true,\"browserErrors\":0,\"feedResponses\":31}\n"
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "checks": [
+        {
+          "command": "node node_modules/typescript/bin/tsc --noEmit",
+          "exitCode": 0,
+          "durationMs": 1972,
+          "output": ""
+        },
+        {
+          "command": "node --test tests/stationary-map.test.mjs tests/signal-stabilization.test.mjs",
+          "exitCode": 0,
+          "durationMs": 569,
+          "output": "✔ tiny GPS variations hold the original accepted sample without rewriting its timestamp (3.2564ms)\n✔ slow cumulative movement crosses the anchored threshold and is not held indefinitely (0.282ms)\n✔ rolling and repeated input histories do not move the anchor or inflate suppression counts (0.2959ms)\n✔ identical reported coordinates can have a new genuine receipt without extra trail vertices (0.1932ms)\n✔ GPS gaps and source changes establish a fresh baseline (0.2481ms)\n✔ GPS distance uses the short arc across the international date line (0.2513ms)\n✔ invalid points and backwards receipts never move the displayed position (0.2101ms)\n✔ motion deadbands hold minor changes but pass a large gyro or acceleration change immediately (0.349ms)\n✔ motion thresholds accumulate against accepted values instead of each noisy predecessor (0.2046ms)\n✔ a stale motion gap resets its baseline and duplicate receipts cannot invent motion (0.2445ms)\n✔ device restart resets both sensors while a persistent restart flag resets only once (0.2829ms)\n✔ normal uint32 counter rollover is not mistaken for a reboot (0.1672ms)\n✔ BOOT with no receipt excludes old captures and GPS can return before fresh IMU (0.1887ms)\n✔ new relay epochs do not reuse pre-reconnect history as the active baseline (0.145ms)\n✔ initial waiting-to-capture hydration preserves GPS history older than the latest IMU (0.1512ms)\n✔ source inputs remain unchanged and output history stays bounded (3.0246ms)\n✔ consensus chooses an observed recurring position instead of the first outlier (2.8211ms)\n✔ physical units with gyro bias: still MPU holds regional drift and trims the display trail (2.074ms)\n✔ unscaled raw: still MPU holds regional drift and trims the display trail (0.4737ms)\n✔ acceleration change immediately passes even sub-metre GPS movement (0.3271ms)\n✔ rotation change immediately passes even sub-metre GPS movement (0.2367ms)\n✔ moving MPU passes repeated small changes without applying a GPS deadband (1.9753ms)\n✔ absent, stale, saturated and zero MPU samples cannot hold GPS (0.8177ms)\n✔ HTTP receipt changes with frozen device counters cannot sustain a hold (0.2758ms)\n✔ fast USB samples retain a four-second quiet window (7.5523ms)\n✔ two-second feed cadence can accumulate enough independent quiet samples (0.7392ms)\n✔ one distant GPS spike is held but sustained departure releases smooth travel (0.4832ms)\n✔ three consistent fixes in a new region cannot leave the marker stuck forever (0.2798ms)\n✔ GPS loss retains the displayed last-known point without adding trail or timestamps (0.2682ms)\n✔ GPS return after a long gap and source changes establish new positions (0.2873ms)\n✔ counter restart clears the anchor; normal uint32 rollover retains it (0.2417ms)\n✔ invalid, repeated and out-of-order GPS fixes cannot inflate evidence (0.3ms)\n✔ raw inputs and previous state stay immutable and output history stays bounded (1.2215ms)\n✔ physical evidence uses only complete fresh hardware vectors and never captured fallback (0.2789ms)\nℹ tests 34\nℹ suites 0\nℹ pass 34\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 493.5803\n"
+        },
+        {
+          "command": "node .local/trail-mode-check.cjs",
+          "exitCode": 0,
+          "durationMs": 42934,
+          "output": "{\"status\":\"passed\",\"origin\":\"http://127.0.0.1:3111\",\"routes\":[\"/\",\"/map\",\"/journeys\",\"/navigation\",\"/devices\"],\"renderedTrailToggles\":true,\"trailPixels\":{\"shown\":900,\"hidden\":0,\"restored\":900},\"rawCapturesPreserved\":true,\"reloadPersists\":true,\"tabsSynchronized\":true,\"storageFailureHandled\":true,\"historicalPositionSupported\":true,\"mobileWidths\":[320,360,390,768],\"keyboardWorks\":true,\"browserErrors\":0,\"feedResponses\":33}\n"
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "checks": [
+        {
+          "command": "node node_modules/typescript/bin/tsc --noEmit",
+          "exitCode": 0,
+          "durationMs": 1920,
+          "output": ""
+        },
+        {
+          "command": "node --test tests/stationary-map.test.mjs tests/signal-stabilization.test.mjs",
+          "exitCode": 0,
+          "durationMs": 604,
+          "output": "✔ tiny GPS variations hold the original accepted sample without rewriting its timestamp (4.1539ms)\n✔ slow cumulative movement crosses the anchored threshold and is not held indefinitely (0.3479ms)\n✔ rolling and repeated input histories do not move the anchor or inflate suppression counts (0.3595ms)\n✔ identical reported coordinates can have a new genuine receipt without extra trail vertices (0.2604ms)\n✔ GPS gaps and source changes establish a fresh baseline (0.2947ms)\n✔ GPS distance uses the short arc across the international date line (0.2968ms)\n✔ invalid points and backwards receipts never move the displayed position (0.2658ms)\n✔ motion deadbands hold minor changes but pass a large gyro or acceleration change immediately (0.4254ms)\n✔ motion thresholds accumulate against accepted values instead of each noisy predecessor (0.2434ms)\n✔ a stale motion gap resets its baseline and duplicate receipts cannot invent motion (0.2965ms)\n✔ device restart resets both sensors while a persistent restart flag resets only once (0.3685ms)\n✔ normal uint32 counter rollover is not mistaken for a reboot (0.2064ms)\n✔ BOOT with no receipt excludes old captures and GPS can return before fresh IMU (0.2389ms)\n✔ new relay epochs do not reuse pre-reconnect history as the active baseline (0.1683ms)\n✔ initial waiting-to-capture hydration preserves GPS history older than the latest IMU (0.214ms)\n✔ source inputs remain unchanged and output history stays bounded (3.538ms)\n✔ consensus chooses an observed recurring position instead of the first outlier (3.5376ms)\n✔ physical units with gyro bias: still MPU holds regional drift and trims the display trail (2.4713ms)\n✔ unscaled raw: still MPU holds regional drift and trims the display trail (0.581ms)\n✔ acceleration change immediately passes even sub-metre GPS movement (0.4231ms)\n✔ rotation change immediately passes even sub-metre GPS movement (0.3049ms)\n✔ moving MPU passes repeated small changes without applying a GPS deadband (2.4867ms)\n✔ absent, stale, saturated and zero MPU samples cannot hold GPS (0.919ms)\n✔ HTTP receipt changes with frozen device counters cannot sustain a hold (0.3237ms)\n✔ fast USB samples retain a four-second quiet window (8.6141ms)\n✔ two-second feed cadence can accumulate enough independent quiet samples (0.519ms)\n✔ one distant GPS spike is held but sustained departure releases smooth travel (0.7334ms)\n✔ three consistent fixes in a new region cannot leave the marker stuck forever (0.3474ms)\n✔ GPS loss retains the displayed last-known point without adding trail or timestamps (0.2898ms)\n✔ GPS return after a long gap and source changes establish new positions (0.2932ms)\n✔ counter restart clears the anchor; normal uint32 rollover retains it (0.2637ms)\n✔ invalid, repeated and out-of-order GPS fixes cannot inflate evidence (0.3654ms)\n✔ raw inputs and previous state stay immutable and output history stays bounded (1.452ms)\n✔ physical evidence uses only complete fresh hardware vectors and never captured fallback (0.3658ms)\nℹ tests 34\nℹ suites 0\nℹ pass 34\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 534.6764\n"
+        },
+        {
+          "command": "node .local/trail-mode-check.cjs",
+          "exitCode": 0,
+          "durationMs": 45908,
+          "output": "{\"status\":\"passed\",\"origin\":\"http://127.0.0.1:3111\",\"routes\":[\"/\",\"/map\",\"/journeys\",\"/navigation\",\"/devices\"],\"renderedTrailToggles\":true,\"trailPixels\":{\"shown\":271,\"hidden\":0,\"restored\":900},\"rawCapturesPreserved\":true,\"reloadPersists\":true,\"tabsSynchronized\":true,\"storageFailureHandled\":true,\"historicalPositionSupported\":true,\"mobileWidths\":[320,360,390,768],\"keyboardWorks\":true,\"browserErrors\":0,\"feedResponses\":32}\n"
+        }
+      ]
+    },
+    {
+      "round": 4,
+      "checks": [
+        {
+          "command": "node node_modules/typescript/bin/tsc --noEmit",
+          "exitCode": 0,
+          "durationMs": 1890,
+          "output": ""
+        },
+        {
+          "command": "node --test tests/stationary-map.test.mjs tests/signal-stabilization.test.mjs",
+          "exitCode": 0,
+          "durationMs": 578,
+          "output": "✔ tiny GPS variations hold the original accepted sample without rewriting its timestamp (4.5875ms)\n✔ slow cumulative movement crosses the anchored threshold and is not held indefinitely (0.4927ms)\n✔ rolling and repeated input histories do not move the anchor or inflate suppression counts (0.552ms)\n✔ identical reported coordinates can have a new genuine receipt without extra trail vertices (0.3403ms)\n✔ GPS gaps and source changes establish a fresh baseline (0.419ms)\n✔ GPS distance uses the short arc across the international date line (0.4178ms)\n✔ invalid points and backwards receipts never move the displayed position (0.3488ms)\n✔ motion deadbands hold minor changes but pass a large gyro or acceleration change immediately (0.5681ms)\n✔ motion thresholds accumulate against accepted values instead of each noisy predecessor (0.3339ms)\n✔ a stale motion gap resets its baseline and duplicate receipts cannot invent motion (0.4902ms)\n✔ device restart resets both sensors while a persistent restart flag resets only once (0.4514ms)\n✔ normal uint32 counter rollover is not mistaken for a reboot (0.2663ms)\n✔ BOOT with no receipt excludes old captures and GPS can return before fresh IMU (0.3223ms)\n✔ new relay epochs do not reuse pre-reconnect history as the active baseline (0.2693ms)\n✔ initial waiting-to-capture hydration preserves GPS history older than the latest IMU (0.2612ms)\n✔ source inputs remain unchanged and output history stays bounded (2.6249ms)\n✔ consensus chooses an observed recurring position instead of the first outlier (2.6656ms)\n✔ physical units with gyro bias: still MPU holds regional drift and trims the display trail (2.1147ms)\n✔ unscaled raw: still MPU holds regional drift and trims the display trail (0.481ms)\n✔ acceleration change immediately passes even sub-metre GPS movement (0.3377ms)\n✔ rotation change immediately passes even sub-metre GPS movement (0.2486ms)\n✔ moving MPU passes repeated small changes without applying a GPS deadband (0.5741ms)\n✔ absent, stale, saturated and zero MPU samples cannot hold GPS (2.2908ms)\n✔ HTTP receipt changes with frozen device counters cannot sustain a hold (0.3319ms)\n✔ fast USB samples retain a four-second quiet window (7.4462ms)\n✔ two-second feed cadence can accumulate enough independent quiet samples (0.7708ms)\n✔ one distant GPS spike is held but sustained departure releases smooth travel (0.5716ms)\n✔ three consistent fixes in a new region cannot leave the marker stuck forever (0.2899ms)\n✔ GPS loss retains the displayed last-known point without adding trail or timestamps (0.2668ms)\n✔ GPS return after a long gap and source changes establish new positions (0.2604ms)\n✔ counter restart clears the anchor; normal uint32 rollover retains it (0.2942ms)\n✔ invalid, repeated and out-of-order GPS fixes cannot inflate evidence (0.342ms)\n✔ raw inputs and previous state stay immutable and output history stays bounded (1.2586ms)\n✔ physical evidence uses only complete fresh hardware vectors and never captured fallback (0.3129ms)\nℹ tests 34\nℹ suites 0\nℹ pass 34\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 506.6281\n"
+        },
+        {
+          "command": "node .local/trail-mode-check.cjs",
+          "exitCode": 0,
+          "durationMs": 42940,
+          "output": "{\"status\":\"passed\",\"origin\":\"http://127.0.0.1:3111\",\"routes\":[\"/\",\"/map\",\"/journeys\",\"/navigation\",\"/devices\"],\"renderedTrailToggles\":true,\"trailPixels\":{\"shown\":900,\"hidden\":0,\"restored\":900},\"rawCapturesPreserved\":true,\"reloadPersists\":true,\"tabsSynchronized\":true,\"storageFailureHandled\":true,\"historicalPositionSupported\":true,\"mobileWidths\":[320,360,390,768],\"keyboardWorks\":true,\"browserErrors\":0,\"feedResponses\":31}\n"
+        }
+      ]
+    },
+    {
+      "round": 5,
+      "checks": [
+        {
+          "command": "node node_modules/typescript/bin/tsc --noEmit",
+          "exitCode": 0,
+          "durationMs": 1959,
+          "output": ""
+        },
+        {
+          "command": "node --test tests/stationary-map.test.mjs tests/signal-stabilization.test.mjs",
+          "exitCode": 0,
+          "durationMs": 608,
+          "output": "✔ tiny GPS variations hold the original accepted sample without rewriting its timestamp (3.1079ms)\n✔ slow cumulative movement crosses the anchored threshold and is not held indefinitely (0.2573ms)\n✔ rolling and repeated input histories do not move the anchor or inflate suppression counts (0.2824ms)\n✔ identical reported coordinates can have a new genuine receipt without extra trail vertices (0.2212ms)\n✔ GPS gaps and source changes establish a fresh baseline (0.3585ms)\n✔ GPS distance uses the short arc across the international date line (0.2817ms)\n✔ invalid points and backwards receipts never move the displayed position (0.2089ms)\n✔ motion deadbands hold minor changes but pass a large gyro or acceleration change immediately (0.3296ms)\n✔ motion thresholds accumulate against accepted values instead of each noisy predecessor (0.1856ms)\n✔ a stale motion gap resets its baseline and duplicate receipts cannot invent motion (0.2577ms)\n✔ device restart resets both sensors while a persistent restart flag resets only once (0.2823ms)\n✔ normal uint32 counter rollover is not mistaken for a reboot (0.168ms)\n✔ BOOT with no receipt excludes old captures and GPS can return before fresh IMU (0.1849ms)\n✔ new relay epochs do not reuse pre-reconnect history as the active baseline (0.134ms)\n✔ initial waiting-to-capture hydration preserves GPS history older than the latest IMU (0.1386ms)\n✔ source inputs remain unchanged and output history stays bounded (2.3693ms)\n✔ consensus chooses an observed recurring position instead of the first outlier (2.6031ms)\n✔ physical units with gyro bias: still MPU holds regional drift and trims the display trail (2.0331ms)\n✔ unscaled raw: still MPU holds regional drift and trims the display trail (0.525ms)\n✔ acceleration change immediately passes even sub-metre GPS movement (0.4876ms)\n✔ rotation change immediately passes even sub-metre GPS movement (0.3572ms)\n✔ moving MPU passes repeated small changes without applying a GPS deadband (0.7957ms)\n✔ absent, stale, saturated and zero MPU samples cannot hold GPS (2.4009ms)\n✔ HTTP receipt changes with frozen device counters cannot sustain a hold (0.3245ms)\n✔ fast USB samples retain a four-second quiet window (7.3104ms)\n✔ two-second feed cadence can accumulate enough independent quiet samples (0.3796ms)\n✔ one distant GPS spike is held but sustained departure releases smooth travel (0.4532ms)\n✔ three consistent fixes in a new region cannot leave the marker stuck forever (0.2728ms)\n✔ GPS loss retains the displayed last-known point without adding trail or timestamps (0.245ms)\n✔ GPS return after a long gap and source changes establish new positions (0.2459ms)\n✔ counter restart clears the anchor; normal uint32 rollover retains it (0.3301ms)\n✔ invalid, repeated and out-of-order GPS fixes cannot inflate evidence (0.3093ms)\n✔ raw inputs and previous state stay immutable and output history stays bounded (1.2227ms)\n✔ physical evidence uses only complete fresh hardware vectors and never captured fallback (0.2986ms)\nℹ tests 34\nℹ suites 0\nℹ pass 34\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 533.0595\n"
+        },
+        {
+          "command": "node .local/trail-mode-check.cjs",
+          "exitCode": 0,
+          "durationMs": 39790,
+          "output": "{\"status\":\"passed\",\"origin\":\"http://127.0.0.1:3111\",\"routes\":[\"/\",\"/map\",\"/journeys\",\"/navigation\",\"/devices\"],\"renderedTrailToggles\":true,\"trailPixels\":{\"shown\":900,\"hidden\":0,\"restored\":900},\"rawCapturesPreserved\":true,\"reloadPersists\":true,\"tabsSynchronized\":true,\"storageFailureHandled\":true,\"historicalPositionSupported\":true,\"mobileWidths\":[320,360,390,768],\"keyboardWorks\":true,\"browserErrors\":0,\"feedResponses\":31}\n"
+        }
+      ]
+    },
+    {
+      "round": 6,
+      "checks": [
+        {
+          "command": "node node_modules/typescript/bin/tsc --noEmit",
+          "exitCode": 0,
+          "durationMs": 1980,
+          "output": ""
+        },
+        {
+          "command": "node --test tests/stationary-map.test.mjs tests/signal-stabilization.test.mjs",
+          "exitCode": 0,
+          "durationMs": 596,
+          "output": "✔ tiny GPS variations hold the original accepted sample without rewriting its timestamp (3.4596ms)\n✔ slow cumulative movement crosses the anchored threshold and is not held indefinitely (0.2957ms)\n✔ rolling and repeated input histories do not move the anchor or inflate suppression counts (0.332ms)\n✔ identical reported coordinates can have a new genuine receipt without extra trail vertices (0.2131ms)\n✔ GPS gaps and source changes establish a fresh baseline (0.2465ms)\n✔ GPS distance uses the short arc across the international date line (0.2708ms)\n✔ invalid points and backwards receipts never move the displayed position (0.2207ms)\n✔ motion deadbands hold minor changes but pass a large gyro or acceleration change immediately (0.3583ms)\n✔ motion thresholds accumulate against accepted values instead of each noisy predecessor (0.2081ms)\n✔ a stale motion gap resets its baseline and duplicate receipts cannot invent motion (0.2636ms)\n✔ device restart resets both sensors while a persistent restart flag resets only once (0.2896ms)\n✔ normal uint32 counter rollover is not mistaken for a reboot (0.1681ms)\n✔ BOOT with no receipt excludes old captures and GPS can return before fresh IMU (0.2035ms)\n✔ new relay epochs do not reuse pre-reconnect history as the active baseline (0.1395ms)\n✔ initial waiting-to-capture hydration preserves GPS history older than the latest IMU (0.187ms)\n✔ source inputs remain unchanged and output history stays bounded (2.8703ms)\n✔ consensus chooses an observed recurring position instead of the first outlier (2.6857ms)\n✔ physical units with gyro bias: still MPU holds regional drift and trims the display trail (2.0943ms)\n✔ unscaled raw: still MPU holds regional drift and trims the display trail (0.557ms)\n✔ acceleration change immediately passes even sub-metre GPS movement (0.3437ms)\n✔ rotation change immediately passes even sub-metre GPS movement (0.2453ms)\n✔ moving MPU passes repeated small changes without applying a GPS deadband (0.5429ms)\n✔ absent, stale, saturated and zero MPU samples cannot hold GPS (2.325ms)\n✔ HTTP receipt changes with frozen device counters cannot sustain a hold (0.3275ms)\n✔ fast USB samples retain a four-second quiet window (7.4878ms)\n✔ two-second feed cadence can accumulate enough independent quiet samples (0.4238ms)\n✔ one distant GPS spike is held but sustained departure releases smooth travel (0.6791ms)\n✔ three consistent fixes in a new region cannot leave the marker stuck forever (0.2899ms)\n✔ GPS loss retains the displayed last-known point without adding trail or timestamps (0.2676ms)\n✔ GPS return after a long gap and source changes establish new positions (0.2657ms)\n✔ counter restart clears the anchor; normal uint32 rollover retains it (0.3031ms)\n✔ invalid, repeated and out-of-order GPS fixes cannot inflate evidence (0.3346ms)\n✔ raw inputs and previous state stay immutable and output history stays bounded (1.2448ms)\n✔ physical evidence uses only complete fresh hardware vectors and never captured fallback (0.3545ms)\nℹ tests 34\nℹ suites 0\nℹ pass 34\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 523.2981\n"
+        },
+        {
+          "command": "node .local/trail-mode-check.cjs",
+          "exitCode": 0,
+          "durationMs": 41712,
+          "output": "{\"status\":\"passed\",\"origin\":\"http://127.0.0.1:3111\",\"routes\":[\"/\",\"/map\",\"/journeys\",\"/navigation\",\"/devices\"],\"renderedTrailToggles\":true,\"trailPixels\":{\"shown\":900,\"hidden\":0,\"restored\":900},\"rawCapturesPreserved\":true,\"reloadPersists\":true,\"tabsSynchronized\":true,\"storageFailureHandled\":true,\"historicalPositionSupported\":true,\"mobileWidths\":[320,360,390,768],\"keyboardWorks\":true,\"browserErrors\":0,\"feedResponses\":37}\n"
+        }
+      ]
+    },
+    {
+      "round": 7,
+      "checks": [
+        {
+          "command": "node node_modules/typescript/bin/tsc --noEmit",
+          "exitCode": 0,
+          "durationMs": 1922,
+          "output": ""
+        },
+        {
+          "command": "node --test tests/stationary-map.test.mjs tests/signal-stabilization.test.mjs",
+          "exitCode": 0,
+          "durationMs": 610,
+          "output": "✔ tiny GPS variations hold the original accepted sample without rewriting its timestamp (4.6209ms)\n✔ slow cumulative movement crosses the anchored threshold and is not held indefinitely (0.2951ms)\n✔ rolling and repeated input histories do not move the anchor or inflate suppression counts (0.3106ms)\n✔ identical reported coordinates can have a new genuine receipt without extra trail vertices (0.1951ms)\n✔ GPS gaps and source changes establish a fresh baseline (0.255ms)\n✔ GPS distance uses the short arc across the international date line (0.2602ms)\n✔ invalid points and backwards receipts never move the displayed position (0.2264ms)\n✔ motion deadbands hold minor changes but pass a large gyro or acceleration change immediately (0.3425ms)\n✔ motion thresholds accumulate against accepted values instead of each noisy predecessor (0.1943ms)\n✔ a stale motion gap resets its baseline and duplicate receipts cannot invent motion (0.3126ms)\n✔ device restart resets both sensors while a persistent restart flag resets only once (0.2852ms)\n✔ normal uint32 counter rollover is not mistaken for a reboot (0.1758ms)\n✔ BOOT with no receipt excludes old captures and GPS can return before fresh IMU (0.3163ms)\n✔ new relay epochs do not reuse pre-reconnect history as the active baseline (0.1579ms)\n✔ initial waiting-to-capture hydration preserves GPS history older than the latest IMU (0.1889ms)\n✔ source inputs remain unchanged and output history stays bounded (2.487ms)\n✔ consensus chooses an observed recurring position instead of the first outlier (2.8856ms)\n✔ physical units with gyro bias: still MPU holds regional drift and trims the display trail (2.2628ms)\n✔ unscaled raw: still MPU holds regional drift and trims the display trail (0.5101ms)\n✔ acceleration change immediately passes even sub-metre GPS movement (0.3449ms)\n✔ rotation change immediately passes even sub-metre GPS movement (0.2536ms)\n✔ moving MPU passes repeated small changes without applying a GPS deadband (0.5381ms)\n✔ absent, stale, saturated and zero MPU samples cannot hold GPS (2.3389ms)\n✔ HTTP receipt changes with frozen device counters cannot sustain a hold (0.3293ms)\n✔ fast USB samples retain a four-second quiet window (7.659ms)\n✔ two-second feed cadence can accumulate enough independent quiet samples (0.4347ms)\n✔ one distant GPS spike is held but sustained departure releases smooth travel (0.4253ms)\n✔ three consistent fixes in a new region cannot leave the marker stuck forever (0.4697ms)\n✔ GPS loss retains the displayed last-known point without adding trail or timestamps (0.2844ms)\n✔ GPS return after a long gap and source changes establish new positions (0.2813ms)\n✔ counter restart clears the anchor; normal uint32 rollover retains it (0.3247ms)\n✔ invalid, repeated and out-of-order GPS fixes cannot inflate evidence (0.345ms)\n✔ raw inputs and previous state stay immutable and output history stays bounded (1.3094ms)\n✔ physical evidence uses only complete fresh hardware vectors and never captured fallback (0.3383ms)\nℹ tests 34\nℹ suites 0\nℹ pass 34\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 528.1524\n"
+        },
+        {
+          "command": "node .local/trail-mode-check.cjs",
+          "exitCode": 0,
+          "durationMs": 40969,
+          "output": "{\"status\":\"passed\",\"origin\":\"http://127.0.0.1:3111\",\"routes\":[\"/\",\"/map\",\"/journeys\",\"/navigation\",\"/devices\"],\"renderedTrailToggles\":true,\"trailPixels\":{\"shown\":900,\"hidden\":0,\"restored\":900},\"rawCapturesPreserved\":true,\"reloadPersists\":true,\"tabsSynchronized\":true,\"storageFailureHandled\":true,\"historicalPositionSupported\":true,\"mobileWidths\":[320,360,390,768],\"keyboardWorks\":true,\"browserErrors\":0,\"feedResponses\":34}\n"
+        }
+      ]
+    },
+    {
+      "round": 8,
+      "checks": [
+        {
+          "command": "node node_modules/typescript/bin/tsc --noEmit",
+          "exitCode": 0,
+          "durationMs": 1964,
+          "output": ""
+        },
+        {
+          "command": "node --test tests/stationary-map.test.mjs tests/signal-stabilization.test.mjs",
+          "exitCode": 0,
+          "durationMs": 614,
+          "output": "✔ tiny GPS variations hold the original accepted sample without rewriting its timestamp (4.5364ms)\n✔ slow cumulative movement crosses the anchored threshold and is not held indefinitely (0.3126ms)\n✔ rolling and repeated input histories do not move the anchor or inflate suppression counts (0.3196ms)\n✔ identical reported coordinates can have a new genuine receipt without extra trail vertices (0.2074ms)\n✔ GPS gaps and source changes establish a fresh baseline (0.2565ms)\n✔ GPS distance uses the short arc across the international date line (0.2586ms)\n✔ invalid points and backwards receipts never move the displayed position (0.2169ms)\n✔ motion deadbands hold minor changes but pass a large gyro or acceleration change immediately (0.3575ms)\n✔ motion thresholds accumulate against accepted values instead of each noisy predecessor (0.2005ms)\n✔ a stale motion gap resets its baseline and duplicate receipts cannot invent motion (0.2492ms)\n✔ device restart resets both sensors while a persistent restart flag resets only once (0.3145ms)\n✔ normal uint32 counter rollover is not mistaken for a reboot (0.2357ms)\n✔ BOOT with no receipt excludes old captures and GPS can return before fresh IMU (0.4097ms)\n✔ new relay epochs do not reuse pre-reconnect history as the active baseline (0.336ms)\n✔ initial waiting-to-capture hydration preserves GPS history older than the latest IMU (0.1947ms)\n✔ source inputs remain unchanged and output history stays bounded (2.6884ms)\n✔ consensus chooses an observed recurring position instead of the first outlier (2.7764ms)\n✔ physical units with gyro bias: still MPU holds regional drift and trims the display trail (2.4524ms)\n✔ unscaled raw: still MPU holds regional drift and trims the display trail (0.5504ms)\n✔ acceleration change immediately passes even sub-metre GPS movement (0.36ms)\n✔ rotation change immediately passes even sub-metre GPS movement (0.266ms)\n✔ moving MPU passes repeated small changes without applying a GPS deadband (0.5692ms)\n✔ absent, stale, saturated and zero MPU samples cannot hold GPS (2.2754ms)\n✔ HTTP receipt changes with frozen device counters cannot sustain a hold (0.331ms)\n✔ fast USB samples retain a four-second quiet window (7.7601ms)\n✔ two-second feed cadence can accumulate enough independent quiet samples (0.455ms)\n✔ one distant GPS spike is held but sustained departure releases smooth travel (0.7247ms)\n✔ three consistent fixes in a new region cannot leave the marker stuck forever (0.323ms)\n✔ GPS loss retains the displayed last-known point without adding trail or timestamps (0.2745ms)\n✔ GPS return after a long gap and source changes establish new positions (0.2988ms)\n✔ counter restart clears the anchor; normal uint32 rollover retains it (0.2576ms)\n✔ invalid, repeated and out-of-order GPS fixes cannot inflate evidence (0.3329ms)\n✔ raw inputs and previous state stay immutable and output history stays bounded (1.2997ms)\n✔ physical evidence uses only complete fresh hardware vectors and never captured fallback (0.3053ms)\nℹ tests 34\nℹ suites 0\nℹ pass 34\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 538.9459\n"
+        },
+        {
+          "command": "node .local/trail-mode-check.cjs",
+          "exitCode": 0,
+          "durationMs": 41701,
+          "output": "{\"status\":\"passed\",\"origin\":\"http://127.0.0.1:3111\",\"routes\":[\"/\",\"/map\",\"/journeys\",\"/navigation\",\"/devices\"],\"renderedTrailToggles\":true,\"trailPixels\":{\"shown\":900,\"hidden\":0,\"restored\":900},\"rawCapturesPreserved\":true,\"reloadPersists\":true,\"tabsSynchronized\":true,\"storageFailureHandled\":true,\"historicalPositionSupported\":true,\"mobileWidths\":[320,360,390,768],\"keyboardWorks\":true,\"browserErrors\":0,\"feedResponses\":35}\n"
+        }
+      ]
+    },
+    {
+      "round": 9,
+      "checks": [
+        {
+          "command": "node node_modules/typescript/bin/tsc --noEmit",
+          "exitCode": 0,
+          "durationMs": 1956,
+          "output": ""
+        },
+        {
+          "command": "node --test tests/stationary-map.test.mjs tests/signal-stabilization.test.mjs",
+          "exitCode": 0,
+          "durationMs": 617,
+          "output": "✔ tiny GPS variations hold the original accepted sample without rewriting its timestamp (3.314ms)\n✔ slow cumulative movement crosses the anchored threshold and is not held indefinitely (0.2928ms)\n✔ rolling and repeated input histories do not move the anchor or inflate suppression counts (0.2998ms)\n✔ identical reported coordinates can have a new genuine receipt without extra trail vertices (0.1901ms)\n✔ GPS gaps and source changes establish a fresh baseline (0.2465ms)\n✔ GPS distance uses the short arc across the international date line (0.2511ms)\n✔ invalid points and backwards receipts never move the displayed position (0.2415ms)\n✔ motion deadbands hold minor changes but pass a large gyro or acceleration change immediately (0.3532ms)\n✔ motion thresholds accumulate against accepted values instead of each noisy predecessor (0.189ms)\n✔ a stale motion gap resets its baseline and duplicate receipts cannot invent motion (0.2555ms)\n✔ device restart resets both sensors while a persistent restart flag resets only once (0.3205ms)\n✔ normal uint32 counter rollover is not mistaken for a reboot (0.1742ms)\n✔ BOOT with no receipt excludes old captures and GPS can return before fresh IMU (0.2006ms)\n✔ new relay epochs do not reuse pre-reconnect history as the active baseline (0.1459ms)\n✔ initial waiting-to-capture hydration preserves GPS history older than the latest IMU (0.154ms)\n✔ source inputs remain unchanged and output history stays bounded (3.0953ms)\n✔ consensus chooses an observed recurring position instead of the first outlier (2.7032ms)\n✔ physical units with gyro bias: still MPU holds regional drift and trims the display trail (2.245ms)\n✔ unscaled raw: still MPU holds regional drift and trims the display trail (0.5292ms)\n✔ acceleration change immediately passes even sub-metre GPS movement (0.3806ms)\n✔ rotation change immediately passes even sub-metre GPS movement (0.2943ms)\n✔ moving MPU passes repeated small changes without applying a GPS deadband (2.115ms)\n✔ absent, stale, saturated and zero MPU samples cannot hold GPS (0.88ms)\n✔ HTTP receipt changes with frozen device counters cannot sustain a hold (0.3072ms)\n✔ fast USB samples retain a four-second quiet window (8.7037ms)\n✔ two-second feed cadence can accumulate enough independent quiet samples (0.7586ms)\n✔ one distant GPS spike is held but sustained departure releases smooth travel (0.4761ms)\n✔ three consistent fixes in a new region cannot leave the marker stuck forever (0.3072ms)\n✔ GPS loss retains the displayed last-known point without adding trail or timestamps (0.285ms)\n✔ GPS return after a long gap and source changes establish new positions (0.2717ms)\n✔ counter restart clears the anchor; normal uint32 rollover retains it (0.3545ms)\n✔ invalid, repeated and out-of-order GPS fixes cannot inflate evidence (0.3915ms)\n✔ raw inputs and previous state stay immutable and output history stays bounded (1.3362ms)\n✔ physical evidence uses only complete fresh hardware vectors and never captured fallback (0.3041ms)\nℹ tests 34\nℹ suites 0\nℹ pass 34\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 537.809\n"
+        },
+        {
+          "command": "node .local/trail-mode-check.cjs",
+          "exitCode": 0,
+          "durationMs": 45063,
+          "output": "{\"status\":\"passed\",\"origin\":\"http://127.0.0.1:3111\",\"routes\":[\"/\",\"/map\",\"/journeys\",\"/navigation\",\"/devices\"],\"renderedTrailToggles\":true,\"trailPixels\":{\"shown\":900,\"hidden\":0,\"restored\":900},\"rawCapturesPreserved\":true,\"reloadPersists\":true,\"tabsSynchronized\":true,\"storageFailureHandled\":true,\"historicalPositionSupported\":true,\"mobileWidths\":[320,360,390,768],\"keyboardWorks\":true,\"browserErrors\":0,\"feedResponses\":36}\n"
+        }
+      ]
+    },
+    {
+      "round": 10,
+      "checks": [
+        {
+          "command": "node node_modules/typescript/bin/tsc --noEmit",
+          "exitCode": 0,
+          "durationMs": 2216,
+          "output": ""
+        },
+        {
+          "command": "node --test tests/stationary-map.test.mjs tests/signal-stabilization.test.mjs",
+          "exitCode": 0,
+          "durationMs": 605,
+          "output": "✔ tiny GPS variations hold the original accepted sample without rewriting its timestamp (4.9553ms)\n✔ slow cumulative movement crosses the anchored threshold and is not held indefinitely (0.4582ms)\n✔ rolling and repeated input histories do not move the anchor or inflate suppression counts (0.4866ms)\n✔ identical reported coordinates can have a new genuine receipt without extra trail vertices (0.3411ms)\n✔ GPS gaps and source changes establish a fresh baseline (0.3508ms)\n✔ GPS distance uses the short arc across the international date line (0.325ms)\n✔ invalid points and backwards receipts never move the displayed position (0.2694ms)\n✔ motion deadbands hold minor changes but pass a large gyro or acceleration change immediately (0.4552ms)\n✔ motion thresholds accumulate against accepted values instead of each noisy predecessor (0.25ms)\n✔ a stale motion gap resets its baseline and duplicate receipts cannot invent motion (0.4022ms)\n✔ device restart resets both sensors while a persistent restart flag resets only once (0.7953ms)\n✔ normal uint32 counter rollover is not mistaken for a reboot (0.4059ms)\n✔ BOOT with no receipt excludes old captures and GPS can return before fresh IMU (0.4195ms)\n✔ new relay epochs do not reuse pre-reconnect history as the active baseline (0.2646ms)\n✔ initial waiting-to-capture hydration preserves GPS history older than the latest IMU (0.2034ms)\n✔ source inputs remain unchanged and output history stays bounded (3.218ms)\n✔ consensus chooses an observed recurring position instead of the first outlier (3.069ms)\n✔ physical units with gyro bias: still MPU holds regional drift and trims the display trail (2.5729ms)\n✔ unscaled raw: still MPU holds regional drift and trims the display trail (0.6146ms)\n✔ acceleration change immediately passes even sub-metre GPS movement (0.4299ms)\n✔ rotation change immediately passes even sub-metre GPS movement (0.2956ms)\n✔ moving MPU passes repeated small changes without applying a GPS deadband (0.6625ms)\n✔ absent, stale, saturated and zero MPU samples cannot hold GPS (2.9095ms)\n✔ HTTP receipt changes with frozen device counters cannot sustain a hold (0.3707ms)\n✔ fast USB samples retain a four-second quiet window (8.5079ms)\n✔ two-second feed cadence can accumulate enough independent quiet samples (0.4727ms)\n✔ one distant GPS spike is held but sustained departure releases smooth travel (0.6619ms)\n✔ three consistent fixes in a new region cannot leave the marker stuck forever (0.3434ms)\n✔ GPS loss retains the displayed last-known point without adding trail or timestamps (0.2884ms)\n✔ GPS return after a long gap and source changes establish new positions (0.2928ms)\n✔ counter restart clears the anchor; normal uint32 rollover retains it (0.2595ms)\n✔ invalid, repeated and out-of-order GPS fixes cannot inflate evidence (0.3239ms)\n✔ raw inputs and previous state stay immutable and output history stays bounded (1.4042ms)\n✔ physical evidence uses only complete fresh hardware vectors and never captured fallback (0.3462ms)\nℹ tests 34\nℹ suites 0\nℹ pass 34\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 532.1574\n"
+        },
+        {
+          "command": "node .local/trail-mode-check.cjs",
+          "exitCode": 0,
+          "durationMs": 44106,
+          "output": "{\"status\":\"passed\",\"origin\":\"http://127.0.0.1:3111\",\"routes\":[\"/\",\"/map\",\"/journeys\",\"/navigation\",\"/devices\"],\"renderedTrailToggles\":true,\"trailPixels\":{\"shown\":900,\"hidden\":0,\"restored\":900},\"rawCapturesPreserved\":true,\"reloadPersists\":true,\"tabsSynchronized\":true,\"storageFailureHandled\":true,\"historicalPositionSupported\":true,\"mobileWidths\":[320,360,390,768],\"keyboardWorks\":true,\"browserErrors\":0,\"feedResponses\":33}\n"
+        }
+      ]
+    }
+  ]
+}

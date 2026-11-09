@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "origin": "http://192.168.1.35:8088",
+  "project": "/smarttrackwebapp/",
+  "permissions": {
+    "admin": false,
+    "execute": true,
+    "create": true,
+    "rename": true,
+    "modify": true,
+    "delete": true,
+    "share": false,
+    "download": true
+  },
+  "checks": [
+    "Authenticated friend can read the new shared project; anonymous access remains blocked",
+    "Create, read, update and rename modify the exact shared folder on the host",
+    "Browser shell executes Node and starts inside smarttrackwebapp",
+    "A fresh independent browser session receives editing and execution controls",
+    "Delete removes the test file; no project file was changed"
+  ],
+  "note": "Verified from this host through its Wi-Fi address, including a fresh browser context; no separate physical client used."
+}

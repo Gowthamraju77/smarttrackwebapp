@@ -1,0 +1,283 @@
+{
+  "task": "Soft flowing background with sage/ivory depth and fine grain",
+  "date": "2026-11-05",
+  "build": {
+    "command": "npm run build",
+    "exit_code": 0
+  },
+  "visualReview": {
+    "status": "passed",
+    "screenshots": "C:\\Users\\muppa\\AppData\\Local\\Temp\\smarttrack-flow-review-wEeO0Y",
+    "checks": [
+      "Desktop contact entry and dashboard visually inspected",
+      "Mobile entry has no horizontal overflow",
+      "Five background layers animate transforms",
+      "Same background DOM instance survives route navigation",
+      "Reduced-motion preference disables all background animations",
+      "Decoration is inert, aria-hidden and ignores pointer events",
+      "No browser runtime errors"
+    ]
+  },
+  "earlierIssues": [
+    {
+      "command": "npm run start -- --hostname 127.0.0.1 --port 3104",
+      "result": "Port already occupied; used 3110 without stopping the existing listener"
+    },
+    {
+      "command": "Inline Playwright screenshot review",
+      "result": "PowerShell pipe changed a typographic apostrophe in a locator; switched to an ASCII regular expression and the review passed"
+    }
+  ],
+  "rounds": [
+    {
+      "round": 1,
+      "started": "2026-11-05T12:10:52.072Z",
+      "passed": true,
+      "checks": [
+        {
+          "command": "npm run typecheck",
+          "exit_code": 0,
+          "seconds": 7.7860781,
+          "output": "npm notice run smarttrack-web@0.1.0 typecheck\nnpm notice run tsc --noEmit\n"
+        },
+        {
+          "command": "$env:BASE_URL='http://127.0.0.1:3110'; node tests/motion-browser.cjs",
+          "exit_code": 0,
+          "seconds": 6.1717274,
+          "output": "{\n  \"status\": \"passed\",\n  \"origin\": \"http://127.0.0.1:3110\",\n  \"checks\": [\n    \"Offscreen decorative scanning pauses\",\n    \"Rapid disclosure toggles preserve the intended state\",\n    \"Hidden details leave keyboard order immediately\",\n    \"Reduced motion stops decoration and reveal effects\",\n    \"Mobile layout and browser runtime remain clean\"\n  ]\n}\n"
+        },
+        {
+          "command": "$env:BASE_URL='http://127.0.0.1:3110'; node tests/section-transitions-browser.cjs",
+          "exit_code": 0,
+          "seconds": 6.1507401999999995,
+          "output": "{\n  \"status\": \"passed\",\n  \"origin\": \"http://127.0.0.1:3110\",\n  \"checks\": [\n    \"Distinct tracking, planning and navigation views\",\n    \"Animated menu and keyboard section switches\",\n    \"Browser Back entrance animation\",\n    \"Rapid switches settle on the last destination\",\n    \"Reduced-motion navigation and clean browser runtime\"\n  ]\n}\n"
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "started": "2026-11-05T12:11:00.043Z",
+      "passed": true,
+      "checks": [
+        {
+          "command": "npm run typecheck",
+          "exit_code": 0,
+          "seconds": 6.508136,
+          "output": "npm notice run smarttrack-web@0.1.0 typecheck\nnpm notice run tsc --noEmit\n"
+        },
+        {
+          "command": "$env:BASE_URL='http://127.0.0.1:3110'; node tests/motion-browser.cjs",
+          "exit_code": 0,
+          "seconds": 5.1218312,
+          "output": "{\n  \"status\": \"passed\",\n  \"origin\": \"http://127.0.0.1:3110\",\n  \"checks\": [\n    \"Offscreen decorative scanning pauses\",\n    \"Rapid disclosure toggles preserve the intended state\",\n    \"Hidden details leave keyboard order immediately\",\n    \"Reduced motion stops decoration and reveal effects\",\n    \"Mobile layout and browser runtime remain clean\"\n  ]\n}\n"
+        },
+        {
+          "command": "$env:BASE_URL='http://127.0.0.1:3110'; node tests/section-transitions-browser.cjs",
+          "exit_code": 0,
+          "seconds": 5.2380207,
+          "output": "{\n  \"status\": \"passed\",\n  \"origin\": \"http://127.0.0.1:3110\",\n  \"checks\": [\n    \"Distinct tracking, planning and navigation views\",\n    \"Animated menu and keyboard section switches\",\n    \"Browser Back entrance animation\",\n    \"Rapid switches settle on the last destination\",\n    \"Reduced-motion navigation and clean browser runtime\"\n  ]\n}\n"
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "started": "2026-11-05T12:11:06.735Z",
+      "passed": true,
+      "checks": [
+        {
+          "command": "npm run typecheck",
+          "exit_code": 0,
+          "seconds": 7.1718418,
+          "output": "npm notice run smarttrack-web@0.1.0 typecheck\nnpm notice run tsc --noEmit\n"
+        },
+        {
+          "command": "$env:BASE_URL='http://127.0.0.1:3110'; node tests/motion-browser.cjs",
+          "exit_code": 0,
+          "seconds": 5.817312,
+          "output": "{\n  \"status\": \"passed\",\n  \"origin\": \"http://127.0.0.1:3110\",\n  \"checks\": [\n    \"Offscreen decorative scanning pauses\",\n    \"Rapid disclosure toggles preserve the intended state\",\n    \"Hidden details leave keyboard order immediately\",\n    \"Reduced motion stops decoration and reveal effects\",\n    \"Mobile layout and browser runtime remain clean\"\n  ]\n}\n"
+        },
+        {
+          "command": "$env:BASE_URL='http://127.0.0.1:3110'; node tests/section-transitions-browser.cjs",
+          "exit_code": 0,
+          "seconds": 5.9089486,
+          "output": "{\n  \"status\": \"passed\",\n  \"origin\": \"http://127.0.0.1:3110\",\n  \"checks\": [\n    \"Distinct tracking, planning and navigation views\",\n    \"Animated menu and keyboard section switches\",\n    \"Browser Back entrance animation\",\n    \"Rapid switches settle on the last destination\",\n    \"Reduced-motion navigation and clean browser runtime\"\n  ]\n}\n"
+        }
+      ]
+    },
+    {
+      "round": 4,
+      "started": "2026-11-05T12:11:14.092Z",
+      "passed": true,
+      "checks": [
+        {
+          "command": "npm run typecheck",
+          "exit_code": 0,
+          "seconds": 6.8174705,
+          "output": "npm notice run smarttrack-web@0.1.0 typecheck\nnpm notice run tsc --noEmit\n"
+        },
+        {
+          "command": "$env:BASE_URL='http://127.0.0.1:3110'; node tests/motion-browser.cjs",
+          "exit_code": 0,
+          "seconds": 5.3852824,
+          "output": "{\n  \"status\": \"passed\",\n  \"origin\": \"http://127.0.0.1:3110\",\n  \"checks\": [\n    \"Offscreen decorative scanning pauses\",\n    \"Rapid disclosure toggles preserve the intended state\",\n    \"Hidden details leave keyboard order immediately\",\n    \"Reduced motion stops decoration and reveal effects\",\n    \"Mobile layout and browser runtime remain clean\"\n  ]\n}\n"
+        },
+        {
+          "command": "$env:BASE_URL='http://127.0.0.1:3110'; node tests/section-transitions-browser.cjs",
+          "exit_code": 0,
+          "seconds": 5.6010957,
+          "output": "{\n  \"status\": \"passed\",\n  \"origin\": \"http://127.0.0.1:3110\",\n  \"checks\": [\n    \"Distinct tracking, planning and navigation views\",\n    \"Animated menu and keyboard section switches\",\n    \"Browser Back entrance animation\",\n    \"Rapid switches settle on the last destination\",\n    \"Reduced-motion navigation and clean browser runtime\"\n  ]\n}\n"
+        }
+      ]
+    },
+    {
+      "round": 5,
+      "started": "2026-11-05T12:11:21.102Z",
+      "passed": true,
+      "checks": [
+        {
+          "command": "npm run typecheck",
+          "exit_code": 0,
+          "seconds": 7.2763734,
+          "output": "npm notice run smarttrack-web@0.1.0 typecheck\nnpm notice run tsc --noEmit\n"
+        },
+        {
+          "command": "$env:BASE_URL='http://127.0.0.1:3110'; node tests/motion-browser.cjs",
+          "exit_code": 0,
+          "seconds": 5.5861654,
+          "output": "{\n  \"status\": \"passed\",\n  \"origin\": \"http://127.0.0.1:3110\",\n  \"checks\": [\n    \"Offscreen decorative scanning pauses\",\n    \"Rapid disclosure toggles preserve the intended state\",\n    \"Hidden details leave keyboard order immediately\",\n    \"Reduced motion stops decoration and reveal effects\",\n    \"Mobile layout and browser runtime remain clean\"\n  ]\n}\n"
+        },
+        {
+          "command": "$env:BASE_URL='http://127.0.0.1:3110'; node tests/section-transitions-browser.cjs",
+          "exit_code": 0,
+          "seconds": 5.7452005,
+          "output": "{\n  \"status\": \"passed\",\n  \"origin\": \"http://127.0.0.1:3110\",\n  \"checks\": [\n    \"Distinct tracking, planning and navigation views\",\n    \"Animated menu and keyboard section switches\",\n    \"Browser Back entrance animation\",\n    \"Rapid switches settle on the last destination\",\n    \"Reduced-motion navigation and clean browser runtime\"\n  ]\n}\n"
+        }
+      ]
+    },
+    {
+      "round": 6,
+      "started": "2026-11-05T12:11:28.582Z",
+      "passed": true,
+      "checks": [
+        {
+          "command": "npm run typecheck",
+          "exit_code": 0,
+          "seconds": 7.7719954,
+          "output": "npm notice run smarttrack-web@0.1.0 typecheck\nnpm notice run tsc --noEmit\n"
+        },
+        {
+          "command": "$env:BASE_URL='http://127.0.0.1:3110'; node tests/motion-browser.cjs",
+          "exit_code": 0,
+          "seconds": 6.4654346,
+          "output": "{\n  \"status\": \"passed\",\n  \"origin\": \"http://127.0.0.1:3110\",\n  \"checks\": [\n    \"Offscreen decorative scanning pauses\",\n    \"Rapid disclosure toggles preserve the intended state\",\n    \"Hidden details leave keyboard order immediately\",\n    \"Reduced motion stops decoration and reveal effects\",\n    \"Mobile layout and browser runtime remain clean\"\n  ]\n}\n"
+        },
+        {
+          "command": "$env:BASE_URL='http://127.0.0.1:3110'; node tests/section-transitions-browser.cjs",
+          "exit_code": 0,
+          "seconds": 6.280099,
+          "output": "{\n  \"status\": \"passed\",\n  \"origin\": \"http://127.0.0.1:3110\",\n  \"checks\": [\n    \"Distinct tracking, planning and navigation views\",\n    \"Animated menu and keyboard section switches\",\n    \"Browser Back entrance animation\",\n    \"Rapid switches settle on the last destination\",\n    \"Reduced-motion navigation and clean browser runtime\"\n  ]\n}\n"
+        }
+      ]
+    },
+    {
+      "round": 7,
+      "started": "2026-11-05T12:11:36.537Z",
+      "passed": true,
+      "checks": [
+        {
+          "command": "npm run typecheck",
+          "exit_code": 0,
+          "seconds": 7.5492437,
+          "output": "npm notice run smarttrack-web@0.1.0 typecheck\nnpm notice run tsc --noEmit\n"
+        },
+        {
+          "command": "$env:BASE_URL='http://127.0.0.1:3110'; node tests/motion-browser.cjs",
+          "exit_code": 0,
+          "seconds": 6.1192238,
+          "output": "{\n  \"status\": \"passed\",\n  \"origin\": \"http://127.0.0.1:3110\",\n  \"checks\": [\n    \"Offscreen decorative scanning pauses\",\n    \"Rapid disclosure toggles preserve the intended state\",\n    \"Hidden details leave keyboard order immediately\",\n    \"Reduced motion stops decoration and reveal effects\",\n    \"Mobile layout and browser runtime remain clean\"\n  ]\n}\n"
+        },
+        {
+          "command": "$env:BASE_URL='http://127.0.0.1:3110'; node tests/section-transitions-browser.cjs",
+          "exit_code": 0,
+          "seconds": 6.2098109,
+          "output": "{\n  \"status\": \"passed\",\n  \"origin\": \"http://127.0.0.1:3110\",\n  \"checks\": [\n    \"Distinct tracking, planning and navigation views\",\n    \"Animated menu and keyboard section switches\",\n    \"Browser Back entrance animation\",\n    \"Rapid switches settle on the last destination\",\n    \"Reduced-motion navigation and clean browser runtime\"\n  ]\n}\n"
+        }
+      ]
+    },
+    {
+      "round": 8,
+      "started": "2026-11-05T12:11:44.269Z",
+      "passed": true,
+      "checks": [
+        {
+          "command": "npm run typecheck",
+          "exit_code": 0,
+          "seconds": 7.5606887,
+          "output": "npm notice run smarttrack-web@0.1.0 typecheck\nnpm notice run tsc --noEmit\n"
+        },
+        {
+          "command": "$env:BASE_URL='http://127.0.0.1:3110'; node tests/motion-browser.cjs",
+          "exit_code": 0,
+          "seconds": 6.434455,
+          "output": "{\n  \"status\": \"passed\",\n  \"origin\": \"http://127.0.0.1:3110\",\n  \"checks\": [\n    \"Offscreen decorative scanning pauses\",\n    \"Rapid disclosure toggles preserve the intended state\",\n    \"Hidden details leave keyboard order immediately\",\n    \"Reduced motion stops decoration and reveal effects\",\n    \"Mobile layout and browser runtime remain clean\"\n  ]\n}\n"
+        },
+        {
+          "command": "$env:BASE_URL='http://127.0.0.1:3110'; node tests/section-transitions-browser.cjs",
+          "exit_code": 0,
+          "seconds": 6.2448945,
+          "output": "{\n  \"status\": \"passed\",\n  \"origin\": \"http://127.0.0.1:3110\",\n  \"checks\": [\n    \"Distinct tracking, planning and navigation views\",\n    \"Animated menu and keyboard section switches\",\n    \"Browser Back entrance animation\",\n    \"Rapid switches settle on the last destination\",\n    \"Reduced-motion navigation and clean browser runtime\"\n  ]\n}\n"
+        }
+      ]
+    },
+    {
+      "round": 9,
+      "started": "2026-11-05T12:11:52.015Z",
+      "passed": true,
+      "checks": [
+        {
+          "command": "npm run typecheck",
+          "exit_code": 0,
+          "seconds": 7.3070695,
+          "output": "npm notice run smarttrack-web@0.1.0 typecheck\nnpm notice run tsc --noEmit\n"
+        },
+        {
+          "command": "$env:BASE_URL='http://127.0.0.1:3110'; node tests/motion-browser.cjs",
+          "exit_code": 0,
+          "seconds": 5.9177008,
+          "output": "{\n  \"status\": \"passed\",\n  \"origin\": \"http://127.0.0.1:3110\",\n  \"checks\": [\n    \"Offscreen decorative scanning pauses\",\n    \"Rapid disclosure toggles preserve the intended state\",\n    \"Hidden details leave keyboard order immediately\",\n    \"Reduced motion stops decoration and reveal effects\",\n    \"Mobile layout and browser runtime remain clean\"\n  ]\n}\n"
+        },
+        {
+          "command": "$env:BASE_URL='http://127.0.0.1:3110'; node tests/section-transitions-browser.cjs",
+          "exit_code": 0,
+          "seconds": 6.0657263,
+          "output": "{\n  \"status\": \"passed\",\n  \"origin\": \"http://127.0.0.1:3110\",\n  \"checks\": [\n    \"Distinct tracking, planning and navigation views\",\n    \"Animated menu and keyboard section switches\",\n    \"Browser Back entrance animation\",\n    \"Rapid switches settle on the last destination\",\n    \"Reduced-motion navigation and clean browser runtime\"\n  ]\n}\n"
+        }
+      ]
+    },
+    {
+      "round": 10,
+      "started": "2026-11-05T12:11:59.501Z",
+      "passed": true,
+      "checks": [
+        {
+          "command": "npm run typecheck",
+          "exit_code": 0,
+          "seconds": 7.4226934,
+          "output": "npm notice run smarttrack-web@0.1.0 typecheck\nnpm notice run tsc --noEmit\n"
+        },
+        {
+          "command": "$env:BASE_URL='http://127.0.0.1:3110'; node tests/motion-browser.cjs",
+          "exit_code": 0,
+          "seconds": 6.0152795,
+          "output": "{\n  \"status\": \"passed\",\n  \"origin\": \"http://127.0.0.1:3110\",\n  \"checks\": [\n    \"Offscreen decorative scanning pauses\",\n    \"Rapid disclosure toggles preserve the intended state\",\n    \"Hidden details leave keyboard order immediately\",\n    \"Reduced motion stops decoration and reveal effects\",\n    \"Mobile layout and browser runtime remain clean\"\n  ]\n}\n"
+        },
+        {
+          "command": "$env:BASE_URL='http://127.0.0.1:3110'; node tests/section-transitions-browser.cjs",
+          "exit_code": 0,
+          "seconds": 6.1351312,
+          "output": "{\n  \"status\": \"passed\",\n  \"origin\": \"http://127.0.0.1:3110\",\n  \"checks\": [\n    \"Distinct tracking, planning and navigation views\",\n    \"Animated menu and keyboard section switches\",\n    \"Browser Back entrance animation\",\n    \"Rapid switches settle on the last destination\",\n    \"Reduced-motion navigation and clean browser runtime\"\n  ]\n}\n"
+        }
+      ]
+    }
+  ]
+}
